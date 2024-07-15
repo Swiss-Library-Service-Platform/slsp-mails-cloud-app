@@ -1,0 +1,25 @@
+
+.navigation-header {
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+
+    .nav-header {
+        background-color: var(--gray-1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        font-size: 16px;
+        border-radius: 5px;
+    
+        .back-button {
+            position:absolute;
+            left: 1rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    }
+}

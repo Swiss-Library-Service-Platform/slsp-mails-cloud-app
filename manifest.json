@@ -1,0 +1,23 @@
+{
+   "id": "slspmails-cloud-app",
+   "title": "SLSPmails",
+   "subtitle": "Cloud App for Email Logs",
+   "author": "SLSP",
+   "description": "See the email logs of Alma users",
+   "pages": {
+      "help": "https://github.com/Swiss-Library-Service-Platform/slspmails-cloud-app"
+   },
+   "X_icon": {
+      "type": "url",
+      "value": "/assets/logo_text.png"
+   },
+   "license": "https://github.com/Swiss-Library-Service-Platform/slspmails-cloud-app/LICENCE",
+   "contentSecurity": {
+      "connectSrc": [
+         "https://slspmails.swisscovery.network/"
+      ],
+      "X_sandbox": {
+         "popups": true
+      }
+   }
+}

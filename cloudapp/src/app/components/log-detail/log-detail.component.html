@@ -1,0 +1,22 @@
+<!-- Navigation header -->
+<app-navigationheader [title]="'LogDetail.Title' | translate"
+    [showBackButton]="true" [backButtonClicked]="backButtonClicked">
+</app-navigationheader>
+
+<div class="logdetail-info">
+    <div class="logdetail-desc">
+        <span> {{ 'LogDetail.FromEmail' | translate }}: </span>
+        <span> {{ 'LogDetail.ToEmail' | translate }}: </span>
+        <span> {{ 'LogDetail.Subject' | translate }}: </span>
+        <span> {{ 'LogDetail.Status' | translate }}: </span>
+        <span> {{ 'LogDetail.Opened' | translate }}: </span>
+    </div>
+    <div class="logdetail-val">
+        <span> {{ this.currentMailLog.from_email }} </span>
+        <span> {{ this.currentMailLog.to_email }} </span>
+        <span> {{ this.currentMailLog.subject }} </span>
+        <span> {{ this.currentMailLog.status }} </span>
+        <span *ngIf="this.currentMailLog.opens_count > 0"> {{ 'LogDetail.OpenedYes' | translate }} </span>
+        <span *ngIf="this.currentMailLog.opens_count == 0"> {{ 'LogDetail.OpenedNo' | translate }} </span>
+    </div>
+</div>

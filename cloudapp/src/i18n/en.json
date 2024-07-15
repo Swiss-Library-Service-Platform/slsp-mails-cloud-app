@@ -1,0 +1,27 @@
+{
+    "General": {
+        "BackToMenu": "Back"
+    },
+    "LogDetail": {
+        "FromEmail": "Sender Email",
+        "Opened": "Opened",
+        "OpenedNo": "Not Opened",
+        "OpenedYes": "Opened",
+        "Status": "Status",
+        "Subject": "Subject",
+        "Title": "Email Detail",
+        "ToEmail": "Recipient Email"
+    },
+    "LogOverview": {
+        "Subject": "Subject",
+        "Time": "Time",
+        "Title": "Emails"
+    },
+    "Main": {
+        "Title": "Select user",
+        "Status": {
+            "Initializing": "Authenticating",
+            "LoadLogs": "Load Mails"
+        }
+    }
+}

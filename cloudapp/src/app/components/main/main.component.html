@@ -1,0 +1,48 @@
+<!-- User Permission Denied -->
+<ng-container *ngIf="isUserCheckDone && !isUserAllowed">
+    <h1>{{ 'Main.AccessDenied1' | translate }}</h1>
+    <p>{{ 'Main.AccessDenied2' | translate }}</p>
+    <span>
+        {{ 'Main.AccessDenied3' | translate }}
+        <a href="mailto:info@slsp.ch">
+            info@slsp.ch</a>.
+    </span>
+</ng-container>
+
+<!-- User Allowed: Show Entities -->
+<ng-container *ngIf="isUserCheckDone && isUserAllowed">
+
+    <!-- Navigation header -->
+    <app-navigationheader [title]="'Main.Title' | translate"
+        [backButtonClicked]="backButtonClicked">
+    </app-navigationheader>
+
+    <!-- No Entities visible in Alma UI -->
+    <ng-container *ngIf="(entities$ | async)?.length == 0">
+        <h1> {{ 'Main.Welcome1' | translate }} </h1>
+        <p> {{ 'Main.Welcome2' | translate }}</p>
+        <ul>
+            <li> {{ 'Main.Welcome3' | translate }}</li>
+            <li> {{ 'Main.Welcome4' | translate }}</li>
+            <li> {{ 'Main.Welcome5' | translate }}</li>
+        </ul>
+        <div class="highlight"> {{ 'Main.Welcome6' | translate }}</div>
+    </ng-container>
+
+    <!-- Entity Selection -->
+    <ng-container *ngIf="(entities$ | async)?.length > 0">
+        <div >
+            <mat-radio-group aria-labelledby="entities-radio-group-label" class="entities-radio-group"
+                [(ngModel)]="selectedEntity" (change)="entitySelected($event)">
+                <mat-radio-button *ngFor="let entity of entities$ | async" [value]="entity">
+                    {{entity.description}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </ng-container>
+</ng-container>
+
+<div class="loading-shade" *ngIf="loaderService.isLoading | async">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p class="loading-info">{{ statusService.message | async }}</p> 
+</div>
