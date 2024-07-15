@@ -1,3 +1,4 @@
+import { MailEvent } from "./mailevent.model";
 
 /**
  * MailLog Object
@@ -18,7 +19,7 @@ export class MailLog {
     opens_count: number;
     clicks_count: number;
     // array of activity events
-    activity_events: any[] = [];
+    activity_events: MailEvent[] = [];
 
     constructor(data: any = {}) {
         if(data) {
@@ -31,7 +32,9 @@ export class MailLog {
             this.status = data.status;
             this.opens_count = data.opens_count;
             this.clicks_count = data.clicks_count;
-            this.activity_events = data.activity_events;
+            if(data.activity_events) {
+                this.activity_events = data.activity_events.map((event: any) => new MailEvent(event));
+            }
         }
     }
 

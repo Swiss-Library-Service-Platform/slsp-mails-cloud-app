@@ -5,6 +5,7 @@
 
 <div class="logdetail-info">
     <div class="logdetail-desc">
+        <span> {{ 'LogDetail.Time' | translate }}: </span>
         <span> {{ 'LogDetail.FromEmail' | translate }}: </span>
         <span> {{ 'LogDetail.ToEmail' | translate }}: </span>
         <span> {{ 'LogDetail.Subject' | translate }}: </span>
@@ -12,11 +13,26 @@
         <span> {{ 'LogDetail.Opened' | translate }}: </span>
     </div>
     <div class="logdetail-val">
+        <span> {{ this.currentMailLog.time | momentFormat:'lll' }} </span>
         <span> {{ this.currentMailLog.from_email }} </span>
         <span> {{ this.currentMailLog.to_email }} </span>
         <span> {{ this.currentMailLog.subject }} </span>
         <span> {{ this.currentMailLog.status }} </span>
         <span *ngIf="this.currentMailLog.opens_count > 0"> {{ 'LogDetail.OpenedYes' | translate }} </span>
         <span *ngIf="this.currentMailLog.opens_count == 0"> {{ 'LogDetail.OpenedNo' | translate }} </span>
+    </div>
+</div>
+
+<div class="logdetail-events" *ngIf="this.currentMailLog.activity_events.length > 0">
+    <div class="logdetail-events-header">
+        <span> {{ 'LogDetail.Events' | translate }}: </span>
+    </div>
+    <div class="logdetail-events-list">
+        <div *ngFor="let event of this.currentMailLog.activity_events">
+            <div class="logdetail-event">
+                <span> {{ event.time | momentFormat:'lll' }} </span>
+                <span> {{ event.reason }} </span>
+            </div>
+        </div>
     </div>
 </div>

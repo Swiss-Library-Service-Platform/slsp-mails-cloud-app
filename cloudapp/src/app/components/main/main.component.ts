@@ -61,6 +61,10 @@ export class MainComponent implements OnInit, OnDestroy {
 
     this.loaderService.hide();
 
+    if (!this.isUserAllowed) {
+      return;
+    }
+
     // Auto select if only one entity is available
     if (this.route.snapshot.params.isAutoSelect == 'true') {
       this.entities$.subscribe(async (availableEntities) => {

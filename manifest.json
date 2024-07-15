@@ -16,7 +16,7 @@
       "connectSrc": [
          "https://slspmails.swisscovery.network/"
       ],
-      "X_sandbox": {
+      "sandbox": {
          "popups": true
       }
    }
