@@ -24,6 +24,17 @@ cloudapp-alert {
     top: 1rem;
     width: 100%;
     z-index: 99;
+    .alert {
+        border-radius: 5px;
+        padding: 1rem !important;
+        margin-right: 10px;
+
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+    }
+
 }
 
 @mixin main-component-theme($theme, $typgraphy) {

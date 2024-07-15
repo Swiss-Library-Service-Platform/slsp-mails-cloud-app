@@ -24,6 +24,11 @@
         "AccessDenied2": "You are not allowed to access this cloud app.",
         "AccessDenied3": "If you think this is an error, please contact SLSP via email at", 
         
+        "Errors": {
+            "LogFetchError": "Error fetching logs",
+            "NoLogs": "No emails are logged for this user."
+        },
+
         "Status": {
             "Initializing": "Authenticating",
             "LoadLogs": "Load Mails"
