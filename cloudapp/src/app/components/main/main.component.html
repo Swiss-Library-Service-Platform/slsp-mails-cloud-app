@@ -33,7 +33,7 @@
     <!-- Entity Selection -->
     <ng-container *ngIf="(entities$ | async)?.length > 0">
         <!-- Navigation header -->
-        <app-navigationheader [title]="'Main.Title' | translate" [backButtonClicked]="backButtonClicked"></app-navigationheader>
+        <app-navigationheader [title]="'Main.Title' | translate"></app-navigationheader>
         
         <!-- Entity Selection -->
         <div>
@@ -48,7 +48,7 @@
 </ng-container>
 
 <!-- Loading Spinner -->
-<div class="loading-shade" *ngIf="loaderService.isLoading | async">
+<div class="loading-shade" *ngIf="loader.isLoading | async">
     <mat-spinner diameter="50"></mat-spinner>
-    <p class="loading-info">{{ statusService.message | async }}</p>
+    <p class="loading-info">{{ status.message | async }}</p>
 </div>
