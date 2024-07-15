@@ -147,7 +147,7 @@ export class SlspMailsAPIService {
         (data: any) => {
           this.log.info('gotUserLogs', data);
           if (data.length === 0) {
-            this.alert.error(this.translate.instant('Main.Errors.NoLogs'));
+            this.alert.error(this.translate.instant('Main.Errors.NoLogs'), { autoClose: true, delay: 3000 });
             resolve(false);
           }
           this.mailLogs = data.map((log: any) => new MailLog(log));
@@ -156,7 +156,7 @@ export class SlspMailsAPIService {
         },
         error => {
           this.log.error('gotUserLogs', error);
-          this.alert.error(this.translate.instant('Main.Errors.LogFetchError'));
+          this.alert.error(this.translate.instant('Main.Errors.LogFetchError'), { autoClose: true, delay: 3000 });
           resolve(false);
         },
       );
