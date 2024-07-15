@@ -42,6 +42,7 @@
     </ng-container>
 </ng-container>
 
+<!-- Loading Spinner -->
 <div class="loading-shade" *ngIf="loaderService.isLoading | async">
     <mat-spinner diameter="50"></mat-spinner>
     <p class="loading-info">{{ statusService.message | async }}</p> 

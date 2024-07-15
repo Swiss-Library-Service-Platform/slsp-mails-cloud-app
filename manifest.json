@@ -5,13 +5,13 @@
    "author": "SLSP",
    "description": "See the email logs of Alma users",
    "pages": {
-      "help": "https://github.com/Swiss-Library-Service-Platform/slspmails-cloud-app"
+      "help": "https://github.com/Swiss-Library-Service-Platform/slsp-mails-cloud-app"
    },
    "X_icon": {
       "type": "url",
       "value": "/assets/logo_text.png"
    },
-   "license": "https://github.com/Swiss-Library-Service-Platform/slspmails-cloud-app/LICENCE",
+   "license": "https://github.com/Swiss-Library-Service-Platform/slsp-mails-cloud-app/LICENCE",
    "contentSecurity": {
       "connectSrc": [
          "https://slspmails.swisscovery.network/"
