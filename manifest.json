@@ -4,6 +4,9 @@
    "subtitle": "Cloud App for Email Logs",
    "author": "SLSP",
    "description": "See the email logs of Alma users",
+   "entities": [
+      "USER"
+   ],
    "pages": {
       "help": "https://github.com/Swiss-Library-Service-Platform/slsp-mails-cloud-app"
    },
