@@ -1,4 +1,4 @@
-FROM node:14-bullseye
+FROM node:13.13-buster
 
 # Install basic development tools
 RUN apt update && apt install -y less man-db sudo
