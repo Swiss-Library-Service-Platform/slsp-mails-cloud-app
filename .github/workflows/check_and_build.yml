@@ -1,6 +1,15 @@
 name: Check CloudApp
 
 on:
+  push:
+    branches: ["development, main"]
+    paths:
+      [
+        "package.json",
+        "package-lock.json",
+        "cloudapp/src/**",
+        ".github/workflows/**",
+      ]
   pull_request:
     branches: ["main"]
     paths:
@@ -19,20 +28,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Node.js 13.13.0
+      - name: Use Node.js 13.x
         uses: actions/setup-node@v1
         with:
-          node-version: 13.13.0
+          node-version: 13.x
 
       # - name: Audit ('npm audit')
       #   run: |
       #     npm ci
       #     npm audit --audit-level=critical
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Install Exl Cloud App CLI
-        run: npm i -g @exlibris/exl-cloudapp-cli
 
       - name: Build CloudApp ('eca build')
-        run: eca build | grep 'Generated'
+        run: |
+          npm ci
+          npm i -g @exlibris/exl-cloudapp-cli
+          eca build | grep 'Generated'
