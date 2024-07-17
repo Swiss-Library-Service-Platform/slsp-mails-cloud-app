@@ -35,7 +35,9 @@
                 </td>
                 <!-- Subject -->
                 <td>
-                    <span>{{ log.subject | truncate:50 }}</span>
+                    <!-- <span>{{ log.subject | truncate:50 }}</span> --> 
+                    <span class="subject-cell">{{ log.subject }}</span>
+
                 </td>
             </tr>
         </tbody>
