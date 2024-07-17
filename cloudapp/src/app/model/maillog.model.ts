@@ -45,4 +45,8 @@ export class MailLog {
     isNotDelivered() {
         return this.status === 'not_delivered';
     }
+
+    isPending() {
+        return this.status === 'pending';
+    }
 }

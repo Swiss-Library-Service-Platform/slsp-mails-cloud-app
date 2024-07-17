@@ -3,7 +3,7 @@
         "BackToMenu": "Back"
     },
     "LogDetail": {
-        "Events": "Email Events",
+        "Events": "Detailed events of the failed email transmission",
         "FromEmail": "Sender Email",
         "Opened": "Opened",
         "OpenedNo": "Not Opened",
@@ -41,5 +41,10 @@
         "Welcome4" : "Open this cloud app",
         "Welcome5" : "Select the user",
         "Welcome6" : "See the email logs"        
+    },
+    "MailStatusChip": {
+        "Delivered": "Delivered",
+        "NotDelivered": "Not Delivered",
+        "Pending": "Pending"
     }
 }

@@ -5,17 +5,39 @@
     .logdetail-desc {
         display: flex;
         flex-direction: column;
-        padding-right: 1rem
+        padding-right: 1rem;
+        row-gap: 2px;
     }
 
     .logdetail-val {
         display: flex;
         flex-direction: column;
+        row-gap: 2px;
     }
 }
 
 .logdetail-events {
     display: flex;
     flex-direction: column;
-    padding-top: 1rem;
+
+    .logdetail-events-header {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-top: 1px solid #ccc;
+        //text-decoration: underline;
+    }
+
+    .logdetail-event {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1rem;
+
+        .logdetail-event-time {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: bold;
+        }
+    }
+
 }

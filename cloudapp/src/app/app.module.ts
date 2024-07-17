@@ -14,6 +14,7 @@ import { MomentFormatPipe } from './pipes/moment.pipe';
 import { LogOverviewComponent } from './components/log-overview/log-overview.component';
 import { TruncatePipe } from './pipes/truncate.pip';
 import { LogDetailComponent } from './components/log-detail/log-detail.component';
+import { MailStatusChipComponent } from './components/mail-status-chip/mail-status-chip.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LogDetailComponent } from './components/log-detail/log-detail.component
     LogDetailComponent,
     NavigationheaderComponent,
     MomentFormatPipe,
-    TruncatePipe
+    TruncatePipe,
+    MailStatusChipComponent
   ],
   imports: [
     MaterialModule,
