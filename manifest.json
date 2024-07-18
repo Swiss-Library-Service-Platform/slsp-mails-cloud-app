@@ -10,6 +10,10 @@
    "pages": {
       "help": "https://github.com/Swiss-Library-Service-Platform/slsp-mails-cloud-app"
    },
+   "icon": {
+      "type": "font",
+      "value": "fa fa-envelope"
+   },
    "X_icon": {
       "type": "url",
       "value": "/assets/logo_text.png"
@@ -22,5 +26,8 @@
       "sandbox": {
          "popups": true
       }
-   }
+   },
+   "relevantForInst": [
+      "41SLSP_NETWORK"
+   ]
 }
