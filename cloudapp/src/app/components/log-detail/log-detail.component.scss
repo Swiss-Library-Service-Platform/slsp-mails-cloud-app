@@ -1,3 +1,4 @@
+/*
 .logdetail-info {
     display: flex;
     flex-direction: row;
@@ -5,11 +6,60 @@
     .logdetail-desc {
         display: flex;
         flex-direction: column;
-        padding-right: 1rem
+        padding-right: 1rem;
+        row-gap: 2px;
+        white-space: nowrap;
     }
 
     .logdetail-val {
         display: flex;
         flex-direction: column;
+        row-gap: 2px;
     }
+}
+    */
+.logdetail-info {
+    display: table;
+    width: 100%;
+}
+
+.logdetail-row {
+    display: table-row;
+}
+
+.logdetail-desc, .logdetail-val {
+    display: table-cell;
+    padding: 5px 10px;
+    vertical-align: top;
+}
+
+.logdetail-desc {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.logdetail-events {
+    display: flex;
+    flex-direction: column;
+
+    .logdetail-events-header {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-top: 1px solid #ccc;
+        //text-decoration: underline;
+    }
+
+    .logdetail-event {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1rem;
+
+        .logdetail-event-time {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: bold;
+        }
+    }
+
 }

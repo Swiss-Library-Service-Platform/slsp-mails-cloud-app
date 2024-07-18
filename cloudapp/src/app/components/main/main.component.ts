@@ -35,8 +35,8 @@ export class MainComponent implements OnInit, OnDestroy {
     private eventsService: CloudAppEventsService,
     private slspmailsService: SlspMailsAPIService,
     private restService: CloudAppRestService,
-    private loaderService: LoaderService,
-    private statusService: StatusService,
+    private _loaderService: LoaderService,
+    private _statusService: StatusService,
     private router: Router,
     private route: ActivatedRoute,
     private translate: TranslateService
@@ -59,7 +59,11 @@ export class MainComponent implements OnInit, OnDestroy {
     this.isUserAllowed = await this.slspmailsService.authenticateAndCheckIfUserAllowed();
     this.isUserCheckDone = true;
 
-    this.loaderService.hide();
+    this.loader.hide();
+
+    if (!this.isUserAllowed) {
+      return;
+    }
 
     // Auto select if only one entity is available
     if (this.route.snapshot.params.isAutoSelect == 'true') {
@@ -86,7 +90,7 @@ export class MainComponent implements OnInit, OnDestroy {
       .subscribe(async emails => {
         if (emails) {
           const foundLog = await this.slspmailsService.getUserLogs(emails);
-          this.loaderService.hide();
+          this.loader.hide();
           if (foundLog) {
             this.router.navigate(['log-overview']);
           } else {
@@ -126,8 +130,24 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   setLoadingWithStatus(status: string) {
-    this.loaderService.show();
-    this.statusService.set(status);
+    this.loader.show();
+    this.status.set(status);
   }
 
+    /**
+   * Getter for LoadingIndicatorService instance.
+   * @returns LoadingIndicatorService instance
+   */
+    get loader(): LoaderService {
+      return this._loaderService;
+    }
+  
+    /**
+     * Getter for StatusMessageService instance.
+     * @returns StatusMessageService instance
+     */
+    get status(): StatusService {
+      return this._statusService;
+    }
+  
 }

@@ -3,12 +3,14 @@
         "BackToMenu": "Back"
     },
     "LogDetail": {
+        "Events": "Detailed events of the failed email transmission",
         "FromEmail": "Sender Email",
         "Opened": "Opened",
         "OpenedNo": "Not Opened",
         "OpenedYes": "Opened",
         "Status": "Status",
         "Subject": "Subject",
+        "Time": "Time",
         "Title": "Email Detail",
         "ToEmail": "Recipient Email"
     },
@@ -18,10 +20,33 @@
         "Title": "Emails"
     },
     "Main": {
-        "Title": "Select user",
+        "AccessDenied1": "Access denied",
+        "AccessDenied2": "You are not allowed to access this cloud app.",
+        "AccessDenied3": "If you think this is an error, please contact SLSP via email at", 
+        
+        "Errors": {
+            "LogFetchError": "Error fetching logs",
+            "NoLogs": "No emails are logged for this user."
+        },
+
         "Status": {
             "Initializing": "Authenticating",
             "LoadLogs": "Load Mails"
-        }
+        },
+        "Title": "Select User",
+
+        "Welcome1" : "Welcome to SLSPmails",
+        "Welcome2" : "View logs of emails sent via the SLSPmails server:",
+        "Welcome3" : "Find user you want to investigate:",
+        "Welcome3a": "Via user management",
+        "Welcome3b": "Via 'Fulfillment > Manage Patron Services'",
+        "Welcome4" : "Open this cloud app",
+        "Welcome5" : "Select the user",
+        "Welcome6" : "See the email logs"        
+    },
+    "MailStatusChip": {
+        "Delivered": "Delivered",
+        "NotDelivered": "Not Delivered",
+        "Pending": "Pending"
     }
 }

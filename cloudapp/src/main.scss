@@ -15,7 +15,7 @@
     --slsp-purple: rgba(78, 74, 153, 1); // or any global you wish to share with components 
     --slsp-purple-light: #eeeef7;
     --gray-1: #f2f2f2;
-    --gray-2: #f2f2f29c;
+    --table-stripe-background: #f3f5f4;
 }
 
 cloudapp-alert {
@@ -24,6 +24,17 @@ cloudapp-alert {
     top: 1rem;
     width: 100%;
     z-index: 99;
+    .alert {
+        border-radius: 5px;
+        padding: 1rem !important;
+        margin-right: 10px;
+
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+    }
+
 }
 
 @mixin main-component-theme($theme, $typgraphy) {
@@ -34,6 +45,8 @@ cloudapp-alert {
         .loading-info {
             margin-top: 1rem;
             padding: 8px;
+            padding-right: 16px;
+            padding-left: 16px;
             border-radius: 3px;
             font-size: 1.2em;
             color: #ffffff;
