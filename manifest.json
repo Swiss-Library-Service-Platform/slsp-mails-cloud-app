@@ -1,9 +1,9 @@
 {
    "id": "slspmails-cloud-app",
-   "title": "SLSPmails",
+   "title": "SLSPmails (Beta)",
    "subtitle": "Cloud App for Email Logs",
    "author": "SLSP",
-   "description": "See the email logs of Alma users",
+   "description": "Display the delivery status of emails sent via the SLSP mail server.",
    "entities": [
       "USER"
    ],

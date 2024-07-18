@@ -4,14 +4,13 @@
 
 This repository contains the [Alma Cloud App](https://developers.exlibrisgroup.com/cloudapps/) for the SLSPmails service provided by [SLSP](https://slsp.ch/).
 
-The app shows email logs for selected users in Alma.
+The application displays the delivery status of emails sent via the SLSP mail server.
 
 ## Requirements
 
 In order to use this app
 
 - your institution must be a member of the SLSP network zone.
-- your institution must be unlocked by SLSP in order to use this service.
 - your Alma user has to contain at least of one these user roles:
     - Fulfillment Services Manager
     - User Manager
@@ -19,9 +18,10 @@ In order to use this app
 
 Please [contact SLSP](https://slsp.ch/en/contact) if you have any questions.
 
-## Daily Use
+## Use
 
-TBD
+See the start page of the app for further information: </br>
+<img src=./preview/manual.png alt="drawing" width="300"/>
 
 ## Issues and defects
 Please use the GitHub "Issues" of this repository to report any defects. We will have a look into it as soon as possible.

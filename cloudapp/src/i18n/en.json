@@ -36,8 +36,10 @@
         "Title": "Select User",
 
         "Welcome1" : "Welcome to SLSPmails",
-        "Welcome2" : "Find logs of emails sent through the SLSPmails server:",
-        "Welcome3" : "Search for the user you want to investigate",
+        "Welcome2" : "View logs of emails sent via the SLSPmails server:",
+        "Welcome3" : "Find user you want to investigate:",
+        "Welcome3a": "Via user management",
+        "Welcome3b": "Via 'Fulfillment > Manage Patron Services'",
         "Welcome4" : "Open this cloud app",
         "Welcome5" : "Select the user",
         "Welcome6" : "See the email logs"        
