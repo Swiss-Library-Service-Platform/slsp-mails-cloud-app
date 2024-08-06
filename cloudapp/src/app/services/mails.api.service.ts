@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { MailLog } from '../model/maillog.model';
 import { LogService } from './log.service';
+import { Router } from '@angular/router';
 
 /**
  * Service which is responsible for API calls to the SLSPmails API
@@ -17,16 +18,12 @@ import { LogService } from './log.service';
 })
 export class SlspMailsAPIService {
 
-  private emailAddresses: Array<string> = [];
-  private readonly _emailAddressesObject = new BehaviorSubject<Array<string>>(new Array<string>());
-
   private mailLogs: Array<MailLog> = [];
   private readonly _mailLogsObject = new BehaviorSubject<Array<MailLog>>(new Array<MailLog>());
 
   private selectedMailLog: MailLog;
   private readonly _selectedMailLogObject = new BehaviorSubject<MailLog>(new MailLog({}));
 
-  private initData: Object
   private baseUrl: string = 'https://slspmails.swisscovery.network/api/v1/cloudapp';
   httpOptions: {};
 
@@ -37,6 +34,7 @@ export class SlspMailsAPIService {
     private alert: AlertService,
     private translate: TranslateService,
     private restService: CloudAppRestService,
+    private router: Router,
   ) { }
 
   /**
@@ -46,8 +44,7 @@ export class SlspMailsAPIService {
    * @return {*}  {Promise<void>}
    * @memberof LibraryManagementService
    */
-  async init(initData: Object): Promise<void> {
-    this.initData = initData;
+  async init(): Promise<void> {
     let authToken = await this.eventsService.getAuthToken().toPromise();
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -56,20 +53,6 @@ export class SlspMailsAPIService {
       }),
       withCredentials: true
     };
-  }
-
-  /**
-   * Get the address object as observable
-   */
-  getEmailAddressesObject(): Observable<Array<string>> {
-    return this._emailAddressesObject.asObservable();
-  }
-
-  /**
-   * Set the address object observable
-   */
-  private _setObservableEmailAddressesObject(emailAddresses: Array<string>): void {
-    this._emailAddressesObject.next(emailAddresses);
   }
 
   /**
@@ -120,7 +103,6 @@ export class SlspMailsAPIService {
           resolve(true);
         },
         error => {
-          console.log(error);
           resolve(false);
         },
       );
@@ -134,10 +116,6 @@ export class SlspMailsAPIService {
    * @return {*}  {Promise<boolean>}
   */
   async getUserLogs(emails: Array<string>): Promise<boolean> {
-    // Get emails from SLSPmails API 
-    this.emailAddresses = emails;
-    this._setObservableEmailAddressesObject(this.emailAddresses);
-
     // Get logs from SLSPmails API
     const payload = {
       emails: emails
@@ -145,9 +123,7 @@ export class SlspMailsAPIService {
     return new Promise(resolve => {
       this.http.post(this.baseUrl + '/logs', payload, this.httpOptions).subscribe(
         (data: any) => {
-          this.log.info('gotUserLogs', data);
-          if (data.length === 0) {
-            this.alert.error(this.translate.instant('Main.Errors.NoLogs'), { autoClose: true, delay: 3000 });
+          if (data.length == 0) {
             resolve(false);
           }
           this.mailLogs = data.map((log: any) => new MailLog(log));

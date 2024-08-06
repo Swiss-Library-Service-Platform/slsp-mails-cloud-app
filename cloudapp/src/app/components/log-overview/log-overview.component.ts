@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { SlspMailsAPIService } from '../../services/mails.api.service';
 import { MailLog } from '../../model/maillog.model';
-
+import { Entity } from '@exlibris/exl-cloudapp-angular-lib';
+import { EntitiesService } from '../../services/entities.service';
 @Component({
   selector: 'app-log-overview',
   templateUrl: './log-overview.component.html',
@@ -14,38 +15,56 @@ export class LogOverviewComponent implements OnInit {
   constructor(
     private _slspmailsService: SlspMailsAPIService,
     private router: Router,
+    private entitiesService: EntitiesService
   ) { }
-  currentEmails: Array<string> = [];
-  currentMailLogs: Array<MailLog> = [];
-  subscriptionEmails: Subscription;
+
+  subscriptionEntities: Subscription;
+  subscriptionSelectedEntity: Subscription;
   subscriptionMailLogs: Subscription;
 
+  currentEntities: Entity[] = [];
+  currentMailLogs: Array<MailLog> = [];
+  currentSelectedEntity: Entity;
+
   ngOnInit(): void {
-    this.subscriptionEmails = this._slspmailsService.getEmailAddressesObject().subscribe(
-      res => {
-        this.currentEmails = res;
-      },
-      err => {
-        console.error(`An error occurred: ${err.message}`);
+    this.backButtonClicked = this.backButtonClicked.bind(this);
+
+    // Subscribe to the entities
+    this.subscriptionEntities = this.entitiesService.getObservableEntitiesObject().subscribe(
+      entities => {
+        this.currentEntities = entities;
       }
     );
+    
+    // Subscribe to the mail logs
     this.subscriptionMailLogs = this._slspmailsService.getMailLogsObject().subscribe(
-      res => {
-        this.currentMailLogs = res;
+      mailLogs => {
+        this.currentMailLogs = mailLogs;
       },
       err => {
-        console.error(`An error occurred: ${err.message}`);
+        this.currentMailLogs = [];
+      }
+    );
+
+    // Subscribe to the selected entity
+    this.subscriptionSelectedEntity = this.entitiesService.getObservableSelectedEntityObject().subscribe(
+      selectedEntity => {
+        if (this.currentSelectedEntity) {
+          // Navigate back if selectedEntity changed during the time the user was on the page
+          this.router.navigate(['main']);
+        }
+        this.currentSelectedEntity = selectedEntity;
       }
     );
   }
 
   ngOnDestroy(): void {
-    this.subscriptionEmails.unsubscribe();
     this.subscriptionMailLogs.unsubscribe();
   }
   
   backButtonClicked(): void {
-    this.router.navigate(['main', 'false']);
+    this.entitiesService.resetSelectedEntity();
+    this.router.navigate(['main']);
   }
 
   onLogClicked(log: MailLog): void {

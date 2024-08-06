@@ -1,14 +1,14 @@
-import { Observable, of } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { Observable, of, Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CloudAppEventsService, Entity, PageInfo, EntityType, CloudAppRestService, HttpMethod } from '@exlibris/exl-cloudapp-angular-lib';
-import { MatRadioChange } from '@angular/material/radio';
+import { Entity, CloudAppRestService, AlertService, HttpMethod } from '@exlibris/exl-cloudapp-angular-lib';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LogService } from '../../services/log.service';
 import { SlspMailsAPIService } from '../../services/mails.api.service';
 import { LoaderService } from '../../services/loader.service';
 import { StatusService } from '../../services/status.service';
 import { TranslateService } from '@ngx-translate/core';
+import { EntitiesService } from '../../services/entities.service';
+import { catchError, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main',
@@ -17,91 +17,93 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class MainComponent implements OnInit, OnDestroy {
 
-  selectedEntity: Entity;
-  isAutoSelect: string;
   isUserAllowed: boolean = false;
   isUserCheckDone: boolean = false;
 
-  entities$: Observable<Entity[]> = this.eventsService.entities$
-    .pipe(
-     tap(() => this.clear()),
-      map(entities => {
-        return entities.filter(e => e.type == EntityType.USER);
-      }),
-    )
+  subscriptionEntities: Subscription;
+  subscriptionSelectedEntity: Subscription;
+  currentEntities: Entity[] = [];
+  currentSelectedEntity: Entity;
 
   constructor(
     private log: LogService,
-    private eventsService: CloudAppEventsService,
     private slspmailsService: SlspMailsAPIService,
-    private restService: CloudAppRestService,
-    private _loaderService: LoaderService,
-    private _statusService: StatusService,
+    private loaderService: LoaderService,
+    private statusService: StatusService,
+    private entitiesService: EntitiesService,
+    private translateService: TranslateService,
+    private alert: AlertService,
     private router: Router,
-    private route: ActivatedRoute,
-    private translate: TranslateService
+    private restService: CloudAppRestService,
+    private route: ActivatedRoute
   ) { }
 
-  ngOnDestroy(): void {
-  }
 
-  onPageLoad = (pageInfo: PageInfo) => {
-  }
 
   async ngOnInit() {
+    const statusText = await this.translateService.get('Main.Status.Initializing').toPromise();
+    this.loaderService.show();
+    this.statusService.set(statusText);
 
-    const statusText = await this.translate.get('Main.Status.Initializing').toPromise();
-    this.setLoadingWithStatus(statusText);
-
-    let initData = await this.eventsService.getInitData().toPromise();
-    await this.slspmailsService.init(initData);
+    await this.slspmailsService.init();
 
     this.isUserAllowed = await this.slspmailsService.authenticateAndCheckIfUserAllowed();
     this.isUserCheckDone = true;
 
-    this.loader.hide();
+    this.loaderService.hide();
 
     if (!this.isUserAllowed) {
       return;
     }
 
-    // Auto select if only one entity is available
-    if (this.route.snapshot.params.isAutoSelect == 'true') {
-      this.entities$.subscribe(async (availableEntities) => {
-        if (availableEntities.length == 1) {
-          await this.setUser(availableEntities[0]);
+    // Subscribe to the entitiesService to get the entities that are available
+    this.subscriptionEntities = this.entitiesService.getObservableEntitiesObject().subscribe(
+      async (res) => {
+        this.currentEntities = res;
+        this.alert.clear();
+      }
+    );
+
+    // Subscribe to the entitiesService to get the selected entity
+    this.subscriptionSelectedEntity = this.entitiesService.getObservableSelectedEntityObject().subscribe(
+      async (selectedEntitiy) => {
+        this.currentSelectedEntity = selectedEntitiy;
+        if (!selectedEntitiy) {
+          return;
         }
-      });
-    }
-  }
 
-  async entitySelected(event: MatRadioChange) {
-    const value = event.value as Entity;
-    await this.setUser(value);
-  }
-
-  async setUser(entity: Entity) {
-    this.log.info('setUser', entity);
-    const statusText = await this.translate.get('Main.Status.LoadLogs').toPromise();
-    this.setLoadingWithStatus(statusText);
-
-    // Get all emails from user
-    return this.getUserEmails(entity)
-      .subscribe(async emails => {
-        if (emails) {
-          const foundLog = await this.slspmailsService.getUserLogs(emails);
-          this.loader.hide();
-          if (foundLog) {
-            this.router.navigate(['log-overview']);
-          } else {
-            this.clear()
+        // Get the emails of the user
+        const statusText = await this.translateService.get('Main.Status.LoadLogs').toPromise();
+        this.loaderService.show();
+        this.statusService.set(statusText);
+        this.getUsersEmails(selectedEntitiy).subscribe(emails => {
+          this.loaderService.hide();
+          if (emails) {
+            // Get the logs of the user
+            const statusText = this.translateService.instant('Main.Status.LoadLogs');
+            this.statusService.set(statusText);
+            this.loaderService.show();
+            this.slspmailsService.getUserLogs(emails).then(foundLog => {
+              if (foundLog) {
+                this.router.navigate(['log-overview']);
+              } else {
+                this.alert.error(this.translateService.instant('Main.Errors.NoLogs'), { autoClose: this.currentEntities.length > 1, delay: 3000 });
+              }
+              this.loaderService.hide();
+            });
           }
-        }
-      });
+        });
+      }
+    );
   }
 
-  private getUserEmails(entity: Entity): Observable<string[]> {
-    this.log.info('getUserEmails', entity);
+  /**
+  * Get the entities object
+  * 
+  * @param entity 
+  * @returns 
+ */
+  private getUsersEmails(entity: Entity): Observable<string[]> {
     // Get all emails from user
     return this.restService.call({
       method: HttpMethod.GET,
@@ -115,39 +117,17 @@ export class MainComponent implements OnInit, OnDestroy {
           if (emails.length == 0) {
             throw new Error('No emails found in linked record');
           }
-          this.log.info('gotUserMails', emails);
           return of(emails);
         }),
         catchError(error => {
-          this.log.error('Failed to retrieve emails: ' + error.message);
           return of(null);
         }),
       );
   }
-  
-  clear() {
-    this.selectedEntity = null;
-  }
 
-  setLoadingWithStatus(status: string) {
-    this.loader.show();
-    this.status.set(status);
-  }
 
-    /**
-   * Getter for LoadingIndicatorService instance.
-   * @returns LoadingIndicatorService instance
-   */
-    get loader(): LoaderService {
-      return this._loaderService;
-    }
-  
-    /**
-     * Getter for StatusMessageService instance.
-     * @returns StatusMessageService instance
-     */
-    get status(): StatusService {
-      return this._statusService;
-    }
-  
+  ngOnDestroy(): void {
+    this.subscriptionEntities.unsubscribe();
+    this.subscriptionSelectedEntity.unsubscribe();
+  }
 }

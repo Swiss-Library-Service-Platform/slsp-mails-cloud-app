@@ -1,16 +1,11 @@
 <!-- Navigation header -->
 <app-navigationheader [title]="'LogOverview.Title' | translate"
-    [showBackButton]="true" [backButtonClicked]="backButtonClicked">
+    [showBackButton]="currentEntities.length > 1"
+     [backButtonClicked]="backButtonClicked">
 </app-navigationheader>
 
-<!-- Search for emails -->
-<!-- 
-<div>
-    {{ this.currentEmails }}
-</div>
--->
-
-<div>
+<!-- Log Overview -->
+<div *ngIf="currentMailLogs.length > 0">
     <!-- Table Overview : show time, and subject -->
     <table class="logoverview-table">
         <thead>
@@ -37,9 +32,11 @@
                 <td>
                     <!-- <span>{{ log.subject | truncate:50 }}</span> --> 
                     <span class="subject-cell">{{ log.subject }}</span>
-
                 </td>
             </tr>
         </tbody>
     </table>
+</div>
+<div *ngIf="currentMailLogs.length == 0">
+    <h1>{{ 'LogOverview.NoLogs' | translate }}</h1>
 </div>

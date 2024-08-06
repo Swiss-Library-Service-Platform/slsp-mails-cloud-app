@@ -17,7 +17,7 @@
 <!-- User Allowed: Show Entities -->
 <ng-container *ngIf="isUserCheckDone && isUserAllowed">
     <!-- No Entities visible in Alma UI -->
-    <ng-container *ngIf="(entities$ | async)?.length == 0">
+    <ng-container *ngIf="currentEntities.length == 0">
         <h1>
             {{ 'Main.Welcome1' | translate }}
         </h1>
@@ -35,15 +35,15 @@
     </ng-container>
 
     <!-- Entity Selection -->
-    <ng-container *ngIf="(entities$ | async)?.length > 0">
+    <ng-container *ngIf="currentEntities.length > 1">
         <!-- Navigation header -->
         <app-navigationheader [title]="'Main.Title' | translate"></app-navigationheader>
         
         <!-- Entity Selection -->
         <div>
             <mat-radio-group aria-labelledby="entities-radio-group-label" class="entities-radio-group"
-                [(ngModel)]="selectedEntity" (change)="entitySelected($event)">
-                <mat-radio-button *ngFor="let entity of entities$ | async" [value]="entity">
+                [(ngModel)]="currentSelectedEntity" (change)="entitiesService.selectEntity($event)">
+                <mat-radio-button *ngFor="let entity of currentEntities" [value]="entity">
                     {{entity.description}}
                 </mat-radio-button>
             </mat-radio-group>
@@ -52,7 +52,7 @@
 </ng-container>
 
 <!-- Loading Spinner -->
-<div class="loading-shade" *ngIf="loader.isLoading | async">
+<div class="loading-shade" *ngIf="loaderService.isLoading | async">
     <mat-spinner diameter="50"></mat-spinner>
-    <p class="loading-info">{{ status.message | async }}</p>
+    <p class="loading-info">{{ statusService.message | async }}</p>
 </div>

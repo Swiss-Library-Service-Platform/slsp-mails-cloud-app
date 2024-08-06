@@ -30,7 +30,7 @@
         },
 
         "Status": {
-            "Initializing": "Authenticating",
+            "Initializing": "Initializing...",
             "LoadLogs": "Load Mails"
         },
         "Title": "Select User",

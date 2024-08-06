@@ -5,8 +5,8 @@ import { LogOverviewComponent } from './components/log-overview/log-overview.com
 import { LogDetailComponent } from './components/log-detail/log-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'main/true', pathMatch: 'full' },
-  { path: 'main/:isAutoSelect', component: MainComponent },
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: 'main', component: MainComponent },
   { path: 'log-overview', component: LogOverviewComponent },
   { path: 'log-detail', component: LogDetailComponent },
 ];
