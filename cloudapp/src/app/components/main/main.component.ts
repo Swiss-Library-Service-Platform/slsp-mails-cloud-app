@@ -29,7 +29,7 @@ export class MainComponent implements OnInit, OnDestroy {
     private slspmailsService: SlspMailsAPIService,
     public loaderService: LoaderService,
     public statusService: StatusService,
-    private entitiesService: EntitiesService,
+    public entitiesService: EntitiesService,
     private translateService: TranslateService,
     private alert: AlertService,
     private router: Router,
