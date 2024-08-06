@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { CloudAppEventsService, Entity, AlertService, CloudAppRestService, HttpMethod } from '@exlibris/exl-cloudapp-angular-lib';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { CloudAppEventsService, Entity } from '@exlibris/exl-cloudapp-angular-lib';
 import { EntityType } from '@exlibris/exl-cloudapp-angular-lib';
 import { MatRadioChange } from '@angular/material/radio';
-import { TranslateService } from '@ngx-translate/core';
-import { LoaderService } from './loader.service';
-import { StatusService } from './status.service';
-import { SlspMailsAPIService } from './mails.api.service';
 import { ActivatedRoute } from '@angular/router';
 
 /**
@@ -29,7 +24,6 @@ export class EntitiesService {
 
   constructor(
     private eventsService: CloudAppEventsService,
-    private route: ActivatedRoute
   ) {
     this.eventsService.entities$.subscribe(entities => {
       const filteredEntities = entities.filter(e => e.type == EntityType.USER);

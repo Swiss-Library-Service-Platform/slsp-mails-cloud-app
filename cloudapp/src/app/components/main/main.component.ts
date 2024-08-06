@@ -26,19 +26,15 @@ export class MainComponent implements OnInit, OnDestroy {
   currentSelectedEntity: Entity;
 
   constructor(
-    private log: LogService,
     private slspmailsService: SlspMailsAPIService,
-    private loaderService: LoaderService,
-    private statusService: StatusService,
+    public loaderService: LoaderService,
+    public statusService: StatusService,
     private entitiesService: EntitiesService,
     private translateService: TranslateService,
     private alert: AlertService,
     private router: Router,
     private restService: CloudAppRestService,
-    private route: ActivatedRoute
   ) { }
-
-
 
   async ngOnInit() {
     const statusText = await this.translateService.get('Main.Status.Initializing').toPromise();
