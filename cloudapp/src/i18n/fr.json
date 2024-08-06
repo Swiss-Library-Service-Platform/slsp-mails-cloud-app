@@ -1,0 +1,49 @@
+{
+    "LogDetail": {
+        "Events": "Événements détaillés de la transmission d'e-mail échouée",
+        "FromEmail": "E-mail de l'expéditeur",
+        "Opened": "Ouvert",
+        "OpenedNo": "Non ouvert",
+        "OpenedYes": "Ouvert",
+        "Status": "Statut",
+        "Subject": "Objet",
+        "Time": "Heure",
+        "Title": "Détail de l'e-mail",
+        "ToEmail": "E-mail du destinataire"
+    },
+    "LogOverview": {
+        "Subject": "Objet",
+        "Time": "Heure",
+        "Title": "E-mails"
+    },
+    "Main": {
+        "AccessDenied1": "Accès refusé",
+        "AccessDenied2": "Vous n'êtes pas autorisé à accéder à cette application cloud.",
+        "AccessDenied3": "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter SLSP par e-mail à",
+
+        "Errors": {
+            "LogFetchError": "Erreur lors de la récupération des journaux",
+            "NoLogs": "Aucun e-mail n'est enregistré pour cet utilisateur."
+        },
+
+        "Status": {
+            "Initializing": "Initialisation...",
+            "LoadLogs": "Charger les e-mails"
+        },
+        "Title": "Sélectionner l'utilisateur",
+
+        "Welcome1": "Bienvenue chez SLSPmails",
+        "Welcome2": "Consultez les journaux des e-mails envoyés via le serveur SLSPmails :",
+        "Welcome3": "Trouvez l'utilisateur que vous souhaitez examiner :",
+        "Welcome3a": "Via la gestion des utilisateurs",
+        "Welcome3b": "Via 'Services aux usagers > Services aux usagers'",
+        "Welcome4": "Ouvrez cette application cloud",
+        "Welcome5": "Sélectionnez l'utilisateur",
+        "Welcome6": "Consultez les journaux d'e-mails"
+    },
+    "MailStatusChip": {
+        "Delivered": "Livré",
+        "NotDelivered": "Non livré",
+        "Pending": "En attente"
+    }
+}

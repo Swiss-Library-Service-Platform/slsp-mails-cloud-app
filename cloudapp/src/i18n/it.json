@@ -1,0 +1,49 @@
+{
+    "LogDetail": {
+        "Events": "Eventi dettagliati della trasmissione e-mail fallita",
+        "FromEmail": "E-mail del mittente",
+        "Opened": "Aperto",
+        "OpenedNo": "Non aperto",
+        "OpenedYes": "Aperto",
+        "Status": "Stato",
+        "Subject": "Oggetto",
+        "Time": "Ora",
+        "Title": "Dettaglio e-mail",
+        "ToEmail": "E-mail del destinatario"
+    },
+    "LogOverview": {
+        "Subject": "Oggetto",
+        "Time": "Ora",
+        "Title": "E-mail"
+    },
+    "Main": {
+        "AccessDenied1": "Accesso negato",
+        "AccessDenied2": "Non sei autorizzato ad accedere a questa applicazione cloud.",
+        "AccessDenied3": "Se pensi che sia un errore, contatta SLSP via e-mail a",
+
+        "Errors": {
+            "LogFetchError": "Errore nel recupero dei log",
+            "NoLogs": "Nessuna e-mail è registrata per questo utente."
+        },
+
+        "Status": {
+            "Initializing": "Inizializzazione...",
+            "LoadLogs": "Carica e-mail"
+        },
+        "Title": "Seleziona utente",
+
+        "Welcome1": "Benvenuto in SLSPmails",
+        "Welcome2": "Visualizza i log delle e-mail inviate tramite il server SLSPmails:",
+        "Welcome3": "Trova l'utente che vuoi esaminare:",
+        "Welcome3a": "Tramite gestione utenti",
+        "Welcome3b": "Tramite 'Servizi > Gestione servizi per l'utente'",
+        "Welcome4": "Apri questa applicazione cloud",
+        "Welcome5": "Seleziona l'utente",
+        "Welcome6": "Visualizza i log delle e-mail"
+    },
+    "MailStatusChip": {
+        "Delivered": "Consegnato",
+        "NotDelivered": "Non consegnato",
+        "Pending": "In attesa"
+    }
+}

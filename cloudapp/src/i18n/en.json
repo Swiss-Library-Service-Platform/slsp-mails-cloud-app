@@ -1,7 +1,4 @@
 {
-    "General": {
-        "BackToMenu": "Back"
-    },
     "LogDetail": {
         "Events": "Detailed events of the failed email transmission",
         "FromEmail": "Sender Email",

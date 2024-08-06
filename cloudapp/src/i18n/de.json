@@ -1,0 +1,49 @@
+{
+    "LogDetail": {
+        "Events": "Detaillierte Ereignisse der fehlgeschlagenen E-Mail",
+        "FromEmail": "Absender-E-Mail",
+        "Opened": "Geöffnet",
+        "OpenedNo": "Nicht geöffnet",
+        "OpenedYes": "Geöffnet",
+        "Status": "Status",
+        "Subject": "Betreff",
+        "Time": "Zeit",
+        "Title": "E-Mail-Detail",
+        "ToEmail": "Empfänger-E-Mail"
+    },
+    "LogOverview": {
+        "Subject": "Betreff",
+        "Time": "Zeit",
+        "Title": "E-Mails"
+    },
+    "Main": {
+        "AccessDenied1": "Zugriff verweigert",
+        "AccessDenied2": "Sie sind nicht berechtigt, auf diese Cloud-App zuzugreifen.",
+        "AccessDenied3": "Wenn Sie denken, dass dies ein Fehler ist, kontaktieren Sie bitte SLSP per E-Mail unter",
+
+        "Errors": {
+            "LogFetchError": "Fehler beim Abrufen der Protokolle",
+            "NoLogs": "Für diesen Benutzer sind keine E-Mails protokolliert."
+        },
+
+        "Status": {
+            "Initializing": "Initialisierung...",
+            "LoadLogs": "E-Mails laden"
+        },
+        "Title": "Benutzer auswählen",
+
+        "Welcome1": "Willkommen bei SLSPmails",
+        "Welcome2": "Anzeigen von Protokollen der über den SLSPmails-Server gesendeten E-Mails:",
+        "Welcome3": "Suchen Sie den Benutzer, den Sie untersuchen möchten:",
+        "Welcome3a": "Über Benutzerverwaltung",
+        "Welcome3b": "Über 'Benutzung > Benutzerdienste'",
+        "Welcome4": "Öffnen Sie diese Cloud-App",
+        "Welcome5": "Wählen Sie den Benutzer aus",
+        "Welcome6": "Sehen Sie sich die E-Mail-Protokolle an"
+    },
+    "MailStatusChip": {
+        "Delivered": "Zugestellt",
+        "NotDelivered": "Nicht zugestellt",
+        "Pending": "Ausstehend"
+    }
+}

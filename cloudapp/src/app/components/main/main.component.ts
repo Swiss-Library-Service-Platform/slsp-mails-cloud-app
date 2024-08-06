@@ -80,8 +80,6 @@ export class MainComponent implements OnInit, OnDestroy {
           this.loaderService.hide();
           if (emails) {
             // Get the logs of the user
-            const statusText = this.translateService.instant('Main.Status.LoadLogs');
-            this.statusService.set(statusText);
             this.loaderService.show();
             this.slspmailsService.getUserLogs(emails).then(foundLog => {
               if (foundLog) {
