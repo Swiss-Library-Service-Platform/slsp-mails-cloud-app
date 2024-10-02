@@ -1,26 +1,26 @@
-
 .navigation-header {
-
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     margin-bottom: 1rem;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(94, 94, 94);
+}
 
-    .nav-header {
-        background-color: var(--gray-1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
-        font-size: 16px;
-        line-height: 1.5rem;
-        border-radius: 5px;
-    
-        .back-button {
-            position:absolute;
-            left: 1rem;
-            padding: 0.5rem;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+
+.nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 14px;
+    line-height: 1.5rem;
+    border-radius: 5px;
+
+    .back-button {
+        position: absolute;
+        left: 1rem;
+        padding: 0.5rem;
+        border-radius: 8px;
+        cursor: pointer;
     }
 }

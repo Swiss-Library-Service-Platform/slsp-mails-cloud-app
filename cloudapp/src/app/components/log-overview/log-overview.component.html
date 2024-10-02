@@ -1,5 +1,5 @@
 <!-- Navigation header -->
-<app-navigationheader [title]="'LogOverview.Title' | translate"
+<app-navigationheader [title]="currentSelectedEntity.description"
     [showBackButton]="currentEntities.length > 1"
      [backButtonClicked]="backButtonClicked">
 </app-navigationheader>
@@ -8,6 +8,7 @@
 <div *ngIf="currentMailLogs.length > 0">
     <!-- Table Overview : show time, and subject -->
     <table class="logoverview-table">
+        <!--
         <thead>
             <tr class="logoverview-header">
                 <th scope="col"> </th>
@@ -15,6 +16,7 @@
                 <th scope="col">{{ 'LogOverview.Subject' | translate }} </th>
             </tr>
         </thead>
+        -->
         <tbody>
             <tr class="logoverview-row" *ngFor="let log of this.currentMailLogs" (click)="onLogClicked(log)">
                 <!-- Status Icon -->

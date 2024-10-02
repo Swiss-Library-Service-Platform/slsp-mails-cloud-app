@@ -18,6 +18,8 @@ import { Router } from '@angular/router';
 })
 export class SlspMailsAPIService {
 
+  public isInitialized: boolean = false;
+
   private mailLogs: Array<MailLog> = [];
   private readonly _mailLogsObject = new BehaviorSubject<Array<MailLog>>(new Array<MailLog>());
 
@@ -45,6 +47,9 @@ export class SlspMailsAPIService {
    * @memberof LibraryManagementService
    */
   async init(): Promise<void> {
+    if (this.isInitialized) {
+      return;
+    }
     let authToken = await this.eventsService.getAuthToken().toPromise();
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -53,6 +58,7 @@ export class SlspMailsAPIService {
       }),
       withCredentials: true
     };
+    this.isInitialized = true;
   }
 
   /**

@@ -1,9 +1,11 @@
 <!-- User Permission Denied -->
 <ng-container *ngIf="isUserCheckDone && !isUserAllowed">
     <h1>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
-            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1"/>
-        </svg> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock"
+            viewBox="0 0 16 16">
+            <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1" />
+        </svg>
         {{ 'Main.AccessDenied1' | translate }}
     </h1>
     <p>{{ 'Main.AccessDenied2' | translate }}</p>
@@ -16,40 +18,32 @@
 
 <!-- User Allowed: Show Entities -->
 <ng-container *ngIf="isUserCheckDone && isUserAllowed">
-    <!-- No Entities visible in Alma UI -->
-    <ng-container *ngIf="currentEntities.length == 0">
-        <h1>
-            {{ 'Main.Welcome1' | translate }}
-        </h1>
-        <p> {{ 'Main.Welcome2' | translate }}</p>
-        <ul>
-            <li> {{ 'Main.Welcome3' | translate }}</li>
-            <ul>
-                <li> {{ 'Main.Welcome3a' | translate }}</li>
-                <li> {{ 'Main.Welcome3b' | translate }}</li>
-                <li> {{ 'Main.Welcome3c' | translate }}</li>
-            </ul>
-            <li> {{ 'Main.Welcome4' | translate }}</li>
-            <li> {{ 'Main.Welcome5' | translate }}</li>
-            <li> {{ 'Main.Welcome6' | translate }}</li>
-        </ul>
-    </ng-container>
 
-    <!-- Entity Selection -->
-    <ng-container *ngIf="currentEntities.length > 1">
-        <!-- Navigation header -->
-        <app-navigationheader [title]="'Main.Title' | translate"></app-navigationheader>
-        
-        <!-- Entity Selection -->
-        <div>
-            <mat-radio-group aria-labelledby="entities-radio-group-label" class="entities-radio-group"
-                [(ngModel)]="currentSelectedEntity" (change)="entitiesService.selectEntity($event)">
-                <mat-radio-button *ngFor="let entity of currentEntities" [value]="entity">
-                    {{entity.description}}
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-    </ng-container>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+        <!-- get label title for mat-tab from main.currentEntityTitle-->
+        <mat-tab >
+            <ng-template mat-tab-label>
+                <mat-icon>search</mat-icon>
+                {{ currentEntityTitle }}
+            </ng-template>
+
+            <app-entity-selection></app-entity-selection>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                    class="bi bi-exclamation-circle mat-tab-header-icon" viewBox="0 0 18 18">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                    <path
+                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
+                </svg>
+                {{ 'Main.Title_Undeliverable' | translate }}
+            </ng-template>
+
+            TBD
+
+        </mat-tab>
+    </mat-tab-group>
 </ng-container>
 
 <!-- Loading Spinner -->

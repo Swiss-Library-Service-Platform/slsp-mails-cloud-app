@@ -5,6 +5,7 @@ import { SlspMailsAPIService } from '../../services/mails.api.service';
 import { MailLog } from '../../model/maillog.model';
 import { Entity } from '@exlibris/exl-cloudapp-angular-lib';
 import { EntitiesService } from '../../services/entities.service';
+
 @Component({
   selector: 'app-log-overview',
   templateUrl: './log-overview.component.html',
@@ -15,7 +16,7 @@ export class LogOverviewComponent implements OnInit {
   constructor(
     private _slspmailsService: SlspMailsAPIService,
     private router: Router,
-    private entitiesService: EntitiesService
+    private entitiesService: EntitiesService,
   ) { }
 
   subscriptionEntities: Subscription;

@@ -8,7 +8,7 @@
         "Status": "Stato",
         "Subject": "Oggetto",
         "Time": "Ora",
-        "Title": "Dettaglio e-mail",
+        "Title": "Dettaglio",
         "ToEmail": "E-mail del destinatario"
     },
     "LogOverview": {
@@ -27,19 +27,21 @@
             "NoMails": "Non sono definite e-mail per questa entità in Alma."
         },
         "Status": {
-            "Initializing": "Inizializzazione...",
+            "Initializing": "Caricamento...",
             "LoadLogs": "Carica e-mail"
         },
         "Title": "Seleziona entità",
-        "Welcome1": "Benvenuto in SLSPmails",
-        "Welcome2": "Visualizza i log delle e-mail inviate tramite il server SLSPmails:",
+        "Title_User": "Verifica utente",
+        "Title_Undeliverable": "Non Consegnabili",
+        "Title_Vendor": "Verifica fornitore",
+        "Welcome1": "Nessuna entità disponibile.",
+        "Welcome2": "Trova un'entità in Alma per indagare sui log delle e-mail.",
         "Welcome3": "Selezionare l'entità da analizzare:",
         "Welcome3a": "Tramite gestione utenti",
         "Welcome3b": "Tramite 'Servizi > Gestione servizi per l'utente'",
         "Welcome3c": "Tramite 'Acquisizioni > Fornitori'",
         "Welcome4": "Apri questa applicazione cloud",
-        "Welcome5": "Selezione dell'entità",
-        "Welcome6": "Visualizza i log delle e-mail"
+        "Welcome5": "Selezione dell'entità"
     },
     "MailStatusChip": {
         "Delivered": "Consegnato",

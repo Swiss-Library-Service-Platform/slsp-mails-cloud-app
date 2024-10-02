@@ -22,6 +22,8 @@ export class EntitiesService {
   private selectedEntity: Entity;
   private readonly _selectedEntityObject = new BehaviorSubject<Entity>(null);
 
+  private readonly _currentEntityType = new BehaviorSubject<EntityType>(null);
+
   constructor(
     private eventsService: CloudAppEventsService,
   ) {
@@ -29,6 +31,7 @@ export class EntitiesService {
       const filteredEntities = entities.filter(e => {
         return e.type == EntityType.USER || e.type == EntityType.VENDOR;
       });
+      this._currentEntityType.next(filteredEntities[0]?.type);
       this._entitiesObject.next(filteredEntities);
       this.entities = filteredEntities;
 
@@ -55,6 +58,13 @@ export class EntitiesService {
    */
   getObservableSelectedEntityObject(): Observable<Entity> {
     return this._selectedEntityObject.asObservable();
+  }
+
+  /**
+   * Get the current entity type as observable
+   */
+  getObservableCurrentEntityType(): Observable<EntityType> {
+    return this._currentEntityType.asObservable();
   }
 
   /**

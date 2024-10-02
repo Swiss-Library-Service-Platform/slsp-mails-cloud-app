@@ -8,7 +8,7 @@
         "Status": "Status",
         "Subject": "Subject",
         "Time": "Time",
-        "Title": "Email Detail",
+        "Title": "Detail",
         "ToEmail": "Recipient Email"
     },
     "LogOverview": {
@@ -20,26 +20,27 @@
         "AccessDenied1": "Access denied",
         "AccessDenied2": "You are not allowed to access this cloud app.",
         "AccessDenied3": "If you think this is an error, please contact SLSP via email at", 
-        
         "Errors": {
             "LogFetchError": "Error fetching logs",
             "NoLogs": "No emails are logged for this entity.",
             "NoMails": "No emails are defined for this entity in Alma."
         },
         "Status": {
-            "Initializing": "Initializing...",
+            "Initializing": "Loading...",
             "LoadLogs": "Load Mails"
         },
         "Title": "Select Entity",
-        "Welcome1" : "Welcome to SLSPmails",
-        "Welcome2" : "View logs of the emails sent via the SLSPmails server:",
+        "Title_User": "Check User",
+        "Title_Undeliverable": "Undeliverable Mails",
+        "Title_Vendor": "Check Vendor",
+        "Welcome1" : "No entities available.",
+        "Welcome2" : "Please find an entity in Alma to investigate the email logs.",
         "Welcome3" : "Find the entity you want to investigate:",
         "Welcome3a": "Via user management",
         "Welcome3b": "Via 'Fulfillment > Manage Patron Services'",
         "Welcome3c": "Via 'Acquisitions > Vendors'",
         "Welcome4" : "Open this cloud app",
-        "Welcome5" : "Select the entity",
-        "Welcome6" : "See the email logs"        
+        "Welcome5" : "Select the entity"
     },
     "MailStatusChip": {
         "Delivered": "Delivered",

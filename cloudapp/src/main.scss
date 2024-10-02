@@ -1,9 +1,10 @@
-
 @import './app/components/main/main.component.theme';
+@import './app/components/navigationheader/navigationheader.component.theme';
 
 @mixin themed-styles($theme, $typography) {
     /* Include themed component mixins or theme dependent styles here */
     @include main-component-theme($theme, $typography);
+    @include navigationheader-component-theme($theme, $typography);
 }
 
 @mixin global-styles {
@@ -24,6 +25,7 @@ cloudapp-alert {
     top: 1rem;
     width: 100%;
     z-index: 99;
+
     .alert {
         border-radius: 5px;
         padding: 1rem !important;
@@ -38,7 +40,7 @@ cloudapp-alert {
 }
 
 @mixin main-component-theme($theme, $typgraphy) {
-   
+
     .loading-shade {
         flex-direction: column;
 
@@ -53,4 +55,8 @@ cloudapp-alert {
             background: mat-color(map-get($theme, primary));
         }
     }
+}
+
+.mat-tab-body-content {
+    overflow: hidden !important;
 }

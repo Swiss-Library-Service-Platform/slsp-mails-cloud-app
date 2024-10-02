@@ -1,0 +1,33 @@
+ <!-- No Entities visible in Alma UI -->
+ <ng-container *ngIf="currentEntities.length == 0">
+    <h1 class="no-entities-header">
+        {{ 'Main.Welcome1' | translate }}
+    </h1>
+    <p> {{ 'Main.Welcome2' | translate }}</p>
+    <ul>
+        <li> {{ 'Main.Welcome3' | translate }}</li>
+        <ul>
+            <li> {{ 'Main.Welcome3a' | translate }}</li>
+            <li> {{ 'Main.Welcome3b' | translate }}</li>
+            <li> {{ 'Main.Welcome3c' | translate }}</li>
+        </ul>
+        <li> {{ 'Main.Welcome4' | translate }}</li>
+        <li> {{ 'Main.Welcome5' | translate }}</li>
+    </ul>
+</ng-container>
+
+<!-- Entity Selection -->
+<ng-container *ngIf="currentEntities.length > 1">
+    <!-- Navigation header 
+    <app-navigationheader [title]="'Main.Title' | translate"></app-navigationheader>
+    -->
+    <!-- Entity Selection -->
+    <div>
+        <mat-radio-group aria-labelledby="entities-radio-group-label" class="entities-radio-group"
+            [(ngModel)]="currentSelectedEntity" (change)="entitiesService.selectEntity($event)">
+            <mat-radio-button *ngFor="let entity of currentEntities" [value]="entity">
+                {{entity.description}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+</ng-container>

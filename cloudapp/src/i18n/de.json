@@ -8,7 +8,7 @@
         "Status": "Status",
         "Subject": "Betreff",
         "Time": "Zeit",
-        "Title": "E-Mail-Detail",
+        "Title": "Detail",
         "ToEmail": "Empfänger-E-Mail"
     },
     "LogOverview": {
@@ -20,26 +20,27 @@
         "AccessDenied1": "Zugriff verweigert",
         "AccessDenied2": "Sie sind nicht berechtigt, auf diese Cloud-App zuzugreifen.",
         "AccessDenied3": "Wenn Sie denken, dass dies ein Fehler ist, kontaktieren Sie bitte SLSP per E-Mail unter",
-
         "Errors": {
             "LogFetchError": "Fehler beim Abrufen der Protokolle",
             "NoLogs": "Für diese Entität sind keine E-Mails protokolliert.",
             "NoMails": "Für diese Entität sind in Alma keine E-Mails definiert."
         },
         "Status": {
-            "Initializing": "Initialisierung...",
+            "Initializing": "Lädt...",
             "LoadLogs": "E-Mails laden"
         },
-        "Title": "Entität auswählen",
-        "Welcome1": "Willkommen bei SLSPmails",
-        "Welcome2": "Anzeigen von Protokollen der über den SLSPmails-Server gesendeten E-Mails:",
+        "Title": "Entität überprüfen",
+        "Title_User": "Benutzer überprüfen",
+        "Title_Undeliverable": "Unzustellbare Emails",
+        "Title_Vendor": "Lieferanten überprüfen",
+        "Welcome1": "Keine Entitäten verfügbar.",
+        "Welcome2": "Finden Sie eine Entität in Alma, um die E-Mail-Protokolle zu untersuchen.",
         "Welcome3": "Suchen Sie die Entität, den Sie untersuchen möchten:",
         "Welcome3a": "Über Benutzerverwaltung",
         "Welcome3b": "Über 'Benutzung > Benutzerdienste'",
         "Welcome3c": "Über 'Erwerbungen > Lieferanten'",
         "Welcome4": "Öffnen Sie diese Cloud-App",
-        "Welcome5": "Wählen Sie die Entität aus",
-        "Welcome6": "Sehen Sie sich die E-Mail-Protokolle an"
+        "Welcome5": "Wählen Sie die Entität aus"
     },
     "MailStatusChip": {
         "Delivered": "Zugestellt",
