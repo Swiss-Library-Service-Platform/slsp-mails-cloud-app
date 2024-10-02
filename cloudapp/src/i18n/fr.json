@@ -1,6 +1,6 @@
 {
     "LogDetail": {
-        "Events": "Événements détaillés de la transmission d'e-mail échouée",
+        "Events": "Détails de l'échec de la transmission de l'e-mail",
         "FromEmail": "E-mail de l'expéditeur",
         "Opened": "Ouvert",
         "OpenedNo": "Non ouvert",

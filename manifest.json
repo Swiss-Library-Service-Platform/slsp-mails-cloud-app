@@ -11,17 +11,13 @@
       "help": "https://github.com/Swiss-Library-Service-Platform/slsp-mails-cloud-app"
    },
    "icon": {
-      "type": "font",
-      "value": "fa fa-envelope"
-   },
-   "X_icon": {
       "type": "url",
-      "value": "/assets/logo_text.png"
+      "value": "/assets/logo_text_left.png"
    },
    "license": "https://github.com/Swiss-Library-Service-Platform/slsp-mails-cloud-app/LICENCE",
    "contentSecurity": {
       "connectSrc": [
-         "https://slspmails.swisscovery.network/"
+         "https://api.slspmails.swisscovery.network/"
       ],
       "sandbox": {
          "popups": true
