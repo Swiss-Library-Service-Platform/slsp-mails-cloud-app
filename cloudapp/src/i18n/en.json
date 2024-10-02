@@ -23,22 +23,22 @@
         
         "Errors": {
             "LogFetchError": "Error fetching logs",
-            "NoLogs": "No emails are logged for this user."
+            "NoLogs": "No emails are logged for this entity.",
+            "NoMails": "No emails are defined for this entity in Alma."
         },
-
         "Status": {
             "Initializing": "Initializing...",
             "LoadLogs": "Load Mails"
         },
-        "Title": "Select User",
-
+        "Title": "Select Entity",
         "Welcome1" : "Welcome to SLSPmails",
-        "Welcome2" : "View logs of emails sent via the SLSPmails server:",
-        "Welcome3" : "Find user you want to investigate:",
+        "Welcome2" : "View logs of the emails sent via the SLSPmails server:",
+        "Welcome3" : "Find the entity you want to investigate:",
         "Welcome3a": "Via user management",
         "Welcome3b": "Via 'Fulfillment > Manage Patron Services'",
+        "Welcome3c": "Via 'Acquisitions > Vendors'",
         "Welcome4" : "Open this cloud app",
-        "Welcome5" : "Select the user",
+        "Welcome5" : "Select the entity",
         "Welcome6" : "See the email logs"        
     },
     "MailStatusChip": {

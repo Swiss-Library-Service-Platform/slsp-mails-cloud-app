@@ -62,9 +62,9 @@ export class MainComponent implements OnInit, OnDestroy {
 
     // Subscribe to the entitiesService to get the selected entity
     this.subscriptionSelectedEntity = this.entitiesService.getObservableSelectedEntityObject().subscribe(
-      async (selectedEntitiy) => {
-        this.currentSelectedEntity = selectedEntitiy;
-        if (!selectedEntitiy) {
+      async (selectedEntity) => {
+        this.currentSelectedEntity = selectedEntity;
+        if (!selectedEntity) {
           return;
         }
 
@@ -72,12 +72,12 @@ export class MainComponent implements OnInit, OnDestroy {
         const statusText = await this.translateService.get('Main.Status.LoadLogs').toPromise();
         this.loaderService.show();
         this.statusService.set(statusText);
-        this.getUsersEmails(selectedEntitiy).subscribe(emails => {
+        this.getUsersEmails(selectedEntity).subscribe(selectedEntityEmails => {
           this.loaderService.hide();
-          if (emails) {
+          if (selectedEntityEmails) {
             // Get the logs of the user
             this.loaderService.show();
-            this.slspmailsService.getUserLogs(emails).then(foundLog => {
+            this.slspmailsService.getUserLogs(selectedEntityEmails).then(foundLog => {
               if (foundLog) {
                 this.router.navigate(['log-overview']);
               } else {
@@ -85,6 +85,8 @@ export class MainComponent implements OnInit, OnDestroy {
               }
               this.loaderService.hide();
             });
+          } else {
+            this.alert.error(this.translateService.instant('Main.Errors.NoMails'), { autoClose: this.currentEntities.length > 1, delay: 3000 });
           }
         });
       }

@@ -23,22 +23,22 @@
 
         "Errors": {
             "LogFetchError": "Fehler beim Abrufen der Protokolle",
-            "NoLogs": "Für diesen Benutzer sind keine E-Mails protokolliert."
+            "NoLogs": "Für diese Entität sind keine E-Mails protokolliert.",
+            "NoMails": "Für diese Entität sind in Alma keine E-Mails definiert."
         },
-
         "Status": {
             "Initializing": "Initialisierung...",
             "LoadLogs": "E-Mails laden"
         },
-        "Title": "Benutzer auswählen",
-
+        "Title": "Entität auswählen",
         "Welcome1": "Willkommen bei SLSPmails",
         "Welcome2": "Anzeigen von Protokollen der über den SLSPmails-Server gesendeten E-Mails:",
-        "Welcome3": "Suchen Sie den Benutzer, den Sie untersuchen möchten:",
+        "Welcome3": "Suchen Sie die Entität, den Sie untersuchen möchten:",
         "Welcome3a": "Über Benutzerverwaltung",
         "Welcome3b": "Über 'Benutzung > Benutzerdienste'",
+        "Welcome3c": "Über 'Erwerbungen > Lieferanten'",
         "Welcome4": "Öffnen Sie diese Cloud-App",
-        "Welcome5": "Wählen Sie den Benutzer aus",
+        "Welcome5": "Wählen Sie die Entität aus",
         "Welcome6": "Sehen Sie sich die E-Mail-Protokolle an"
     },
     "MailStatusChip": {

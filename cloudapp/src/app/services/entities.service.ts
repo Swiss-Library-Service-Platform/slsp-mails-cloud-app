@@ -26,8 +26,10 @@ export class EntitiesService {
     private eventsService: CloudAppEventsService,
   ) {
     this.eventsService.entities$.subscribe(entities => {
-      const filteredEntities = entities.filter(e => e.type == EntityType.USER);
-      this._entitiesObject.next(entities);
+      const filteredEntities = entities.filter(e => {
+        return e.type == EntityType.USER || e.type == EntityType.VENDOR;
+      });
+      this._entitiesObject.next(filteredEntities);
       this.entities = filteredEntities;
 
       // Auto select the entity if there is only one

@@ -23,22 +23,22 @@
 
         "Errors": {
             "LogFetchError": "Errore nel recupero dei log",
-            "NoLogs": "Nessuna e-mail è registrata per questo utente."
+            "NoLogs": "Non vengono registrate e-mail per questa entità.",
+            "NoMails": "Non sono definite e-mail per questa entità in Alma."
         },
-
         "Status": {
             "Initializing": "Inizializzazione...",
             "LoadLogs": "Carica e-mail"
         },
-        "Title": "Seleziona utente",
-
+        "Title": "Seleziona entità",
         "Welcome1": "Benvenuto in SLSPmails",
         "Welcome2": "Visualizza i log delle e-mail inviate tramite il server SLSPmails:",
-        "Welcome3": "Trova l'utente che vuoi esaminare:",
+        "Welcome3": "Selezionare l'entità da analizzare:",
         "Welcome3a": "Tramite gestione utenti",
         "Welcome3b": "Tramite 'Servizi > Gestione servizi per l'utente'",
+        "Welcome3c": "Tramite 'Acquisizioni > Fornitori'",
         "Welcome4": "Apri questa applicazione cloud",
-        "Welcome5": "Seleziona l'utente",
+        "Welcome5": "Selezione dell'entità",
         "Welcome6": "Visualizza i log delle e-mail"
     },
     "MailStatusChip": {

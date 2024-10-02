@@ -23,22 +23,22 @@
 
         "Errors": {
             "LogFetchError": "Erreur lors de la récupération des journaux",
-            "NoLogs": "Aucun e-mail n'est enregistré pour cet utilisateur."
+            "NoLogs": "Aucun e-mail n'est enregistré pour cette entité.",
+            "NoMails": "Aucun e-mail n'est défini pour cette entité dans Alma."
         },
-
         "Status": {
             "Initializing": "Initialisation...",
             "LoadLogs": "Charger les e-mails"
         },
-        "Title": "Sélectionner l'utilisateur",
-
+        "Title": "Sélectionner l'entité",
         "Welcome1": "Bienvenue chez SLSPmails",
         "Welcome2": "Consultez les journaux des e-mails envoyés via le serveur SLSPmails :",
-        "Welcome3": "Trouvez l'utilisateur que vous souhaitez examiner :",
+        "Welcome3": "Trouvez l'entité sur laquelle vous voulez enquêter :",
         "Welcome3a": "Via la gestion des utilisateurs",
         "Welcome3b": "Via 'Services aux usagers > Services aux usagers'",
+        "Welcome3c": "Via 'Acquisitions > Fournisseurs'",
         "Welcome4": "Ouvrez cette application cloud",
-        "Welcome5": "Sélectionnez l'utilisateur",
+        "Welcome5": "Sélectionnez l'entité",
         "Welcome6": "Consultez les journaux d'e-mails"
     },
     "MailStatusChip": {
