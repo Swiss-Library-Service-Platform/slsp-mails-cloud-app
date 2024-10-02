@@ -24,7 +24,7 @@ export class SlspMailsAPIService {
   private selectedMailLog: MailLog;
   private readonly _selectedMailLogObject = new BehaviorSubject<MailLog>(new MailLog({}));
 
-  private baseUrl: string = 'https://slspmails.swisscovery.network/api/v1/cloudapp';
+  private baseUrl: string = 'https://api.slspmails.swisscovery.network/api/v1/cloudapp';
   httpOptions: {};
 
   constructor(
