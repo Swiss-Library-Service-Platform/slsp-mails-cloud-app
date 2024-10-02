@@ -5,4 +5,8 @@
     padding: 5px;
     font-weight: bolder;
   }
+
+  .navigation-header {
+    background: mat-color(map-get($theme, primary));
+  }
 }

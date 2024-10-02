@@ -1,8 +1,4 @@
-.entities-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-}
+/*
 
 textarea {
   padding: 2px;
@@ -39,5 +35,11 @@ table {
   td , th {
     white-space: nowrap;
     word-wrap: break-word;
+  }
+}
+  */
+.mat-tab-group {
+  .mat-tab-header-icon {
+    margin-right: 4px;
   }
 }

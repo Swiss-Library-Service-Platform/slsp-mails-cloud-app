@@ -6,10 +6,6 @@
     .logoverview-header {
         padding-bottom: 2px;
         border-bottom: 1px solid #ddd;
-
-        @mixin main-component-theme($theme, $typgraphy) {
-            background: mat-color(map-get($theme, primary));
-        }
     }
     .logoverview-row:nth-child(even) {
         background-color: var(--table-stripe-background);
