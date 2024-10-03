@@ -1,6 +1,5 @@
 <!-- Navigation Header -->
 <div class="nav-header half-rounded" fxLayout="row">
     <mat-icon *ngIf="showBackButton" class="back-button" mat-button="mat-button" (click)="navigateBack()" inline="true">arrow_back_ios</mat-icon>
-    {{ this.title }}
-    <span></span> <!-- Placeholder -->
+    <div class="nav-header-title"> {{ this.title }} </div>
 </div>

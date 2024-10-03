@@ -2,7 +2,7 @@
 .nav-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 48px;
     font-size: 14px;
     line-height: 1.5rem;
@@ -13,12 +13,18 @@
     color: rgb(94, 94, 94);
     
     .back-button {
+        position: absolute;
+        left: 10px;
         padding: 0.5rem;
         border-radius: 8px;
         cursor: pointer;
         height: auto;
     }
-    span {
-        width: 30px;
+    .nav-header-title {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
