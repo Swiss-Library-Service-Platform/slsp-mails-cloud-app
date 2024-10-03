@@ -3,7 +3,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { CloudAppEventsService, Entity } from '@exlibris/exl-cloudapp-angular-lib';
 import { EntityType } from '@exlibris/exl-cloudapp-angular-lib';
 import { MatRadioChange } from '@angular/material/radio';
-import { ActivatedRoute } from '@angular/router';
 
 /**
  * Service which is responsible for API calls to the SLSPmails API
@@ -36,10 +35,12 @@ export class EntitiesService {
       this.entities = filteredEntities;
 
       // Auto select the entity if there is only one
+      /*
       if (filteredEntities.length == 1) {
         this.selectedEntity = filteredEntities[0];
         this._selectedEntityObject.next(filteredEntities[0]);
       }
+      */
       
     });
   }

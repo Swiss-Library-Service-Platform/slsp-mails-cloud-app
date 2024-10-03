@@ -1,10 +1,8 @@
 @import './app/components/main/main.component.theme';
-@import './app/components/navigationheader/navigationheader.component.theme';
 
 @mixin themed-styles($theme, $typography) {
     /* Include themed component mixins or theme dependent styles here */
     @include main-component-theme($theme, $typography);
-    @include navigationheader-component-theme($theme, $typography);
 }
 
 @mixin global-styles {
@@ -59,4 +57,8 @@ cloudapp-alert {
 
 .mat-tab-body-content {
     overflow: hidden !important;
+}
+
+body .mat-tab-group.mat-primary .mat-ink-bar {
+    background-color: rgb(94, 94, 94) !important;
 }

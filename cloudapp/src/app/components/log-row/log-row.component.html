@@ -1,0 +1,19 @@
+<div class="log-row" (click)="logClicked(log)">
+    <!-- Status Icon -->
+    <div class="log-cell">
+       <mail-status-chip [log]="log"></mail-status-chip>
+    </div>
+    <!-- Timestamp -->
+    <div class="log-cell">
+        <div class="time-cell">
+            <span>{{ log.time | momentFormat:'ll' }} </span>
+            <span>{{ log.time | momentFormat:'LT' }} </span>
+        </div>
+    </div>
+    <!-- Subject -->
+    <div class="log-cell">
+        <span *ngIf="showRecipient" class="recipient-cell">{{ log.to_email }}</span>
+        <span *ngIf="showRecipient" class="subject-cell-one-line">{{ log.subject }}</span>
+        <span *ngIf="!showRecipient" class="subject-cell-two-line">{{ log.subject }}</span>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.log-row {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+}
+
+.log-row:hover {
+    background-color: var(--slsp-purple-light);
+    cursor: pointer;
+}
+
+.log-cell {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.time-cell {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+
+    span {
+        white-space: nowrap;
+    }
+}
+
+.subject-cell-two-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.subject-cell-one-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.recipient-cell {
+    font-weight: 500;
+}

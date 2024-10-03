@@ -29,7 +29,6 @@
             "Initializing": "Loading...",
             "LoadLogs": "Load Mails"
         },
-        "Title": "Select Entity",
         "Title_User": "Check User",
         "Title_Undeliverable": "Undeliverable Mails",
         "Title_Vendor": "Check Vendor",

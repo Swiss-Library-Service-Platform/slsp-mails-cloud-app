@@ -1,6 +1,0 @@
-
-@mixin navigationheader-component-theme($theme, $typgraphy) {
-    .navigation-header {
-      border-bottom: 3px solid mat-color(map-get($theme, primary));
-    }
-  }

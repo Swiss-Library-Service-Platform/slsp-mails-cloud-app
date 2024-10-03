@@ -26,6 +26,8 @@ export class SlspMailsAPIService {
   private selectedMailLog: MailLog;
   private readonly _selectedMailLogObject = new BehaviorSubject<MailLog>(new MailLog({}));
 
+  private readonly _undeliverableMailsObject = new BehaviorSubject<Array<MailLog>>(new Array<MailLog>());
+
   private baseUrl: string = 'https://api.slspmails.swisscovery.network/api/v1/cloudapp';
   httpOptions: {};
 
@@ -98,6 +100,20 @@ export class SlspMailsAPIService {
   }
 
   /**
+   * Get the undeliverable mails object as observable
+   */
+  getUndeliverableMailsObject(): Observable<Array<MailLog>> {
+    return this._undeliverableMailsObject.asObservable();
+  }
+
+  /**
+   * Set the undeliverable mails object observable
+   */
+  private _setObservableUndeliverableMailsObject(undeliverableMails: Array<MailLog>): void {
+    this._undeliverableMailsObject.next(undeliverableMails);
+  }
+
+  /**
    * Authenticate the user and check if the user is allowed to use the cloud app
    * 
    * @return {*}  {Promise<boolean>}, true if user is allowed, false if not
@@ -138,6 +154,31 @@ export class SlspMailsAPIService {
         },
         error => {
           this.log.error('gotUserLogs', error);
+          this.alert.error(this.translate.instant('Main.Errors.LogFetchError'), { autoClose: true, delay: 3000 });
+          resolve(false);
+        },
+      );
+    });
+  }
+
+  /**
+   * Get all undeliverable logs from the SLSPmails API
+   * 
+   * @return {*}  {Promise<boolean>}
+  */
+  async getUndeliverableLogs(): Promise<boolean> {
+    return new Promise(resolve => {
+      this.http.get(this.baseUrl + '/undelivered', this.httpOptions).subscribe(
+        (data: any) => {
+          if (data.length == 0) {
+            resolve(false);
+          }
+          this.mailLogs = data.map((log: any) => new MailLog(log));
+          this._setObservableUndeliverableMailsObject(this.mailLogs);
+          resolve(true);
+        },
+        error => {
+          this.log.error('getUndeliverableLogs', error);
           this.alert.error(this.translate.instant('Main.Errors.LogFetchError'), { autoClose: true, delay: 3000 });
           resolve(false);
         },

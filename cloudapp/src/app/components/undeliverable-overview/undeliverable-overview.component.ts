@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { SlspMailsAPIService } from '../../services/mails.api.service';
+import { LoaderService } from '../../services/loader.service';
+import { StatusService } from '../../services/status.service';
+import { MailLog } from '../../model/maillog.model';
+import { tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-undeliverable-overview',
@@ -7,9 +13,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UndeliverableOverviewComponent implements OnInit {
 
-  constructor() { }
+  currentUndeliveredLogs: Array<MailLog>;
+  subscriptionUndeliveredLogs: any;
+
+  constructor(
+    private slspmailsService: SlspMailsAPIService,
+    public loaderService: LoaderService,
+    public statusService: StatusService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.onLogClicked = this.onLogClicked.bind(this);
+
+    this.subscriptionUndeliveredLogs = this.slspmailsService.getUndeliverableMailsObject()
+      .pipe(
+        tap(res => this.currentUndeliveredLogs = res)
+      )
+      .subscribe();
+    this.slspmailsService.getUndeliverableLogs();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionUndeliveredLogs.unsubscribe();
+  }
+
+  onLogClicked(log: MailLog) {
+    this.slspmailsService.setSelectedMailLog(log);
+    this.router.navigate(['log-detail']);
   }
 
 }

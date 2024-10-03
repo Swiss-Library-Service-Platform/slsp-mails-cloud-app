@@ -30,7 +30,6 @@
             "Initializing": "Chargement...",
             "LoadLogs": "Charger les e-mails"
         },
-        "Title": "Sélectionner l'entité",
         "Title_User": "Vérifier l'utilisateur",
         "Title_Undeliverable": "Non Distribuables",
         "Title_Vendor": "Vérifier le fournisseur",

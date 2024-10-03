@@ -1,5 +1,5 @@
- <!-- No Entities visible in Alma UI -->
- <ng-container *ngIf="currentEntities.length == 0">
+<!-- No Entities visible in Alma UI -->
+<ng-container *ngIf="currentEntities.length == 0">
     <h1 class="no-entities-header">
         {{ 'Main.Welcome1' | translate }}
     </h1>
@@ -13,17 +13,12 @@
 </ng-container>
 
 <!-- Entity Selection -->
-<ng-container *ngIf="currentEntities.length > 1">
-    <!-- Navigation header 
-    <app-navigationheader [title]="'Main.Title' | translate"></app-navigationheader>
-    -->
+<ng-container *ngIf="currentEntities.length > 0">
     <!-- Entity Selection -->
-    <div>
-        <mat-radio-group aria-labelledby="entities-radio-group-label" class="entities-radio-group"
-            [(ngModel)]="currentSelectedEntity" (change)="entitiesService.selectEntity($event)">
-            <mat-radio-button *ngFor="let entity of currentEntities" [value]="entity">
-                {{entity.description}}
-            </mat-radio-button>
-        </mat-radio-group>
-    </div>
+    <mat-radio-group aria-labelledby="entities-radio-group-label" class="entities-radio-group"
+        [(ngModel)]="currentSelectedEntity" (change)="entitiesService.selectEntity($event)">
+        <mat-radio-button *ngFor="let entity of currentEntities" [value]="entity">
+            {{entity.description}}
+        </mat-radio-button>
+    </mat-radio-group>
 </ng-container>

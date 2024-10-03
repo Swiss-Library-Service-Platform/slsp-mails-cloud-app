@@ -5,6 +5,7 @@ import { SlspMailsAPIService } from '../../services/mails.api.service';
 import { MailLog } from '../../model/maillog.model';
 import { Entity } from '@exlibris/exl-cloudapp-angular-lib';
 import { EntitiesService } from '../../services/entities.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-log-overview',
@@ -29,40 +30,43 @@ export class LogOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.backButtonClicked = this.backButtonClicked.bind(this);
+    this.onLogClicked = this.onLogClicked.bind(this);
 
     // Subscribe to the entities
-    this.subscriptionEntities = this.entitiesService.getObservableEntitiesObject().subscribe(
-      entities => {
-        this.currentEntities = entities;
-      }
-    );
-    
+    this.subscriptionEntities = this.entitiesService.getObservableEntitiesObject().pipe(
+      tap(entities => this.currentEntities = entities)
+    ).subscribe();
+
     // Subscribe to the mail logs
-    this.subscriptionMailLogs = this._slspmailsService.getMailLogsObject().subscribe(
-      mailLogs => {
-        this.currentMailLogs = mailLogs;
-      },
-      err => {
-        this.currentMailLogs = [];
-      }
-    );
+    this.subscriptionMailLogs = this._slspmailsService.getMailLogsObject()
+      .pipe(
+        tap(mailLogs => this.currentMailLogs = mailLogs)
+      )
+      .subscribe(
+        () => { },
+        err => {
+          this.currentMailLogs = [];
+        }
+      );
 
     // Subscribe to the selected entity
-    this.subscriptionSelectedEntity = this.entitiesService.getObservableSelectedEntityObject().subscribe(
-      selectedEntity => {
-        if (this.currentSelectedEntity) {
-          // Navigate back if selectedEntity changed during the time the user was on the page
-          this.router.navigate(['main']);
-        }
-        this.currentSelectedEntity = selectedEntity;
-      }
-    );
+    this.subscriptionSelectedEntity = this.entitiesService.getObservableSelectedEntityObject()
+      .pipe(
+        tap(selectedEntity => {
+          if (this.currentSelectedEntity) {
+            // Navigate back if selectedEntity changed during the time the user was on the page
+            this.router.navigate(['main']);
+          }
+          this.currentSelectedEntity = selectedEntity;
+        })
+      )
+      .subscribe();
   }
 
   ngOnDestroy(): void {
     this.subscriptionMailLogs.unsubscribe();
   }
-  
+
   backButtonClicked(): void {
     this.entitiesService.resetSelectedEntity();
     this.router.navigate(['main']);

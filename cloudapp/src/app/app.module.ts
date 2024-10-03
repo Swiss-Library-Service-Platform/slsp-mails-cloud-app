@@ -17,6 +17,7 @@ import { LogDetailComponent } from './components/log-detail/log-detail.component
 import { MailStatusChipComponent } from './components/mail-status-chip/mail-status-chip.component';
 import { EntitySelectionComponent } from './components/entity-selection/entity-selection.component';
 import { UndeliverableOverviewComponent } from './components/undeliverable-overview/undeliverable-overview.component';
+import { LogRowComponent } from './components/log-row/log-row.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UndeliverableOverviewComponent } from './components/undeliverable-overv
     TruncatePipe,
     MailStatusChipComponent,
     EntitySelectionComponent,
-    UndeliverableOverviewComponent
+    UndeliverableOverviewComponent,
+    LogRowComponent
   ],
   imports: [
     MaterialModule,

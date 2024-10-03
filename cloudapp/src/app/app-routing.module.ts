@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, RouteReuseStrategy } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 import { LogOverviewComponent } from './components/log-overview/log-overview.component';
 import { LogDetailComponent } from './components/log-detail/log-detail.component';
+import { CustomRouteReuseStrategy } from './custom-route-reuse-strategy.ts';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -13,6 +14,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy }
+  ]
 })
 export class AppRoutingModule { }
