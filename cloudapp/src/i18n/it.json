@@ -39,9 +39,7 @@
         "Welcome3": "Selezionare l'entità da analizzare:",
         "Welcome3a": "Tramite gestione utenti",
         "Welcome3b": "Tramite 'Servizi > Gestione servizi per l'utente'",
-        "Welcome3c": "Tramite 'Acquisizioni > Fornitori'",
-        "Welcome4": "Apri questa applicazione cloud",
-        "Welcome5": "Selezione dell'entità"
+        "Welcome3c": "Tramite 'Acquisizioni > Fornitori'"
     },
     "MailStatusChip": {
         "Delivered": "Consegnato",

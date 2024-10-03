@@ -38,9 +38,7 @@
         "Welcome3": "Suchen Sie die Entität, den Sie untersuchen möchten:",
         "Welcome3a": "Über Benutzerverwaltung",
         "Welcome3b": "Über 'Benutzung > Benutzerdienste'",
-        "Welcome3c": "Über 'Erwerbungen > Lieferanten'",
-        "Welcome4": "Öffnen Sie diese Cloud-App",
-        "Welcome5": "Wählen Sie die Entität aus"
+        "Welcome3c": "Über 'Erwerbungen > Lieferanten'"
     },
     "MailStatusChip": {
         "Delivered": "Zugestellt",

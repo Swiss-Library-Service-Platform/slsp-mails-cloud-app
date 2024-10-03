@@ -39,9 +39,7 @@
         "Welcome3": "Trouvez l'entité sur laquelle vous voulez enquêter :",
         "Welcome3a": "Via la gestion des utilisateurs",
         "Welcome3b": "Via 'Services aux usagers > Services aux usagers'",
-        "Welcome3c": "Via 'Acquisitions > Fournisseurs'",
-        "Welcome4": "Ouvrez cette application cloud",
-        "Welcome5": "Sélectionnez l'entité"
+        "Welcome3c": "Via 'Acquisitions > Fournisseurs'"
     },
     "MailStatusChip": {
         "Delivered": "Livré",
