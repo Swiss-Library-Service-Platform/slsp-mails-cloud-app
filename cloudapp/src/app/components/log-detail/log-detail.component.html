@@ -48,7 +48,8 @@
             <div class="logdetail-event">
                 <span class="logdetail-event-time"> {{ event.time | momentFormat:'lll' }}:</span>
                 <span class="logdetail-event-text"> 
-                    {{ event.reason ? event.reason : event.event_name }}
+                    <span *ngIf="event.event_name" class="logdetail-event-text-name">{{ event.event_name }}</span>
+                    <span *ngIf="event.reason">: {{ event.reason }}</span>
                 </span>
             </div>
         </div>

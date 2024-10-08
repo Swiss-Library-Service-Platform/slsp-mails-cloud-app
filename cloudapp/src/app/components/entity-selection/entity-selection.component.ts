@@ -8,7 +8,7 @@ import { LoaderService } from '../../services/loader.service';
 import { StatusService } from '../../services/status.service';
 import { TranslateService } from '@ngx-translate/core';
 import { EntitiesService } from '../../services/entities.service';
-import { catchError, switchMap } from 'rxjs/operators';
+import { catchError, filter, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-entity-selection',
@@ -43,38 +43,43 @@ export class EntitySelectionComponent implements OnInit {
     );
 
     // Subscribe to the entitiesService to get the selected entity
-    this.subscriptionSelectedEntity = this.entitiesService.getObservableSelectedEntityObject().subscribe(
-      async (selectedEntity) => {
+    this.subscriptionSelectedEntity = this.entitiesService.getObservableSelectedEntityObject().pipe(
+      tap(selectedEntity => {
         this.currentSelectedEntity = selectedEntity;
-        if (!selectedEntity) {
-          return;
-        }
-
-        // Get the emails of the user
+      }),
+      filter(selectedEntity => !!selectedEntity), // Stop the pipeline if no entity is selected
+      tap(async (selectedEntity) => {
         const statusText = await this.translateService.get('Main.Status.LoadLogs').toPromise();
         this.loaderService.show();
         this.statusService.set(statusText);
-        this.getUsersEmails(selectedEntity).subscribe(selectedEntityEmails => {
+      }),
+      switchMap(selectedEntity => this.getUsersEmails(selectedEntity).pipe(
+        tap(selectedEntityEmails => {
           this.loaderService.hide();
-          if (selectedEntityEmails) {
-            // Get the logs of the user
-            this.loaderService.show();
-            this.slspmailsService.getUserLogs(selectedEntityEmails).then(foundLog => {
-              if (foundLog) {
-                this.router.navigate(['log-overview']);
-              } else {
-                this.alert.error(this.translateService.instant('Main.Errors.NoLogs'), { autoClose: this.currentEntities.length > 1, delay: 3000 });
-              }
-              this.loaderService.hide();
-            });
+          if (!selectedEntityEmails) {
+            throw new Error('No emails found');
+          }
+          this.loaderService.show();
+        }),
+        switchMap(selectedEntityEmails => this.slspmailsService.getUserLogs(selectedEntityEmails)),
+        tap(foundLog => {
+          if (foundLog) {
+            this.router.navigate(['log-overview']);
           } else {
+            this.alert.error(this.translateService.instant('Main.Errors.NoLogs'), { autoClose: this.currentEntities.length > 1, delay: 3000 });
+          }
+          this.loaderService.hide();
+        }),
+        catchError(error => {
+          this.loaderService.hide();
+          if (error.message === 'No emails found') {
             this.alert.error(this.translateService.instant('Main.Errors.NoMails'), { autoClose: this.currentEntities.length > 1, delay: 3000 });
           }
-        });
-      }
-    );
+          return of(null);
+        })
+      ))
+    ).subscribe();
   }
-
 
   /**
   * Get the entities object

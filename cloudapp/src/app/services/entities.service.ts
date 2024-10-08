@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { CloudAppEventsService, Entity } from '@exlibris/exl-cloudapp-angular-lib';
 import { EntityType } from '@exlibris/exl-cloudapp-angular-lib';
 import { MatRadioChange } from '@angular/material/radio';
+import { Router } from '@angular/router';
 
 /**
  * Service which is responsible for API calls to the SLSPmails API
@@ -15,37 +16,29 @@ import { MatRadioChange } from '@angular/material/radio';
 })
 export class EntitiesService {
 
-  private entities: Entity[] = [];
   private readonly _entitiesObject = new BehaviorSubject<Entity[]>([]);
-
-  private selectedEntity: Entity;
   private readonly _selectedEntityObject = new BehaviorSubject<Entity>(null);
-
   private readonly _currentEntityType = new BehaviorSubject<EntityType>(null);
 
   constructor(
     private eventsService: CloudAppEventsService,
+    private router: Router,
   ) {
     this.eventsService.entities$.subscribe(entities => {
+      if (this.router.url.includes('log-overview') || this.router.url.includes('log-details')) {
+        this.router.navigate(['main']);
+      }
       const filteredEntities = entities.filter(e => {
         return e.type == EntityType.USER || e.type == EntityType.VENDOR;
       });
       this._currentEntityType.next(filteredEntities[0]?.type);
       this._entitiesObject.next(filteredEntities);
-      this.entities = filteredEntities;
 
-      // Auto select the entity if there is only one
-      /*
       if (filteredEntities.length == 1) {
-        this.selectedEntity = filteredEntities[0];
         this._selectedEntityObject.next(filteredEntities[0]);
       }
-      */
-      
     });
   }
-
-  entities$: Observable<Entity[]> = this.eventsService.entities$;
 
   /**
    * Get the entities object as observable
@@ -74,7 +67,6 @@ export class EntitiesService {
    */
   async selectEntity(event: MatRadioChange) {
     const value = event.value as Entity;
-    this.selectedEntity = value;
     this._selectedEntityObject.next(value);
   }
 
@@ -82,7 +74,6 @@ export class EntitiesService {
   * Reset the selected entity
   */
   resetSelectedEntity() {
-    this.selectedEntity = null;
     this._selectedEntityObject.next(null);
   }
 

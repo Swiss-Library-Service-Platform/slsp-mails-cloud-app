@@ -12,5 +12,4 @@ export class LogRowComponent  {
   @Input() logClicked: Function
   @Input() showRecipient: boolean = false
 
-
 }
