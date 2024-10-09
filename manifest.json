@@ -17,7 +17,8 @@
    "license": "https://github.com/Swiss-Library-Service-Platform/slsp-mails-cloud-app/LICENCE",
    "contentSecurity": {
       "connectSrc": [
-         "https://api.slspmails.swisscovery.network/"
+         "https://api.slspmails.swisscovery.network/",
+         "https://forms.office.com/"
       ],
       "sandbox": {
          "popups": true
