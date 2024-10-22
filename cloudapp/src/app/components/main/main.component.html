@@ -49,9 +49,9 @@
                 </svg>
                 {{ 'Main.Title_Undeliverable' | translate }}
             </ng-template>
-
-            <app-undeliverable-overview></app-undeliverable-overview>
-
+            <ng-template matTabContent>
+                <app-undeliverable-overview></app-undeliverable-overview>
+            </ng-template>
         </mat-tab>
     </mat-tab-group>
 </ng-container>
