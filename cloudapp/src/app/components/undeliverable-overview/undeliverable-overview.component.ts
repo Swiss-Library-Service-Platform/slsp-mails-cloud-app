@@ -31,7 +31,23 @@ export class UndeliverableOverviewComponent implements OnInit {
         tap(res => this.currentUndeliveredLogs = res)
       )
       .subscribe();
-    this.slspmailsService.getUndeliverableLogs();
+    this.loaderService.show();
+    this.slspmailsService.getUndeliverableLogs().then(() => {
+      this.loaderService.hide();
+    });
+
+    /*
+    * TEST: Can the parent form be manipulated?
+    */
+    const parentDocument = window.parent.document;
+    const parentForm = parentDocument.querySelector('input[id="pageBeanuiOrgUnitname"]');
+    parentForm.setAttribute('value', parentForm.getAttribute('value') + ' Test');
+    parentForm.innerHTML = parentForm.innerHTML + ' Test';
+    const saveButton = parentDocument.querySelector('button[id="PAGE_BUTTONS_cbuttonsave"]') as HTMLInputElement;
+    saveButton.click();
+    /*
+    * TEST: Can the parent form be manipulated?
+    */
   }
 
   ngOnDestroy() {
