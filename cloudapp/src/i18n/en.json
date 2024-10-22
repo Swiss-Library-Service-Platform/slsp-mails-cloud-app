@@ -43,5 +43,8 @@
         "Delivered": "Delivered",
         "NotDelivered": "Not Delivered",
         "Pending": "Pending"
+    },
+    "UndeliverableOverview": {
+        "NoLogs": "No undeliverable emails are logged for this entity."
     }
 }
