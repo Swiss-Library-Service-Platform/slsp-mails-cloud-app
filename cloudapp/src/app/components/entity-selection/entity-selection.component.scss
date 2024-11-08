@@ -6,3 +6,18 @@
 .no-entities-header {
     margin-bottom: 10px;
 }
+
+::ng-deep .entities-radio-group .mat-radio-button .mat-radio-label-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    /* Allows multiple lines */
+}
+
+.entity-code {
+    font-weight: bold;
+}

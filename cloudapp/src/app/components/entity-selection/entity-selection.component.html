@@ -18,7 +18,15 @@
     <mat-radio-group aria-labelledby="entities-radio-group-label" class="entities-radio-group"
         [(ngModel)]="currentSelectedEntity" (change)="entitiesService.selectEntity($event)">
         <mat-radio-button *ngFor="let entity of currentEntities" [value]="entity">
-            {{entity.description}}
+            <ng-container *ngIf="entity.type == 'VENDOR'">
+                <span class="entity-code"> 
+                    {{entity.code}}
+                </span> 
+                ({{entity.description}})
+            </ng-container>
+            <ng-container *ngIf="entity.type == 'USER'">
+                {{entity.description}}
+            </ng-container>
         </mat-radio-button>
     </mat-radio-group>
 </ng-container>
