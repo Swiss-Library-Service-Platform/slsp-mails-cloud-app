@@ -25,6 +25,28 @@
       }
    },
    "relevantForInst": [
-      "41SLSP_NETWORK"
+      "41SLSP_NETWORK",
+      "41SLSP_PHZ",
+      "41SLSP_FHO",
+      "41SLSP_BFH",
+      "41SLSP_UNE",
+      "41SLSP_ABN",
+      "41SLSP_RZS",
+      "41SLSP_IID",
+      "41SLSP_ZAW",
+      "41SLSP_USI",
+      "41SLSP_ZBS",
+      "41SLSP_BCUFR",
+      "41SLSP_HES",
+      "41SLSP_LIB",
+      "41SLSP_HPH",
+      "41SLSP_NETWORK",
+      "41SLSP_RZH",
+      "41SLSP_RRO",
+      "41SLSP_VGE",
+      "41SLSP_UBS",
+      "41SLSP_RBE",
+      "41SLSP_FNW",
+      "41SLSP_TRI"
    ]
 }
