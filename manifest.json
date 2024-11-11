@@ -1,6 +1,6 @@
 {
    "id": "slspmails-cloud-app",
-   "title": "SLSPmails (Beta)",
+   "title": "SLSPmails",
    "subtitle": "Cloud App for Email Logs",
    "author": "SLSP",
    "description": "Display the delivery status of emails sent via the SLSP mail server.",
@@ -40,7 +40,6 @@
       "41SLSP_HES",
       "41SLSP_LIB",
       "41SLSP_HPH",
-      "41SLSP_NETWORK",
       "41SLSP_RZH",
       "41SLSP_RRO",
       "41SLSP_VGE",
