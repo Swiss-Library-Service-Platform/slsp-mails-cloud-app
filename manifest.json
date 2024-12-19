@@ -46,6 +46,8 @@
       "41SLSP_UBS",
       "41SLSP_RBE",
       "41SLSP_FNW",
-      "41SLSP_TRI"
+      "41SLSP_TRI",
+      "41SLSP_UGE",
+      "41SLSP_SUP"
    ]
 }
