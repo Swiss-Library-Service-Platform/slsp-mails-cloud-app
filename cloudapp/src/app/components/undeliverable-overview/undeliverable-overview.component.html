@@ -37,7 +37,7 @@
             {{ 'LogOverview.SelectAll' | translate }}
         </div>
         <div class="log-select-area-dismiss">
-            <button (click)="onDismissSelectedLogs()" [disabled]="!selectedLogs.length > 0">
+            <button (click)="onDismissSelectedLogs()" [disabled]="selectedLogs.length == 0">
                 <mat-icon>done_all</mat-icon>
                 <span *ngIf="selectedLogs.length == 0">{{ 'LogOverview.DismissSelectedLogsNone' | translate }}</span>
                 <span *ngIf="selectedLogs.length > 0">
