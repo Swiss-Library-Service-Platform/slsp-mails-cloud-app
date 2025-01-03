@@ -1,0 +1,110 @@
+.log-overview-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.log-filter-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    align-items: center;
+    padding-left: 8px;
+    box-shadow: 0 2px 1px -2px gray;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    }
+}
+
+.log-overview-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .no-logs {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 30px;
+        font-weight: 400;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+}
+
+.log-select-area {
+    position: sticky;
+    bottom: 0;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    background-color: var(--slsp-purple-light);
+    padding: 15px 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid gray;
+
+    .log-select-area-checkbox,
+    .log-select-area-dismiss {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .log-select-area-checkbox {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+
+        input {
+            width: 20px;
+            height: 20px;
+            margin: 2px;
+        }
+    }
+
+    .log-select-area-dismiss {
+
+        button {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: white;
+            border: 1px solid gray;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-left: 8px;
+            padding-right: 8px;
+            gap: 4px;
+            box-shadow: 0 2px 1px -2px gray;
+
+            mat-icon {
+                font-size: 20px;
+                height: 20px;
+                width: 20px;
+            }
+        }
+
+        button:hover {
+            background-color: var(--slsp-purple-light-2);
+        }
+
+        button:disabled {
+            color: gray;
+            cursor: default;
+            border: 1px solid gray;
+        }
+    }
+
+}

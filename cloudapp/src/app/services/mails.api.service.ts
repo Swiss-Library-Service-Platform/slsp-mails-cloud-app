@@ -185,4 +185,35 @@ export class SlspMailsAPIService {
       );
     });
   }
+
+  /**
+   * Dismiss selected logs
+   * 
+   * @param {Array<MailLog>} logs
+   * @return {*}  {Promise<boolean>}
+  */
+  async dismissLogs(logs: Array<MailLog>): Promise<boolean> {
+    const payload = {
+      msg_ids: logs.map(log => log.msg_id)
+    };
+    return new Promise(resolve => {
+      this.http.post(this.baseUrl + '/dismiss', payload, this.httpOptions).subscribe(
+        (data: any) => {
+          if (data.length == 0) {
+            resolve(false);
+          }
+          this.mailLogs = data.map((log: any) => new MailLog(log));
+          this._setObservableUndeliverableMailsObject(this.mailLogs);
+          resolve(true);
+        },
+        error => {
+          this.log.error('dismissSelectedLogs', error);
+          this.alert.error(this.translate.instant('Main.Errors.LogDismissError'), { autoClose: true, delay: 3000 });
+          resolve(false);
+        },
+      );
+    });
+  }
+
+
 }

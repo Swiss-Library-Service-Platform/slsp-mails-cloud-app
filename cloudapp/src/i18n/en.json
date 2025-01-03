@@ -12,9 +12,18 @@
         "ToEmail": "Recipient Email"
     },
     "LogOverview": {
+        "DismissSelectedLogs": "Mark {n} as Resolved",
+        "DismissSelectedLogsNone": "Mark as Resolved",
+        "Filter": "Filter",
+        "NoLogs": "No open issues.",
+        "SelectAll": "Select All",
+        "ShowResolved": "Show Resolved",
+        "ShowUnresolved": "Show Unresolved",
         "Subject": "Subject",
         "Time": "Time",
-        "Title": "Emails"
+        "Title": "Emails",
+        "TotalResolved": "{n} Resolved",
+        "TotalUnresolved": "{n} Unresolved"
     },
     "Main": {
         "AccessDenied1": "Access denied",
@@ -43,8 +52,5 @@
         "Delivered": "Delivered",
         "NotDelivered": "Not Delivered",
         "Pending": "Pending"
-    },
-    "UndeliverableOverview": {
-        "NoLogs": "No undeliverable emails are logged for this entity."
     }
 }
