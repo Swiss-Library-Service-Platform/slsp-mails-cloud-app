@@ -19,9 +19,9 @@ export class LogDetailComponent implements OnInit {
     private selectedLogsService: SelectedLogService
   ) { }
 
-  currentMailLog: MailLog;
-  subscriptionCurrentMailLog: Subscription;
-  isLoading: boolean = false;
+  private currentMailLog: MailLog;
+  private subscriptionCurrentMailLog: Subscription;
+  private isLoading: boolean = false;
 
   ngOnInit(): void {
     this.subscriptionCurrentMailLog = this._slspmailsService.getSelectedMailLogObject().pipe(

@@ -18,10 +18,10 @@
 
     <!-- Log Overview -->
     <div class="log-overview-container">
-        <div *ngIf="logsLoading" class="loading-spinner" class="no-logs">
+        <div *ngIf="currentUndeliveredLogsLoading" class="loading-spinner" class="no-logs">
             <mat-spinner diameter="20"></mat-spinner>
         </div>
-        <ng-container *ngIf="!logsLoading">
+        <ng-container *ngIf="!currentUndeliveredLogsLoading">
             <div *ngIf="filteredUndeliveredLogs.length > 0">
                 <app-log-row *ngFor="let log of this.filteredUndeliveredLogs" [log]="log" [logClicked]="onLogClicked"
                     (selectionChange)="onRowSelectionChange($event)" [showRecipient]="true"

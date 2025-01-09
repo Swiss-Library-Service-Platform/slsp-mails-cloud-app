@@ -14,18 +14,18 @@ import { filter, tap } from 'rxjs/operators';
 })
 export class LogOverviewComponent implements OnInit {
 
+  private subscriptionEntities: Subscription;
+  private subscriptionSelectedEntity: Subscription;
+  private subscriptionMailLogs: Subscription;
+
+  private currentMailLogs: Array<MailLog> = [];
+  private currentSelectedEntity: Entity;
+
   constructor(
     private _slspmailsService: SlspMailsAPIService,
     private router: Router,
     private entitiesService: EntitiesService,
   ) { }
-
-  subscriptionEntities: Subscription;
-  subscriptionSelectedEntity: Subscription;
-  subscriptionMailLogs: Subscription;
-
-  currentMailLogs: Array<MailLog> = [];
-  currentSelectedEntity: Entity;
 
   ngOnInit(): void {
     this.backButtonClicked = this.backButtonClicked.bind(this);

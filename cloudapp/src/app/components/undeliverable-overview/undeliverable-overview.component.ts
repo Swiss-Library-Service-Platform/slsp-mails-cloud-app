@@ -14,14 +14,16 @@ import { SelectedLogService } from '../../services/selected-logs.service';
 })
 export class UndeliverableOverviewComponent implements OnInit {
 
-  subscriptionUndeliveredLogs: any;
-  logsLoading: boolean = true;
-  currentUndeliveredLogs: Array<MailLog>;
-  filteredUndeliveredLogs: Array<MailLog>;
-  showResolvedLogs: boolean = false;
-  selectedLogs: Array<MailLog> = [];
-  lastScrollPositionY: number
-  lastClickedLogMsgId: string;
+  private subscriptionUndeliveredLogs: any;
+  private currentUndeliveredLogs: Array<MailLog>;
+  private filteredUndeliveredLogs: Array<MailLog>;
+  private currentUndeliveredLogsLoading: boolean = true;
+
+  private selectedLogs: Array<MailLog> = [];
+
+  private showResolvedLogs: boolean = false;
+  private lastScrollPositionY: number
+  private lastClickedLogMsgId: string;
 
   constructor(
     private slspmailsService: SlspMailsAPIService,
@@ -34,6 +36,7 @@ export class UndeliverableOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.onLogClicked = this.onLogClicked.bind(this);
 
+    // Subscribe to the undelivered logs
     this.subscriptionUndeliveredLogs = this.slspmailsService.getUndeliverableMailsObject()
       .pipe(
         tap(res => {
@@ -42,10 +45,12 @@ export class UndeliverableOverviewComponent implements OnInit {
         })
       ).subscribe();
 
+    // Trigger to load the undelivered logs
     this.slspmailsService.getUndeliverableLogs().then(() => {
-      this.logsLoading = false;
+      this.currentUndeliveredLogsLoading = false;
     });
 
+    // Scroll to the last clicked log when it was navigated back to this component
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const container = document.querySelector('.log-overview-container');
@@ -53,6 +58,7 @@ export class UndeliverableOverviewComponent implements OnInit {
       }
     });
 
+    // Subscribe to the selected logs
     this.selectedLogsService.selectedLogs$.subscribe(logs => {
       this.selectedLogs = logs;
     });
