@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { SlspMailsAPIService } from '../../services/mails.api.service';
 import { MailLog } from '../../model/maillog.model';
 import { tap } from 'rxjs/operators';
+import { LoaderService } from '../../services/loader.service';
+import { SelectedLogService } from '../../services/selected-logs.service';
 
 @Component({
   selector: 'app-log-detail',
@@ -14,6 +16,7 @@ export class LogDetailComponent implements OnInit {
 
   constructor(
     private _slspmailsService: SlspMailsAPIService,
+    private selectedLogsService: SelectedLogService
   ) { }
 
   currentMailLog: MailLog;
@@ -31,5 +34,12 @@ export class LogDetailComponent implements OnInit {
 
   backButtonClicked(): void {
     window.history.back();
+  }
+
+  onDismissLog(): void {
+    this._slspmailsService.dismissLogs([this.currentMailLog]).then(() => {
+      this.currentMailLog.dismissed = true;
+      this.selectedLogsService.dismissLog(this.currentMailLog);
+    });
   }
 }

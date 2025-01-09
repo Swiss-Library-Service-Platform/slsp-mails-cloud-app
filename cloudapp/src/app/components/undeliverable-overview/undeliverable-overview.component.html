@@ -1,7 +1,7 @@
 <div class="log-overview-wrapper">
     <!-- Log Filter Header -->
     <div class="log-filter-header">
-        <div>
+        <div class="log-filter-header-text">
             <span *ngIf="showResolvedLogs">{{ 'LogOverview.TotalResolved' | translate: { n:
                 filteredUndeliveredLogs.length }
                 }}</span>
@@ -9,7 +9,7 @@
                 translate: { n:
                 filteredUndeliveredLogs.length } }}</span>
         </div>
-        <div (click)="onFilterChange()">
+        <div class="log-filter-header-filter" (click)="onFilterChange()">
             <mat-icon>filter_list</mat-icon>
             <span *ngIf="!showResolvedLogs">{{ 'LogOverview.ShowResolved' | translate }}</span>
             <span *ngIf="showResolvedLogs">{{ 'LogOverview.ShowUnresolved' | translate }}</span>
@@ -18,15 +18,22 @@
 
     <!-- Log Overview -->
     <div class="log-overview-container">
-        <div *ngIf="filteredUndeliveredLogs.length > 0">
-            <app-log-row *ngFor="let log of this.filteredUndeliveredLogs" [log]="log" [logClicked]="onLogClicked"
-                (selectionChange)="onRowSelectionChange($event)" [showRecipient]="true"
-                [isLastClicked]="log.msg_id === lastClickedLogMsgId" [dismissable]="true"></app-log-row>
+        <div *ngIf="logsLoading" class="loading-spinner" class="no-logs">
+            <mat-spinner diameter="20"></mat-spinner>
         </div>
-        <div *ngIf="!showResolvedLogs && filteredUndeliveredLogs.length == 0" class="no-logs">
-            <mat-icon>info</mat-icon>
-            <span>{{ 'LogOverview.NoLogs' | translate }}</span>
-        </div>
+        <ng-container *ngIf="!logsLoading">
+            <div *ngIf="filteredUndeliveredLogs.length > 0">
+                <app-log-row *ngFor="let log of this.filteredUndeliveredLogs" [log]="log" [logClicked]="onLogClicked"
+                    (selectionChange)="onRowSelectionChange($event)" [showRecipient]="true"
+                    [isLastClicked]="log.msg_id === lastClickedLogMsgId" [dismissable]="true"
+                    [isSelected]="isLogSelected(log)"></app-log-row>
+            </div>
+
+            <div *ngIf="filteredUndeliveredLogs.length == 0 " class="no-logs">
+                <mat-icon>info</mat-icon>
+                <span>{{ 'LogOverview.NoLogs' | translate }}</span>
+            </div>
+        </ng-container>
     </div>
 
     <!-- Select Area -->

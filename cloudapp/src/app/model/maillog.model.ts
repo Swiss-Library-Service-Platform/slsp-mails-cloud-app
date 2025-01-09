@@ -21,8 +21,6 @@ export class MailLog {
     dismissed: boolean = false;
     // array of activity events
     activity_events: MailEvent[] = [];
-    // selected flag
-    selected: boolean = false;
 
     constructor(data: any = {}) {
         if (data) {

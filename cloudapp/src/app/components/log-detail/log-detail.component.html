@@ -10,6 +10,15 @@
             <mail-status-chip [log]="this.currentMailLog" [showText]="true"></mail-status-chip>
         </span>
     </div>
+    <div *ngIf="this.currentMailLog.isNotDelivered() && !this.currentMailLog.dismissed" class="logdetail-row logdetail-dismiss">
+        <span class="logdetail-desc"></span>
+        <div class="logdetail-val">
+            <button (click)="onDismissLog()">
+                <mat-icon>done</mat-icon>
+                {{ 'LogDetail.Dismiss' | translate }}
+            </button>
+        </div>
+    </div>
     <div class="logdetail-row">
         <span class="logdetail-desc">{{ 'LogDetail.Time' | translate }}:</span>
         <span class="logdetail-val">{{ this.currentMailLog.time | momentFormat:'lll' }}</span>

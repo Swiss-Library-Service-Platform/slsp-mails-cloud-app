@@ -5,6 +5,7 @@ import { StatusService } from '../../services/status.service';
 import { MailLog } from '../../model/maillog.model';
 import { tap } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { SelectedLogService } from '../../services/selected-logs.service';
 
 @Component({
   selector: 'app-undeliverable-overview',
@@ -14,6 +15,7 @@ import { NavigationEnd, Router } from '@angular/router';
 export class UndeliverableOverviewComponent implements OnInit {
 
   subscriptionUndeliveredLogs: any;
+  logsLoading: boolean = true;
   currentUndeliveredLogs: Array<MailLog>;
   filteredUndeliveredLogs: Array<MailLog>;
   showResolvedLogs: boolean = false;
@@ -25,7 +27,8 @@ export class UndeliverableOverviewComponent implements OnInit {
     private slspmailsService: SlspMailsAPIService,
     public loaderService: LoaderService,
     public statusService: StatusService,
-    private router: Router
+    private router: Router,
+    private selectedLogsService: SelectedLogService
   ) { }
 
   ngOnInit(): void {
@@ -39,13 +42,19 @@ export class UndeliverableOverviewComponent implements OnInit {
         })
       ).subscribe();
 
-    this.slspmailsService.getUndeliverableLogs();
+    this.slspmailsService.getUndeliverableLogs().then(() => {
+      this.logsLoading = false;
+    });
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const container = document.querySelector('.log-overview-container');
         container.scrollTo(0, this.lastScrollPositionY);
       }
+    });
+
+    this.selectedLogsService.selectedLogs$.subscribe(logs => {
+      this.selectedLogs = logs;
     });
   }
 
@@ -76,25 +85,33 @@ export class UndeliverableOverviewComponent implements OnInit {
 
   onClickSelectAllLogs(): void {
     if (this.filteredUndeliveredLogs.length === this.selectedLogs.length) {
-      this.selectedLogs = [];
-      this.filteredUndeliveredLogs.forEach(log => log.selected = false);
+      this.selectedLogsService.clearSelectedLogs();
     } else {
-      this.selectedLogs = this.filteredUndeliveredLogs;
-      this.filteredUndeliveredLogs.forEach(log => log.selected = true);
+      this.filteredUndeliveredLogs.forEach(log => {
+        this.selectedLogsService.selectLog(log);
+      });
     }
   }
 
   onRowSelectionChange([msgId, isSelected]: [string, boolean]) {
     const log = this.filteredUndeliveredLogs.find(log => log.msg_id === msgId);
-    this.selectedLogs = isSelected ? [...this.selectedLogs, log] : this.selectedLogs.filter(selectedLog => selectedLog.msg_id !== msgId);
+    if (isSelected) {
+      this.selectedLogsService.selectLog(log);
+    } else {
+      this.selectedLogsService.deselectLog(log);
+    }
   }
 
   onDismissSelectedLogs() {
     this.loaderService.show();
     this.slspmailsService.dismissLogs(this.selectedLogs).then(() => {
-      this.selectedLogs = [];
+      this.selectedLogsService.clearSelectedLogs();
     }).finally(() => {
       this.loaderService.hide();
     });
+  }
+
+  isLogSelected(log: MailLog): boolean {
+    return this.selectedLogs.some(selectedLog => selectedLog.msg_id === log.msg_id);
   }
 }

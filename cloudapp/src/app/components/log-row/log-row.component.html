@@ -1,7 +1,7 @@
 <div class="log-row" (click)="logClicked(log)" [ngClass]="{'last-clicked': isLastClicked }">
     <!-- Checkbox to select log -->
     <div class="log-cell log-select" *ngIf="dismissable" (click)="$event.stopPropagation()">
-        <mat-checkbox *ngIf="!log.dismissed" [(ngModel)]="log.selected"
+        <mat-checkbox *ngIf="!log.dismissed" [(ngModel)]="isSelected"
             (change)="onSelectionChange($event)"></mat-checkbox>
         <mail-status-chip *ngIf="log.dismissed" [log]="log"></mail-status-chip>
     </div>

@@ -13,11 +13,20 @@
     padding-left: 8px;
     box-shadow: 0 2px 1px -2px gray;
 
-    div {
+    .log-filter-header-text,
+    .log-filter-header-filter {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 8px;
+    }
+
+    .log-filter-header-text {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .log-filter-header-filter {
         cursor: pointer;
     }
 }

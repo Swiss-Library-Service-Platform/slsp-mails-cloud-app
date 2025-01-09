@@ -1,5 +1,6 @@
 {
     "LogDetail": {
+        "Dismiss": "Mark as Resolved",
         "Events": "Detailed events of the failed email transmission",
         "FromEmail": "Sender Email",
         "Opened": "Opened",
@@ -22,8 +23,8 @@
         "Subject": "Subject",
         "Time": "Time",
         "Title": "Emails",
-        "TotalResolved": "{n} Resolved",
-        "TotalUnresolved": "{n} Unresolved"
+        "TotalResolved": "Resolved ({n})",
+        "TotalUnresolved": "Unresolved ({n})"
     },
     "Main": {
         "AccessDenied1": "Access denied",
@@ -51,6 +52,8 @@
     "MailStatusChip": {
         "Delivered": "Delivered",
         "NotDelivered": "Not Delivered",
-        "Pending": "Pending"
+        "Pending": "Pending",
+        "Resolved": "Resolved",
+        "Unresolved": "Unresolved"
     }
 }

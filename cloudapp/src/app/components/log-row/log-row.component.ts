@@ -14,11 +14,11 @@ export class LogRowComponent {
   @Input() showRecipient: boolean = false
   @Input() dismissable: boolean = false
   @Input() isLastClicked: boolean = false
+  @Input() isSelected: boolean = false
 
   @Output() selectionChange = new EventEmitter<[string, boolean]>();
 
   onSelectionChange(event: MatCheckboxChange): void {
-    this.log.selected = event.checked;
     this.selectionChange.emit([this.log.msg_id, event.checked]);
   }
 
