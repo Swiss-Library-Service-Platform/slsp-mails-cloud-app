@@ -18,8 +18,8 @@ export class LogOverviewComponent implements OnInit {
   private subscriptionSelectedEntity: Subscription;
   private subscriptionMailLogs: Subscription;
 
-  private currentMailLogs: Array<MailLog> = [];
-  private currentSelectedEntity: Entity;
+  public currentMailLogs: Array<MailLog> = [];
+  public currentSelectedEntity: Entity;
 
   constructor(
     private _slspmailsService: SlspMailsAPIService,

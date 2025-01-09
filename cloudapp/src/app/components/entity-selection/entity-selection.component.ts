@@ -17,10 +17,10 @@ import { catchError, filter, switchMap, tap } from 'rxjs/operators';
 })
 export class EntitySelectionComponent implements OnInit {
 
-  subscriptionEntities: Subscription;
-  subscriptionSelectedEntity: Subscription;
-  currentEntities: Entity[] = [];
-  currentSelectedEntity: Entity;
+  private subscriptionEntities: Subscription;
+  private subscriptionSelectedEntity: Subscription;
+  public currentEntities: Entity[] = [];
+  public currentSelectedEntity: Entity;
 
   constructor(
     private slspmailsService: SlspMailsAPIService,

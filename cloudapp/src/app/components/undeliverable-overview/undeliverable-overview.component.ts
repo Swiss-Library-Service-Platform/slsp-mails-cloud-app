@@ -16,14 +16,14 @@ export class UndeliverableOverviewComponent implements OnInit {
 
   private subscriptionUndeliveredLogs: any;
   private currentUndeliveredLogs: Array<MailLog>;
-  private filteredUndeliveredLogs: Array<MailLog>;
-  private currentUndeliveredLogsLoading: boolean = true;
+  public currentUndeliveredLogsLoading: boolean = true;
+  public filteredUndeliveredLogs: Array<MailLog>;
 
-  private selectedLogs: Array<MailLog> = [];
+  public selectedLogs: Array<MailLog> = [];
 
-  private showResolvedLogs: boolean = false;
   private lastScrollPositionY: number
-  private lastClickedLogMsgId: string;
+  public lastClickedLogMsgId: string;
+  public showResolvedLogs: boolean = false;
 
   constructor(
     private slspmailsService: SlspMailsAPIService,

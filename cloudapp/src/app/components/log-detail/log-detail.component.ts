@@ -20,9 +20,9 @@ export class LogDetailComponent implements OnInit {
     private router: Router
   ) { }
 
-  private currentMailLog: MailLog;
+  public currentMailLog: MailLog;
   private subscriptionCurrentMailLog: Subscription;
-  private isLoading: boolean = false;
+  public isLoading: boolean = false;
 
   ngOnInit(): void {
     this.backButtonClicked = this.backButtonClicked.bind(this);

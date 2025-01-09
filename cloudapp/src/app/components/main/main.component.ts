@@ -13,9 +13,9 @@ import { EntitiesService } from '../../services/entities.service';
 })
 export class MainComponent implements OnInit, OnDestroy {
 
-  private isUserAllowed: boolean = false;
-  private isUserCheckDone: boolean = false;
-  private currentEntityTitle: String = '';
+  public isUserAllowed: boolean = false;
+  public isUserCheckDone: boolean = false;
+  public currentEntityTitle: String = '';
 
   constructor(
     private slspmailsService: SlspMailsAPIService,
