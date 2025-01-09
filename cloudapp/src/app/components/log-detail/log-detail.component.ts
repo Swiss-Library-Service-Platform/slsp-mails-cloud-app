@@ -21,6 +21,7 @@ export class LogDetailComponent implements OnInit {
 
   currentMailLog: MailLog;
   subscriptionCurrentMailLog: Subscription;
+  isLoading: boolean = false;
 
   ngOnInit(): void {
     this.subscriptionCurrentMailLog = this._slspmailsService.getSelectedMailLogObject().pipe(
@@ -37,9 +38,11 @@ export class LogDetailComponent implements OnInit {
   }
 
   onDismissLog(): void {
+    this.isLoading = true;
     this._slspmailsService.dismissLogs([this.currentMailLog]).then(() => {
       this.currentMailLog.dismissed = true;
       this.selectedLogsService.dismissLog(this.currentMailLog);
+      this.isLoading = false;
     });
   }
 }

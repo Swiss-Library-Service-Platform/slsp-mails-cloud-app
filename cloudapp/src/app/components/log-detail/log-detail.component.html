@@ -14,7 +14,8 @@
         <span class="logdetail-desc"></span>
         <div class="logdetail-val">
             <button (click)="onDismissLog()">
-                <mat-icon>done</mat-icon>
+                <mat-icon *ngIf="!isLoading">done</mat-icon>
+                <mat-spinner *ngIf="isLoading" diameter="18" strokeWidth="2"></mat-spinner>
                 {{ 'LogDetail.Dismiss' | translate }}
             </button>
         </div>

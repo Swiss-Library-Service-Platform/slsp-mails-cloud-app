@@ -16,7 +16,7 @@
         "DismissSelectedLogs": "Mark {n} as Resolved",
         "DismissSelectedLogsNone": "Mark as Resolved",
         "Filter": "Filter",
-        "NoLogs": "No open issues.",
+        "NoLogs": "No entries found.",
         "SelectAll": "Select All",
         "ShowResolved": "Show Resolved",
         "ShowUnresolved": "Show Unresolved",
