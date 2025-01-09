@@ -2,14 +2,12 @@
     <!-- Log Filter Header -->
     <div class="log-filter-header">
         <div class="log-filter-header-text">
-            <span *ngIf="showResolvedLogs">{{ 'LogOverview.TotalResolved' | translate: { n:
-                filteredUndeliveredLogs.length }
-                }}</span>
-            <span *ngIf="!showResolvedLogs && filteredUndeliveredLogs.length > 0">{{ 'LogOverview.TotalUnresolved' |
-                translate: { n:
-                filteredUndeliveredLogs.length } }}</span>
+            <span *ngIf="showResolvedLogs">
+                {{ 'LogOverview.TotalResolved' | translate: { n: filteredUndeliveredLogs.length } }}</span>
+            <span *ngIf="!showResolvedLogs">
+                {{ 'LogOverview.TotalUnresolved' | translate: { n: filteredUndeliveredLogs.length } }}</span>
         </div>
-        <div class="log-filter-header-filter" (click)="onFilterChange()">
+        <div class=" log-filter-header-filter" (click)="onFilterChange()">
             <mat-icon>filter_list</mat-icon>
             <span *ngIf="!showResolvedLogs">{{ 'LogOverview.ShowResolved' | translate }}</span>
             <span *ngIf="showResolvedLogs">{{ 'LogOverview.ShowUnresolved' | translate }}</span>
