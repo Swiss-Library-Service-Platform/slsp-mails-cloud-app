@@ -54,7 +54,9 @@ export class UndeliverableOverviewComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const container = document.querySelector('.log-overview-container');
-        container.scrollTo(0, this.lastScrollPositionY);
+        if (container && this.lastClickedLogMsgId) {
+          container.scrollTo(0, this.lastScrollPositionY);
+        }
       }
     });
 

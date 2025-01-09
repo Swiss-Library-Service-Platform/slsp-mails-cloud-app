@@ -20,12 +20,21 @@ export class EntitiesService {
   private readonly _selectedEntityObject = new BehaviorSubject<Entity>(null);
   private readonly _currentEntityType = new BehaviorSubject<EntityType>(null);
 
+  /**
+   * TODO:
+   * Cleanup this mess.
+   * The entities service and entity-selection component work together, 
+   * but seperation of concerns is not clear.
+   */
+
   constructor(
     private eventsService: CloudAppEventsService,
     private router: Router,
   ) {
     this.eventsService.entities$.subscribe(entities => {
-      if (this.router.url.includes('log-overview') || this.router.url.includes('log-details')) {
+      if (this.router.url.includes('user-log-list')) {
+        // we are in the user-log-list component, so we first want to navigate back to the main component
+        // then because we set selectedEntity down below, the entity-selection component will navigate back into user log list
         this.router.navigate(['main']);
       }
       const filteredEntities = entities.filter(e => {
@@ -34,7 +43,9 @@ export class EntitiesService {
       this._currentEntityType.next(filteredEntities[0]?.type);
       this._entitiesObject.next(filteredEntities);
 
-      if (filteredEntities.length == 1) {
+      if (filteredEntities.length == 1 && !this.router.url.includes('log-detail')) {
+        // If there is only one entity selecatble
+        // and we are not in the log-detail component (where we probably want to stay)
         this._selectedEntityObject.next(filteredEntities[0]);
       }
     });

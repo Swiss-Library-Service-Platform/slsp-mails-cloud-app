@@ -8,9 +8,9 @@ import { EntitiesService } from '../../services/entities.service';
 import { filter, tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-log-overview',
-  templateUrl: './log-overview.component.html',
-  styleUrls: ['./log-overview.component.scss']
+  selector: 'app-user-log-list',
+  templateUrl: './user-log-list.component.html',
+  styleUrls: ['./user-log-list.component.scss']
 })
 export class LogOverviewComponent implements OnInit {
 

@@ -16,7 +16,8 @@ export class LogDetailComponent implements OnInit {
 
   constructor(
     private _slspmailsService: SlspMailsAPIService,
-    private selectedLogsService: SelectedLogService
+    private selectedLogsService: SelectedLogService,
+    private router: Router
   ) { }
 
   private currentMailLog: MailLog;
@@ -24,6 +25,8 @@ export class LogDetailComponent implements OnInit {
   private isLoading: boolean = false;
 
   ngOnInit(): void {
+    this.backButtonClicked = this.backButtonClicked.bind(this);
+
     this.subscriptionCurrentMailLog = this._slspmailsService.getSelectedMailLogObject().pipe(
       tap(res => this.currentMailLog = res)
     ).subscribe();
@@ -34,7 +37,7 @@ export class LogDetailComponent implements OnInit {
   }
 
   backButtonClicked(): void {
-    window.history.back();
+    this.router.navigate(['main']);
   }
 
   onDismissLog(): void {

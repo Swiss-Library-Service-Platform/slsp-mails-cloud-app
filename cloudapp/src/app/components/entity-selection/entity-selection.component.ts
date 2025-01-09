@@ -64,7 +64,7 @@ export class EntitySelectionComponent implements OnInit {
         switchMap(selectedEntityEmails => this.slspmailsService.getUserLogs(selectedEntityEmails)),
         tap(foundLog => {
           if (foundLog) {
-            this.router.navigate(['log-overview']);
+            this.router.navigate(['user-log-list']);
           } else {
             this.alert.error(this.translateService.instant('Main.Errors.NoLogs'), { autoClose: this.currentEntities.length > 1, delay: 3000 });
           }

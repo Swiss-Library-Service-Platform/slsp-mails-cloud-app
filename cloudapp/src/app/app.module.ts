@@ -10,7 +10,7 @@ import { MainComponent } from './components/main/main.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavigationheaderComponent } from './components/navigationheader/navigationheader.component';
 import { MomentFormatPipe } from './pipes/moment.pipe';
-import { LogOverviewComponent } from './components/log-overview/log-overview.component';
+import { LogOverviewComponent } from './components/user-log-list/user-log-list.component';
 import { TruncatePipe } from './pipes/truncate.pip';
 import { LogDetailComponent } from './components/log-detail/log-detail.component';
 import { MailStatusChipComponent } from './components/mail-status-chip/mail-status-chip.component';
