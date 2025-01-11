@@ -20,7 +20,7 @@
         <span *ngIf="log.isPending()"> {{ 'MailStatusChip.Pending' | translate }} </span>
     </div>
 
-    <!-- Resolved / Unresolved -->
+    <!-- Dismissed / Undismissed -->
     <div *ngIf="showText && log.isNotDelivered()" class="log-label-resolved">
         <span *ngIf="log.dismissed"> ({{ 'MailStatusChip.Resolved' | translate }}) </span>
         <span *ngIf="!log.dismissed"> ({{ 'MailStatusChip.Unresolved' | translate }}) </span>

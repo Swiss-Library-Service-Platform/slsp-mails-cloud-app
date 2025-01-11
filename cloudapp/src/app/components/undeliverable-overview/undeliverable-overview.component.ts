@@ -6,6 +6,8 @@ import { MailLog } from '../../model/maillog.model';
 import { tap } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { SelectedLogService } from '../../services/selected-logs.service';
+import { AlertService } from '@exlibris/exl-cloudapp-angular-lib';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-undeliverable-overview',
@@ -30,7 +32,9 @@ export class UndeliverableOverviewComponent implements OnInit {
     public loaderService: LoaderService,
     public statusService: StatusService,
     private router: Router,
-    private selectedLogsService: SelectedLogService
+    private selectedLogsService: SelectedLogService,
+    private alert: AlertService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -113,7 +117,10 @@ export class UndeliverableOverviewComponent implements OnInit {
   onDismissSelectedLogs() {
     this.loaderService.show();
     this.slspmailsService.dismissLogs(this.selectedLogs).then(() => {
+      this.alert.success(this.translate.instant('Main.Success.DimissedMulti', { n: this.selectedLogs.length }), { autoClose: true, delay: 3000 });
       this.selectedLogsService.clearSelectedLogs();
+    }).catch(() => {
+      this.alert.error(this.translate.instant('Main.Error.DismissedMulti'), { autoClose: true, delay: 3000 });
     }).finally(() => {
       this.loaderService.hide();
     });

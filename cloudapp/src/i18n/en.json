@@ -31,6 +31,8 @@
         "AccessDenied2": "You are not allowed to access this cloud app.",
         "AccessDenied3": "If you think this is an error, please contact SLSP via email at", 
         "Errors": {
+            "Dimissed": "Error marking email as resolved.",
+            "DimissedMulti": "Error marking {n} emails as resolved.",
             "LogFetchError": "Error fetching logs",
             "NoLogs": "No emails are logged for this entity.",
             "NoMails": "No emails are defined for this entity in Alma."
@@ -38,6 +40,10 @@
         "Status": {
             "Initializing": "Loading...",
             "LoadLogs": "Load Mails"
+        },
+        "Success": {
+            "Dismissed": "Email marked as resolved.",
+            "DimissedMulti": "{n} emails marked as resolved."
         },
         "Title_User": "Check User",
         "Title_Undeliverable": "Undeliverable Mails",

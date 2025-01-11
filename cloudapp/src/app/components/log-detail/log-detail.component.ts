@@ -6,6 +6,8 @@ import { MailLog } from '../../model/maillog.model';
 import { tap } from 'rxjs/operators';
 import { LoaderService } from '../../services/loader.service';
 import { SelectedLogService } from '../../services/selected-logs.service';
+import { AlertService } from '@exlibris/exl-cloudapp-angular-lib';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-log-detail',
@@ -17,7 +19,9 @@ export class LogDetailComponent implements OnInit {
   constructor(
     private _slspmailsService: SlspMailsAPIService,
     private selectedLogsService: SelectedLogService,
-    private router: Router
+    private router: Router,
+    private alert: AlertService,
+    private translate: TranslateService
   ) { }
 
   public currentMailLog: MailLog;
@@ -46,6 +50,10 @@ export class LogDetailComponent implements OnInit {
       this.currentMailLog.dismissed = true;
       this.selectedLogsService.dismissLog(this.currentMailLog);
       this.isLoading = false;
+      this.alert.success(this.translate.instant('Main.Success.Dismissed'), { autoClose: true, delay: 3000 });
+    }).catch(() => {
+      this.isLoading = false;
+      this.alert.error(this.translate.instant('Main.Error.Dismissed'), { autoClose: true, delay: 3000 });
     });
   }
 }
