@@ -59,6 +59,8 @@
                 <span class="logdetail-event-time"> {{ event.time | momentFormat:'lll' }}:</span>
                 <span class="logdetail-event-text"> 
                     <span *ngIf="event.event_name" class="logdetail-event-text-name">{{ event.event_name }}</span>
+                    <span *ngIf="event.isBouncePermanent()" class="logdetail-event-text-name"> ({{ 'LogDetail.Permanent' | translate }})</span>
+                    <span *ngIf="event.isBounceTemporary()" class="logdetail-event-text-name"> ({{ 'LogDetail.Temporary' | translate }})</span>
                     <span *ngIf="event.reason">: {{ event.reason }}</span>
                 </span>
             </div>
