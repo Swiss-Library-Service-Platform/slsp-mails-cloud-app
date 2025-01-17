@@ -1,10 +1,13 @@
 {
     "LogDetail": {
+        "Dismiss": "Marquer comme Résolu",
         "Events": "Détails de l'échec de la transmission de l'e-mail",
         "FromEmail": "E-mail de l'expéditeur",
+        "Temporary": "temporaire",
         "Opened": "Ouvert",
         "OpenedNo": "Non ouvert",
         "OpenedYes": "Ouvert",
+        "Permanent": "permanent",
         "Status": "Statut",
         "Subject": "Objet",
         "Time": "Heure",
@@ -12,16 +15,26 @@
         "ToEmail": "E-mail du destinataire"
     },
     "LogOverview": {
+        "DismissSelectedLogs": "Marquer {n} comme Résolu",
+        "DismissSelectedLogsNone": "Marquer comme Résolu",
+        "Filter": "Filtrer",
+        "NoLogs": "Aucune entrée trouvée.",
+        "SelectAll": "Tout Sélectionner",
+        "ShowResolved": "Afficher les Résolus",
+        "ShowUnresolved": "Afficher les Non Résolus",
         "Subject": "Objet",
         "Time": "Heure",
-        "Title": "E-mails"
+        "Title": "E-mails",
+        "TotalResolved": "Résolu ({n})",
+        "TotalUnresolved": "Non Résolu ({n})"
     },
     "Main": {
         "AccessDenied1": "Accès refusé",
         "AccessDenied2": "Vous n'êtes pas autorisé à accéder à cette application cloud.",
-        "AccessDenied3": "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter SLSP par e-mail à",
-
+        "AccessDenied3": "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter SLSP par e-mail à", 
         "Errors": {
+            "Dimissed": "Erreur lors du marquage de l'e-mail comme résolu.",
+            "DimissedMulti": "Erreur lors du marquage de {n} e-mails comme résolus.",
             "LogFetchError": "Erreur lors de la récupération des journaux",
             "NoLogs": "Aucun e-mail n'est enregistré pour cette entité.",
             "NoMails": "Aucun e-mail n'est défini pour cette entité dans Alma."
@@ -30,9 +43,13 @@
             "Initializing": "Chargement...",
             "LoadLogs": "Charger les e-mails"
         },
-        "Title_User": "Vérifier l'utilisateur",
-        "Title_Undeliverable": "Non Distribuables",
-        "Title_Vendor": "Vérifier le fournisseur",
+        "Success": {
+            "Dismissed": "E-mail marqué comme résolu.",
+            "DimissedMulti": "{n} e-mails marqués comme résolus."
+        },
+        "Title_User": "Utilisateur",
+        "Title_Undeliverable": "E-mails Non Distribuables",
+        "Title_Vendor": "Fournisseur",
         "Welcome1": "Aucune entité disponible.",
         "Welcome2": "Veuillez trouver une entité dans Alma pour enquêter sur les journaux des e-mails.",
         "Welcome3": "Trouvez l'entité sur laquelle vous voulez enquêter :",
@@ -43,6 +60,8 @@
     "MailStatusChip": {
         "Delivered": "Livré",
         "NotDelivered": "Non livré",
-        "Pending": "En attente"
+        "Pending": "En attente",
+        "Resolved": "Résolu",
+        "Unresolved": "Non Résolu"
     }
 }

@@ -1,10 +1,13 @@
 {
     "LogDetail": {
+        "Dismiss": "Segna come Risolto",
         "Events": "Eventi dettagliati della trasmissione e-mail fallita",
         "FromEmail": "E-mail del mittente",
+        "Temporary": "temporaneo",
         "Opened": "Aperto",
         "OpenedNo": "Non aperto",
         "OpenedYes": "Aperto",
+        "Permanent": "permanente",
         "Status": "Stato",
         "Subject": "Oggetto",
         "Time": "Ora",
@@ -12,16 +15,26 @@
         "ToEmail": "E-mail del destinatario"
     },
     "LogOverview": {
+        "DismissSelectedLogs": "Segna {n} come Risolto",
+        "DismissSelectedLogsNone": "Segna come Risolto",
+        "Filter": "Filtra",
+        "NoLogs": "Nessuna voce trovata.",
+        "SelectAll": "Seleziona tutto",
+        "ShowResolved": "Mostra Risolti",
+        "ShowUnresolved": "Mostra Non Risolti",
         "Subject": "Oggetto",
         "Time": "Ora",
-        "Title": "E-mail"
+        "Title": "E-mail",
+        "TotalResolved": "Risolto ({n})",
+        "TotalUnresolved": "Non Risolto ({n})"
     },
     "Main": {
         "AccessDenied1": "Accesso negato",
         "AccessDenied2": "Non sei autorizzato ad accedere a questa applicazione cloud.",
-        "AccessDenied3": "Se pensi che sia un errore, contatta SLSP via e-mail a",
-
+        "AccessDenied3": "Se pensi che sia un errore, contatta SLSP via e-mail a", 
         "Errors": {
+            "Dimissed": "Errore nel segnare l'e-mail come risolta.",
+            "DimissedMulti": "Errore nel segnare {n} e-mail come risolte.",
             "LogFetchError": "Errore nel recupero dei log",
             "NoLogs": "Non vengono registrate e-mail per questa entità.",
             "NoMails": "Non sono definite e-mail per questa entità in Alma."
@@ -30,9 +43,13 @@
             "Initializing": "Caricamento...",
             "LoadLogs": "Carica e-mail"
         },
-        "Title_User": "Verifica utente",
-        "Title_Undeliverable": "Non Consegnabili",
-        "Title_Vendor": "Verifica fornitore",
+        "Success": {
+            "Dismissed": "E-mail segnata come risolta.",
+            "DimissedMulti": "{n} e-mail segnate come risolte."
+        },
+        "Title_User": "Utente",
+        "Title_Undeliverable": "E-mail Non Consegnabili",
+        "Title_Vendor": "Fornitore",
         "Welcome1": "Nessuna entità disponibile.",
         "Welcome2": "Trova un'entità in Alma per indagare sui log delle e-mail.",
         "Welcome3": "Selezionare l'entità da analizzare:",
@@ -43,6 +60,8 @@
     "MailStatusChip": {
         "Delivered": "Consegnato",
         "NotDelivered": "Non consegnato",
-        "Pending": "In attesa"
+        "Pending": "In attesa",
+        "Resolved": "Risolto",
+        "Unresolved": "Non Risolto"
     }
 }

@@ -14,15 +14,15 @@
     </svg>
 
     <!-- Label -->
-    <div *ngIf="showText" class="log-label-delivered">
+    <span *ngIf="showText" class="log-label-delivered">
         <span *ngIf="log.isNotDelivered()"> {{ 'MailStatusChip.NotDelivered' | translate }} </span>
         <span *ngIf="log.isDelivered()"> {{ 'MailStatusChip.Delivered' | translate }} </span>
         <span *ngIf="log.isPending()"> {{ 'MailStatusChip.Pending' | translate }} </span>
-    </div>
+    </span>
 
     <!-- Dismissed / Undismissed -->
-    <div *ngIf="showText && log.isNotDelivered()" class="log-label-resolved">
+    <span *ngIf="showText && log.isNotDelivered()" class="log-label-resolved">
         <span *ngIf="log.dismissed"> ({{ 'MailStatusChip.Resolved' | translate }}) </span>
         <span *ngIf="!log.dismissed"> ({{ 'MailStatusChip.Unresolved' | translate }}) </span>
-    </div>
+    </span>
 </div>
