@@ -8,6 +8,7 @@ import { LoaderService } from '../../services/loader.service';
 import { SelectedLogService } from '../../services/selected-logs.service';
 import { AlertService } from '@exlibris/exl-cloudapp-angular-lib';
 import { TranslateService } from '@ngx-translate/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-log-detail',
@@ -21,7 +22,8 @@ export class LogDetailComponent implements OnInit {
     private selectedLogsService: SelectedLogService,
     private router: Router,
     private alert: AlertService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private location: Location
   ) { }
 
   public currentMailLog: MailLog;
@@ -41,7 +43,7 @@ export class LogDetailComponent implements OnInit {
   }
 
   backButtonClicked(): void {
-    this.router.navigate(['main']);
+    this.location.back();
   }
 
   onDismissLog(): void {
