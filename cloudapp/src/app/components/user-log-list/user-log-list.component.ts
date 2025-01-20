@@ -64,6 +64,6 @@ export class LogOverviewComponent implements OnInit {
 
   onLogClicked(log: MailLog): void {
     this._slspmailsService.setSelectedMailLog(log);
-    this.router.navigate(['log-detail']);
+    this.router.navigate(['log-detail'], { queryParams: { origin: 'user-log-list' } });
   }
 }

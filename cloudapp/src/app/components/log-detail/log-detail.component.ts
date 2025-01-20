@@ -8,7 +8,6 @@ import { LoaderService } from '../../services/loader.service';
 import { SelectedLogService } from '../../services/selected-logs.service';
 import { AlertService } from '@exlibris/exl-cloudapp-angular-lib';
 import { TranslateService } from '@ngx-translate/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-log-detail',
@@ -23,12 +22,13 @@ export class LogDetailComponent implements OnInit {
     private router: Router,
     private alert: AlertService,
     private translate: TranslateService,
-    private location: Location
+    private route : ActivatedRoute
   ) { }
 
   public currentMailLog: MailLog;
   private subscriptionCurrentMailLog: Subscription;
   public isLoading: boolean = false;
+  public previousComponent: string;
 
   ngOnInit(): void {
     this.backButtonClicked = this.backButtonClicked.bind(this);
@@ -36,6 +36,8 @@ export class LogDetailComponent implements OnInit {
     this.subscriptionCurrentMailLog = this._slspmailsService.getSelectedMailLogObject().pipe(
       tap(res => this.currentMailLog = res)
     ).subscribe();
+
+    this.previousComponent = this.route.snapshot.queryParams.origin || 'main';
   }
 
   ngOnDestroy(): void {
@@ -43,7 +45,7 @@ export class LogDetailComponent implements OnInit {
   }
 
   backButtonClicked(): void {
-    this.location.back();
+    this.router.navigate([this.previousComponent]);
   }
 
   onDismissLog(): void {
