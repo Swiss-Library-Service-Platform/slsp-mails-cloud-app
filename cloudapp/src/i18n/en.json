@@ -1,10 +1,13 @@
 {
     "LogDetail": {
+        "Dismiss": "Mark as Resolved",
         "Events": "Detailed events of the failed email transmission",
         "FromEmail": "Sender Email",
+        "Temporary": "temporary",
         "Opened": "Opened",
         "OpenedNo": "Not Opened",
         "OpenedYes": "Opened",
+        "Permanent": "permanent",
         "Status": "Status",
         "Subject": "Subject",
         "Time": "Time",
@@ -12,15 +15,26 @@
         "ToEmail": "Recipient Email"
     },
     "LogOverview": {
+        "DismissSelectedLogs": "Mark {n} as Resolved",
+        "DismissSelectedLogsNone": "Mark as Resolved",
+        "Filter": "Filter",
+        "NoLogs": "No entries found.",
+        "SelectAll": "Select All",
+        "ShowResolved": "Show Resolved",
+        "ShowUnresolved": "Show Unresolved",
         "Subject": "Subject",
         "Time": "Time",
-        "Title": "Emails"
+        "Title": "Emails",
+        "TotalResolved": "Resolved ({n})",
+        "TotalUnresolved": "Unresolved ({n})"
     },
     "Main": {
         "AccessDenied1": "Access denied",
         "AccessDenied2": "You are not allowed to access this cloud app.",
         "AccessDenied3": "If you think this is an error, please contact SLSP via email at", 
         "Errors": {
+            "Dimissed": "Error marking email as resolved.",
+            "DimissedMulti": "Error marking {n} emails as resolved.",
             "LogFetchError": "Error fetching logs",
             "NoLogs": "No emails are logged for this entity.",
             "NoMails": "No emails are defined for this entity in Alma."
@@ -28,6 +42,10 @@
         "Status": {
             "Initializing": "Loading...",
             "LoadLogs": "Load Mails"
+        },
+        "Success": {
+            "Dismissed": "Email marked as resolved.",
+            "DimissedMulti": "{n} emails marked as resolved."
         },
         "Title_User": "Check User",
         "Title_Undeliverable": "Undeliverable Mails",
@@ -42,9 +60,8 @@
     "MailStatusChip": {
         "Delivered": "Delivered",
         "NotDelivered": "Not Delivered",
-        "Pending": "Pending"
-    },
-    "UndeliverableOverview": {
-        "NoLogs": "No undeliverable emails are logged for this entity."
+        "Pending": "Pending",
+        "Resolved": "Resolved",
+        "Unresolved": "Unresolved"
     }
 }

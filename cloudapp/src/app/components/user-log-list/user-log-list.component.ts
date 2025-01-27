@@ -8,24 +8,24 @@ import { EntitiesService } from '../../services/entities.service';
 import { filter, tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-log-overview',
-  templateUrl: './log-overview.component.html',
-  styleUrls: ['./log-overview.component.scss']
+  selector: 'app-user-log-list',
+  templateUrl: './user-log-list.component.html',
+  styleUrls: ['./user-log-list.component.scss']
 })
 export class LogOverviewComponent implements OnInit {
+
+  private subscriptionEntities: Subscription;
+  private subscriptionSelectedEntity: Subscription;
+  private subscriptionMailLogs: Subscription;
+
+  public currentMailLogs: Array<MailLog> = [];
+  public currentSelectedEntity: Entity;
 
   constructor(
     private _slspmailsService: SlspMailsAPIService,
     private router: Router,
     private entitiesService: EntitiesService,
   ) { }
-
-  subscriptionEntities: Subscription;
-  subscriptionSelectedEntity: Subscription;
-  subscriptionMailLogs: Subscription;
-
-  currentMailLogs: Array<MailLog> = [];
-  currentSelectedEntity: Entity;
 
   ngOnInit(): void {
     this.backButtonClicked = this.backButtonClicked.bind(this);
@@ -64,6 +64,6 @@ export class LogOverviewComponent implements OnInit {
 
   onLogClicked(log: MailLog): void {
     this._slspmailsService.setSelectedMailLog(log);
-    this.router.navigate(['log-detail']);
+    this.router.navigate(['log-detail'], { queryParams: { origin: 'user-log-list' } });
   }
 }

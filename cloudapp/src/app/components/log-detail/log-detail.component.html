@@ -10,6 +10,16 @@
             <mail-status-chip [log]="this.currentMailLog" [showText]="true"></mail-status-chip>
         </span>
     </div>
+    <div *ngIf="this.currentMailLog.isNotDelivered() && !this.currentMailLog.dismissed" class="logdetail-row logdetail-dismiss">
+        <span class="logdetail-desc"></span>
+        <div class="logdetail-val">
+            <button (click)="onDismissLog()">
+                <mat-icon *ngIf="!isLoading">done</mat-icon>
+                <mat-spinner *ngIf="isLoading" diameter="18" strokeWidth="2"></mat-spinner>
+                {{ 'LogDetail.Dismiss' | translate }}
+            </button>
+        </div>
+    </div>
     <div class="logdetail-row">
         <span class="logdetail-desc">{{ 'LogDetail.Time' | translate }}:</span>
         <span class="logdetail-val">{{ this.currentMailLog.time | momentFormat:'lll' }}</span>
@@ -49,6 +59,8 @@
                 <span class="logdetail-event-time"> {{ event.time | momentFormat:'lll' }}:</span>
                 <span class="logdetail-event-text"> 
                     <span *ngIf="event.event_name" class="logdetail-event-text-name">{{ event.event_name }}</span>
+                    <span *ngIf="event.isBouncePermanent()" class="logdetail-event-text-name"> ({{ 'LogDetail.Permanent' | translate }})</span>
+                    <span *ngIf="event.isBounceTemporary()" class="logdetail-event-text-name"> ({{ 'LogDetail.Temporary' | translate }})</span>
                     <span *ngIf="event.reason">: {{ event.reason }}</span>
                 </span>
             </div>

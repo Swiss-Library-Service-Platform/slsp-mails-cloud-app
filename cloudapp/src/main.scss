@@ -10,9 +10,10 @@
 }
 
 :root {
-   height: 100%;
+    height: 100vh;
     --slsp-purple: rgba(78, 74, 153, 1); // or any global you wish to share with components 
     --slsp-purple-light: #eeeef7;
+    --slsp-purple-light-2: #eeeef788;
     --gray-1: #f2f2f2;
     --table-stripe-background: #f3f5f4;
 }
@@ -55,8 +56,18 @@ cloudapp-alert {
     }
 }
 
-.mat-tab-body-content {
-   overflow: hidden !important;
+.mat-tab-group {
+    .mat-tab-header-icon {
+        margin-right: 4px;
+    }
+}
+
+.mat-tab-group {
+    height: calc(100vh - 20px);
+}
+
+.mat-tab-body-wrapper {
+    height: 100%;
 }
 
 body .mat-tab-group.mat-primary .mat-ink-bar {
@@ -74,6 +85,6 @@ body .mat-tab-group.mat-primary .mat-ink-bar {
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-radius:  5px;
+    border-radius: 5px;
     margin-bottom: 10px;
-  }
+}

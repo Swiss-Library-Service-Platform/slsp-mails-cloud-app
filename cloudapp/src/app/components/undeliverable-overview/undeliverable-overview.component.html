@@ -1,8 +1,54 @@
-<!-- Log Overview -->
-<div *ngIf="currentUndeliveredLogs.length > 0">
-    <app-log-row *ngFor="let log of this.currentUndeliveredLogs" [log]="log" [logClicked]="onLogClicked"
-        [showRecipient]="true"></app-log-row>
-</div>
-<div *ngIf="currentUndeliveredLogs.length == 0">
-    <h1>{{ 'UndeliverableOverview.NoLogs' | translate }}</h1>
+<div class="log-overview-wrapper">
+    <!-- Log Filter Header -->
+    <div class="log-filter-header">
+        <div class="log-filter-header-text">
+            <span *ngIf="showResolvedLogs">
+                {{ 'LogOverview.TotalResolved' | translate: { n: filteredUndeliveredLogs.length } }}</span>
+            <span *ngIf="!showResolvedLogs">
+                {{ 'LogOverview.TotalUnresolved' | translate: { n: filteredUndeliveredLogs.length } }}</span>
+        </div>
+        <div class=" log-filter-header-filter" (click)="onFilterChange()">
+            <mat-icon>filter_list</mat-icon>
+            <span *ngIf="!showResolvedLogs">{{ 'LogOverview.ShowResolved' | translate }}</span>
+            <span *ngIf="showResolvedLogs">{{ 'LogOverview.ShowUnresolved' | translate }}</span>
+        </div>
+    </div>
+
+    <!-- Log Overview -->
+    <div class="log-overview-container">
+        <div *ngIf="currentUndeliveredLogsLoading" class="loading-spinner" class="no-logs">
+            <mat-spinner diameter="20"></mat-spinner>
+        </div>
+        <ng-container *ngIf="!currentUndeliveredLogsLoading">
+            <div *ngIf="filteredUndeliveredLogs.length > 0">
+                <app-log-row *ngFor="let log of this.filteredUndeliveredLogs" [log]="log" [logClicked]="onLogClicked"
+                    (selectionChange)="onRowSelectionChange($event)" [showRecipient]="true"
+                    [isLastClicked]="log.msg_id === lastClickedLogMsgId" [dismissable]="true"
+                    [isSelected]="isLogSelected(log)"></app-log-row>
+            </div>
+
+            <div *ngIf="filteredUndeliveredLogs.length == 0 " class="no-logs">
+                <mat-icon>info</mat-icon>
+                <span>{{ 'LogOverview.NoLogs' | translate }}</span>
+            </div>
+        </ng-container>
+    </div>
+
+    <!-- Select Area -->
+    <div *ngIf="!showResolvedLogs && filteredUndeliveredLogs.length > 0" class="log-select-area">
+        <div class="log-select-area-checkbox">
+            <input type="checkbox" (change)="onClickSelectAllLogs()" [disabled]="filteredUndeliveredLogs.length == 0"
+                [checked]="selectedLogs.length == filteredUndeliveredLogs.length && filteredUndeliveredLogs.length > 0">
+            {{ 'LogOverview.SelectAll' | translate }}
+        </div>
+        <div class="log-select-area-dismiss">
+            <button (click)="onDismissSelectedLogs()" [disabled]="selectedLogs.length == 0">
+                <mat-icon>done_all</mat-icon>
+                <span *ngIf="selectedLogs.length == 0">{{ 'LogOverview.DismissSelectedLogsNone' | translate }}</span>
+                <span *ngIf="selectedLogs.length > 0">
+                    {{ 'LogOverview.DismissSelectedLogs' | translate: { n: selectedLogs.length } }}
+                </span>
+            </button>
+        </div>
+    </div>
 </div>

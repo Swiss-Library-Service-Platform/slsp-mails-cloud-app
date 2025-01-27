@@ -1,10 +1,13 @@
 {
     "LogDetail": {
+        "Dismiss": "Als gelöst markieren",
         "Events": "Detaillierte Ereignisse der fehlgeschlagenen E-Mail",
         "FromEmail": "Absender-E-Mail",
+        "Temporary": "vorübergehend",
         "Opened": "Geöffnet",
         "OpenedNo": "Nicht geöffnet",
         "OpenedYes": "Geöffnet",
+        "Permanent": "dauerhaft",
         "Status": "Status",
         "Subject": "Betreff",
         "Time": "Zeit",
@@ -12,15 +15,26 @@
         "ToEmail": "Empfänger-E-Mail"
     },
     "LogOverview": {
+        "DismissSelectedLogs": "Markiere {n} als gelöst",
+        "DismissSelectedLogsNone": "Markiere als gelöst",
+        "Filter": "Filter",
+        "NoLogs": "Keine Einträge gefunden.",
+        "SelectAll": "Alles auswählen",
+        "ShowResolved": "Zeige gelöste",
+        "ShowUnresolved": "Zeige ungelöste",
         "Subject": "Betreff",
         "Time": "Zeit",
-        "Title": "E-Mails"
+        "Title": "E-Mails",
+        "TotalResolved": "Gelöst ({n})",
+        "TotalUnresolved": "Ungelöst ({n})"
     },
     "Main": {
         "AccessDenied1": "Zugriff verweigert",
         "AccessDenied2": "Sie sind nicht berechtigt, auf diese Cloud-App zuzugreifen.",
         "AccessDenied3": "Wenn Sie denken, dass dies ein Fehler ist, kontaktieren Sie bitte SLSP per E-Mail unter",
         "Errors": {
+            "Dimissed": "Fehler beim Markieren der E-Mail als gelöst.",
+            "DimissedMulti": "Fehler beim Markieren von {n} E-Mails als gelöst.",
             "LogFetchError": "Fehler beim Abrufen der Protokolle",
             "NoLogs": "Für diese Entität sind keine E-Mails protokolliert.",
             "NoMails": "Für diese Entität sind in Alma keine E-Mails definiert."
@@ -29,9 +43,13 @@
             "Initializing": "Lädt...",
             "LoadLogs": "E-Mails laden"
         },
-        "Title_User": "Benutzer überprüfen",
+        "Success": {
+            "Dismissed": "E-Mail als gelöst markiert.",
+            "DimissedMulti": "{n} E-Mails als gelöst markiert."
+        },
+        "Title_User": "Benutzer",
         "Title_Undeliverable": "Unzustellbare Emails",
-        "Title_Vendor": "Lieferanten überprüfen",
+        "Title_Vendor": "Lieferanten",
         "Welcome1": "Keine Entitäten verfügbar.",
         "Welcome2": "Finden Sie eine Entität in Alma, um die E-Mail-Protokolle zu untersuchen.",
         "Welcome3": "Suchen Sie die Entität, den Sie untersuchen möchten:",
@@ -42,6 +60,8 @@
     "MailStatusChip": {
         "Delivered": "Zugestellt",
         "NotDelivered": "Nicht zugestellt",
-        "Pending": "Ausstehend"
+        "Pending": "Ausstehend",
+        "Resolved": "Gelöst",
+        "Unresolved": "Ungelöst"
     }
 }

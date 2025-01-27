@@ -1,7 +1,13 @@
-<div class="log-row" (click)="logClicked(log)">
+<div class="log-row" (click)="logClicked(log)" [ngClass]="{'last-clicked': isLastClicked }">
+    <!-- Checkbox to select log -->
+    <div class="log-cell log-select" *ngIf="dismissable" (click)="$event.stopPropagation()">
+        <mat-checkbox *ngIf="!log.dismissed" [(ngModel)]="isSelected"
+            (change)="onSelectionChange($event)"></mat-checkbox>
+        <mail-status-chip *ngIf="log.dismissed" [log]="log"></mail-status-chip>
+    </div>
     <!-- Status Icon -->
-    <div class="log-cell">
-       <mail-status-chip [log]="log"></mail-status-chip>
+    <div *ngIf="!dismissable" class="log-cell">
+        <mail-status-chip [log]="log"></mail-status-chip>
     </div>
     <!-- Timestamp -->
     <div class="log-cell">

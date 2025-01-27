@@ -1,23 +1,37 @@
-/*
-.logdetail-info {
-    display: flex;
-    flex-direction: row;
-
-    .logdetail-desc {
+.logdetail-dismiss {
+    button {
         display: flex;
-        flex-direction: column;
-        padding-right: 1rem;
-        row-gap: 2px;
-        white-space: nowrap;
-    }
+        flex-direction: row;
+        align-items: center;
+        background-color: white;
+        border: 1px solid gray;
+        color: black;
+        border-radius: 5px;
+        cursor: pointer;
+        padding-left: 8px;
+        padding-right: 8px;
+        gap: 4px;
+        box-shadow: 0 2px 1px -2px gray;
+        width: max-content;
 
-    .logdetail-val {
-        display: flex;
-        flex-direction: column;
-        row-gap: 2px;
+        ::ng-deep {
+            .mat-spinner {
+                margin: 1px;
+            }
+            .mat-progress-spinner circle,
+            .mat-spinner circle {
+                stroke: #000 !important;
+            }
+        }
+
+        mat-icon {
+            font-size: 20px;
+            height: 20px;
+            width: 20px;
+        }
     }
 }
-    */
+
 .logdetail-info {
     display: table;
     width: 100%;
@@ -27,7 +41,8 @@
     display: table-row;
 }
 
-.logdetail-desc, .logdetail-val {
+.logdetail-desc,
+.logdetail-val {
     display: table-cell;
     padding: 5px 10px;
     vertical-align: top;

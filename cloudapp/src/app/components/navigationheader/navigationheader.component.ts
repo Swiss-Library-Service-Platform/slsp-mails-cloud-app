@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigationheader',
@@ -12,13 +11,9 @@ export class NavigationheaderComponent implements OnInit {
   @Input() showBackButton: boolean;
   @Input() backButtonClicked: () => void;
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor() { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   navigateBack(): void {
     if (this.backButtonClicked) {

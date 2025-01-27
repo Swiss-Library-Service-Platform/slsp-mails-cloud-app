@@ -13,10 +13,9 @@ import { EntitiesService } from '../../services/entities.service';
 })
 export class MainComponent implements OnInit, OnDestroy {
 
-  isUserAllowed: boolean = false;
-  isUserCheckDone: boolean = false;
-
-  currentEntityTitle: String = '';
+  public isUserAllowed: boolean = false;
+  public isUserCheckDone: boolean = false;
+  public currentEntityTitle: String = '';
 
   constructor(
     private slspmailsService: SlspMailsAPIService,
@@ -30,7 +29,6 @@ export class MainComponent implements OnInit, OnDestroy {
     const statusText = await this.translateService.get('Main.Status.Initializing').toPromise();
     this.loaderService.show();
     this.statusService.set(statusText);
-    this.currentEntityTitle = this.translateService.instant('Main.Title_User');
     this.entitiesService.getObservableCurrentEntityType().subscribe(
       async (res) => {
         if (res == EntityType.VENDOR) {
@@ -40,10 +38,11 @@ export class MainComponent implements OnInit, OnDestroy {
     );
 
     await this.slspmailsService.init();
-
     this.isUserAllowed = await this.slspmailsService.authenticateAndCheckIfUserAllowed();
     this.isUserCheckDone = true;
 
+    this.currentEntityTitle = this.translateService.instant('Main.Title_User');
+    
     this.loaderService.hide();
 
     if (!this.isUserAllowed) {

@@ -3,7 +3,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    column-gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 
     .log-icon-delivered {
         color: #008500;

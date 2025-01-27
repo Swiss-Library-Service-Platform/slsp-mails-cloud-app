@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogOverviewComponent } from './log-overview.component';
+import { LogOverviewComponent } from './user-log-list.component';
 
 describe('LogOverviewComponent', () => {
   let component: LogOverviewComponent;

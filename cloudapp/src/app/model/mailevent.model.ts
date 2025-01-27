@@ -16,7 +16,7 @@ export class MailEvent {
     bounce_type: string;
 
     constructor(data: any = {}) {
-        if(data) {
+        if (data) {
             this.id = data.id;
             this.msg_id = data.msg_id;
             this.time = data.time;
@@ -24,6 +24,14 @@ export class MailEvent {
             this.reason = data.reason;
             this.bounce_type = data.bounce_type;
         }
+    }
+
+    isBounceTemporary(): boolean {
+        return this.event_name === 'bounce' && this.bounce_type === 'blocked';
+    }
+
+    isBouncePermanent(): boolean {
+        return this.event_name === 'bounce' && this.bounce_type === 'bounce';
     }
 
 }
