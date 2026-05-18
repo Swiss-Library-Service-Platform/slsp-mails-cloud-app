@@ -47,9 +47,9 @@
             "Dismissed": "Email marked as resolved.",
             "DimissedMulti": "{n} emails marked as resolved."
         },
-        "Title_User": "Check User",
-        "Title_Undeliverable": "Undeliverable Mails",
-        "Title_Vendor": "Check Vendor",
+        "Title_User": "User",
+        "Title_Undeliverable": "Undeliverable",
+        "Title_Vendor": "Vendor",
         "Welcome1" : "No entities available.",
         "Welcome2" : "Please find an entity in Alma to investigate the email logs.",
         "Welcome3" : "Find the entity you want to investigate:",
@@ -63,5 +63,39 @@
         "Pending": "Pending",
         "Resolved": "Resolved",
         "Unresolved": "Unresolved"
+    },
+    "Mailboxes": {
+        "Title": "Mailboxes",
+        "Total": "{n, plural, =0 {No mailboxes} =1 {1 mailbox} other {# mailboxes}}",
+        "StatusActive": "Active",
+        "StatusPendingDeletion": "Pending deletion",
+        "RequestChange": "Request change",
+        "TestForwarding": "Test forwarding",
+        "RowActions": "Row actions",
+        "SearchPlaceholder": "Search mailbox or forwarding address",
+        "NoSearchResults": "No mailboxes match '{q}'",
+        "TestSent": "Test email sent. Check the inbox of {email}.",
+        "TestFailed": "Failed to send test email. Please try again later.",
+        "RateLimited": "Too many test emails. Please wait before trying again.",
+        "NoMailboxes": "No mailboxes are configured for your institution.",
+        "Errors": {
+            "FetchFailed": "Failed to load mailboxes.",
+            "JiraConfigMissing": "Support link is not configured. Please contact SLSP."
+        },
+        "Dialog": {
+            "Title": "Request mailbox change",
+            "Info": "We'll open a prefilled support ticket in a new tab.",
+            "Mailbox": "Mailbox",
+            "CurrentForwarding": "Current forwarding",
+            "AdaptationLabel": "Requested adaptation",
+            "AdaptationPlaceholder": "e.g. Change forwarding to new-team@example.ch",
+            "Cancel": "Cancel",
+            "OpenSupport": "Open support ticket"
+        },
+        "TestConfirm": {
+            "Title": "Send test email?",
+            "Info": "A test email will be sent from this mailbox to its forwarding address. Use this to verify that forwarding is configured correctly.",
+            "Send": "Send test email"
+        }
     }
 }

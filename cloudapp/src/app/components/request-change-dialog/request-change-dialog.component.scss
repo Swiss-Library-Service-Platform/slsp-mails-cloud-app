@@ -1,0 +1,103 @@
+.request-change-dialog {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        margin: 0 0 12px 0;
+        font-size: 18px;
+    }
+
+    .dialog-info {
+        font-size: 13px;
+        color: #555;
+        margin: 0 0 16px 0;
+    }
+
+    .ticket-preview {
+        background-color: #fafafa;
+        border: 1px solid #e4e4e4;
+        border-radius: 4px;
+        padding: 10px 12px;
+        max-height: 320px;
+        overflow-y: auto;
+
+        .ticket-wrapper {
+            font-family: inherit;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #777;
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .ticket-input {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #222;
+            background: #ffffff;
+            border: 1px solid #c4c4c4;
+            border-radius: 4px;
+            padding: 6px 8px;
+            margin: 4px 0;
+            resize: vertical;
+            min-height: 60px;
+
+            &:focus {
+                outline: none;
+                border-color: var(--slsp-purple, #6b4ba1);
+            }
+
+            &::placeholder {
+                color: #aaa;
+                font-style: italic;
+            }
+        }
+    }
+
+    .dialog-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 12px;
+        padding: 0;
+
+        .dialog-btn {
+            border: 1px solid gray;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 6px 14px;
+            font-size: 13px;
+        }
+
+        .dialog-btn-cancel {
+            background-color: white;
+            color: black;
+        }
+
+        .dialog-btn-cancel:hover {
+            background-color: var(--slsp-purple-light-2, #ece4f5);
+        }
+
+        .dialog-btn-submit {
+            background-color: var(--slsp-purple, #6b4ba1);
+            color: white;
+            border-color: var(--slsp-purple, #6b4ba1);
+        }
+
+        .dialog-btn-submit:hover:not(:disabled) {
+            background-color: var(--slsp-purple-dark, #4f3478);
+        }
+
+        .dialog-btn-submit:disabled {
+            background-color: #c4c4c4;
+            border-color: #c4c4c4;
+            cursor: default;
+        }
+    }
+}

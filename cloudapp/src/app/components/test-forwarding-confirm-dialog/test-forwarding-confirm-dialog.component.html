@@ -1,0 +1,27 @@
+<div class="test-forwarding-confirm-dialog">
+    <h2 mat-dialog-title>{{ 'Mailboxes.TestConfirm.Title' | translate }}</h2>
+
+    <div mat-dialog-content>
+        <p class="dialog-info">{{ 'Mailboxes.TestConfirm.Info' | translate }}</p>
+
+        <div class="mailbox-summary">
+            <div class="summary-row">
+                <span class="summary-label">{{ 'Mailboxes.Dialog.Mailbox' | translate }}:</span>
+                <span class="summary-value">{{ mailbox.email }}</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">{{ 'Mailboxes.Dialog.CurrentForwarding' | translate }}:</span>
+                <span class="summary-value">{{ mailbox.forwarding_email }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div mat-dialog-actions class="dialog-actions">
+        <button class="dialog-btn dialog-btn-cancel" (click)="onCancel()">
+            {{ 'Mailboxes.Dialog.Cancel' | translate }}
+        </button>
+        <button class="dialog-btn dialog-btn-submit" (click)="onConfirm()">
+            {{ 'Mailboxes.TestConfirm.Send' | translate }}
+        </button>
+    </div>
+</div>

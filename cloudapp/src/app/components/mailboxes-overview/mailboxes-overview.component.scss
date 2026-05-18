@@ -1,0 +1,193 @@
+.mailboxes-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mailboxes-loading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+    gap: 8px;
+}
+
+.mailboxes-filter-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 4px 10px 8px;
+    box-shadow: 0 2px 1px -2px gray;
+
+    .mailboxes-filter-header-text {
+        font-size: 16px;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .mailboxes-filter-header-search {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+        flex: 0 1 220px;
+        min-width: 0;
+        padding: 2px 6px;
+        border: 1px solid #c4c4c4;
+        border-radius: 4px;
+        background-color: white;
+
+        &:focus-within {
+            border-color: var(--slsp-purple, #5e5e5e);
+        }
+
+        .search-icon {
+            font-size: 16px;
+            width: 16px;
+            height: 16px;
+            color: #777;
+            flex-shrink: 0;
+        }
+
+        input {
+            flex: 1 1 auto;
+            min-width: 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 13px;
+            padding: 2px 0;
+        }
+
+        .search-clear {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            color: #777;
+            flex-shrink: 0;
+
+            mat-icon {
+                font-size: 16px;
+                width: 16px;
+                height: 16px;
+            }
+
+            &:hover {
+                color: #333;
+            }
+        }
+    }
+}
+
+.mailboxes-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.mailbox-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 4px 12px 8px;
+    border-bottom: 1px solid #e4e4e4;
+
+    .mailbox-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 0;
+        flex: 1 1 auto;
+
+        .mailbox-line-1 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+
+            .mailbox-email {
+                font-weight: 500;
+                word-break: break-all;
+            }
+
+            .mailbox-status {
+                font-size: 11px;
+                padding: 2px 8px;
+                border-radius: 10px;
+                white-space: nowrap;
+            }
+
+            .mailbox-status-active {
+                background-color: #e3f5e3;
+                color: #2d6a2d;
+            }
+
+            .mailbox-status-pending {
+                background-color: #fff3e0;
+                color: #b06000;
+            }
+        }
+
+        .mailbox-line-2 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            color: #555;
+
+            .forward-icon {
+                font-size: 14px;
+                width: 14px;
+                height: 14px;
+            }
+
+            .mailbox-forwarding {
+                word-break: break-all;
+            }
+        }
+    }
+
+    .mailbox-actions {
+        flex-shrink: 0;
+    }
+}
+
+.mailboxes-empty,
+.mailboxes-no-results,
+.mailboxes-error {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 30px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.mailboxes-error {
+    color: #b00020;
+}
+
+// The 3-dot row menu is teleported to the CDK overlay, so we reach it via ::ng-deep.
+// Material 11's .mat-menu-item typography mixin makes nested mat-icon inherit body-1
+// font-size and balloon to ~40px — clamp it back to the standard menu-item icon size.
+::ng-deep .mat-menu-panel .mat-menu-item .mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+

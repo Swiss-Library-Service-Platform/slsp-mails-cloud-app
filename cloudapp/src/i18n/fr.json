@@ -48,7 +48,7 @@
             "DimissedMulti": "{n} e-mails marqués comme résolus."
         },
         "Title_User": "Utilisateur",
-        "Title_Undeliverable": "E-mails Non Distribuables",
+        "Title_Undeliverable": "Non distribuables",
         "Title_Vendor": "Fournisseur",
         "Welcome1": "Aucune entité disponible.",
         "Welcome2": "Veuillez trouver une entité dans Alma pour enquêter sur les journaux des e-mails.",
@@ -63,5 +63,39 @@
         "Pending": "En attente",
         "Resolved": "Résolu",
         "Unresolved": "Non Résolu"
+    },
+    "Mailboxes": {
+        "Title": "Boîtes mail",
+        "Total": "{n, plural, =0 {Aucune boîte mail} =1 {1 boîte mail} other {# boîtes mail}}",
+        "StatusActive": "Active",
+        "StatusPendingDeletion": "En attente de suppression",
+        "RequestChange": "Demander une modification",
+        "TestForwarding": "Tester le transfert",
+        "RowActions": "Actions de ligne",
+        "SearchPlaceholder": "Rechercher une boîte mail ou un transfert",
+        "NoSearchResults": "Aucune boîte mail ne correspond à '{q}'",
+        "TestSent": "E-mail de test envoyé. Vérifiez la boîte de {email}.",
+        "TestFailed": "Échec de l'envoi de l'e-mail de test. Veuillez réessayer plus tard.",
+        "RateLimited": "Trop d'e-mails de test. Veuillez attendre avant de réessayer.",
+        "NoMailboxes": "Aucune boîte mail n'est configurée pour votre institution.",
+        "Errors": {
+            "FetchFailed": "Échec du chargement des boîtes mail.",
+            "JiraConfigMissing": "Lien support non configuré. Veuillez contacter SLSP."
+        },
+        "Dialog": {
+            "Title": "Demander une modification de la boîte mail",
+            "Info": "Nous ouvrirons un ticket support pré-rempli dans un nouvel onglet.",
+            "Mailbox": "Boîte mail",
+            "CurrentForwarding": "Transfert actuel",
+            "AdaptationLabel": "Adaptation demandée",
+            "AdaptationPlaceholder": "ex. Modifier le transfert vers nouvelle-equipe@example.ch",
+            "Cancel": "Annuler",
+            "OpenSupport": "Ouvrir un ticket support"
+        },
+        "TestConfirm": {
+            "Title": "Envoyer un e-mail de test ?",
+            "Info": "Un e-mail de test sera envoyé depuis cette boîte mail vers son adresse de transfert. Cela permet de vérifier que le transfert est correctement configuré.",
+            "Send": "Envoyer l'e-mail de test"
+        }
     }
 }

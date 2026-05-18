@@ -1,0 +1,26 @@
+<div class="request-change-dialog">
+    <h2 mat-dialog-title>{{ 'Mailboxes.Dialog.Title' | translate }}</h2>
+
+    <div mat-dialog-content>
+        <p class="dialog-info">{{ 'Mailboxes.Dialog.Info' | translate }}</p>
+
+        <div class="ticket-preview"><pre class="ticket-wrapper">{{ wrapper.pre }}</pre><textarea
+                id="freeTextInput"
+                class="ticket-input"
+                [(ngModel)]="freeText"
+                rows="3"
+                [attr.placeholder]="'Mailboxes.Dialog.AdaptationPlaceholder' | translate"
+                [attr.aria-label]="'Mailboxes.Dialog.AdaptationLabel' | translate"></textarea><pre class="ticket-wrapper">{{ wrapper.post }}</pre></div>
+    </div>
+
+    <div mat-dialog-actions class="dialog-actions">
+        <button class="dialog-btn dialog-btn-cancel" (click)="onCancel()">
+            {{ 'Mailboxes.Dialog.Cancel' | translate }}
+        </button>
+        <button class="dialog-btn dialog-btn-submit"
+                [disabled]="!freeText.trim()"
+                (click)="onSubmit()">
+            {{ 'Mailboxes.Dialog.OpenSupport' | translate }}
+        </button>
+    </div>
+</div>

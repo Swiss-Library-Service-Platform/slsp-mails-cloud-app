@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule, CloudAppTranslateModule, AlertModule, LazyTranslateLoader } from '@exlibris/exl-cloudapp-angular-lib';
 import { AppComponent } from './app.component';
@@ -17,6 +18,9 @@ import { MailStatusChipComponent } from './components/mail-status-chip/mail-stat
 import { EntitySelectionComponent } from './components/entity-selection/entity-selection.component';
 import { UndeliverableOverviewComponent } from './components/undeliverable-overview/undeliverable-overview.component';
 import { LogRowComponent } from './components/log-row/log-row.component';
+import { MailboxesOverviewComponent } from './components/mailboxes-overview/mailboxes-overview.component';
+import { RequestChangeDialogComponent } from './components/request-change-dialog/request-change-dialog.component';
+import { TestForwardingConfirmDialogComponent } from './components/test-forwarding-confirm-dialog/test-forwarding-confirm-dialog.component';
 import { TranslateLoader, TranslateModule, TranslateParser } from '@ngx-translate/core';
 import { TranslateICUParser } from 'ngx-translate-parser-plural-select';
 
@@ -44,10 +48,14 @@ export function getTranslateModuleWithICU() {
     MailStatusChipComponent,
     EntitySelectionComponent,
     UndeliverableOverviewComponent,
-    LogRowComponent
+    LogRowComponent,
+    MailboxesOverviewComponent,
+    RequestChangeDialogComponent,
+    TestForwardingConfirmDialogComponent,
   ],
   imports: [
     MaterialModule,
+    MatMenuModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

@@ -60,6 +60,11 @@ cloudapp-alert {
     .mat-tab-header-icon {
         margin-right: 4px;
     }
+
+    .mat-tab-label {
+        min-width: 110px !important;
+        padding: 0 12px !important;
+    }
 }
 
 .mat-tab-group {

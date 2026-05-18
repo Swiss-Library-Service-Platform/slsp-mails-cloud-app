@@ -4,8 +4,16 @@ import { CloudAppEventsService, Entity, AlertService, CloudAppRestService } from
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { MailLog } from '../model/maillog.model';
+import { Mailbox } from '../model/mailbox.model';
 import { LogService } from './log.service';
 import { Router } from '@angular/router';
+
+interface JiraConfig {
+  supportUrlBase: string;
+  // Keys are full Jira field names (e.g. customfield_10553); values are stringified.
+  // The frontend appends every entry as-is to the support URL.
+  prefillParams: { [key: string]: string };
+}
 
 /**
  * Service which is responsible for API calls to the SLSPmails API
@@ -20,6 +28,12 @@ export class SlspMailsAPIService {
 
   public isInitialized: boolean = false;
 
+  // Session info populated by authenticateAndCheckIfUserAllowed
+  public isAdmin: boolean = false;
+  public iz: string = '';
+  public userName: string = '';
+  public jira: JiraConfig | null = null;
+
   private mailLogs: Array<MailLog> = [];
   private readonly _mailLogsObject = new BehaviorSubject<Array<MailLog>>(new Array<MailLog>());
 
@@ -27,6 +41,7 @@ export class SlspMailsAPIService {
   private readonly _selectedMailLogObject = new BehaviorSubject<MailLog>(new MailLog({}));
 
   private readonly _undeliverableMailsObject = new BehaviorSubject<Array<MailLog>>(new Array<MailLog>());
+  private readonly _mailboxesObject = new BehaviorSubject<Array<Mailbox>>(new Array<Mailbox>());
 
   private baseUrl: string = 'https://api.slspmails.swisscovery.network/api/v1/cloudapp';
   httpOptions: {};
@@ -60,6 +75,18 @@ export class SlspMailsAPIService {
       }),
       withCredentials: true
     };
+
+    // Source the user's display name from the Alma cloud-app SDK so it
+    // never crosses our backend (privacy: backend stores only a SHA256 hash).
+    try {
+      const initData: any = await this.eventsService.getInitData().toPromise();
+      const first = initData?.user?.firstName ?? '';
+      const last = initData?.user?.lastName ?? '';
+      this.userName = `${first} ${last}`.trim();
+    } catch (e) {
+      this.userName = '';
+    }
+
     this.isInitialized = true;
   }
 
@@ -114,23 +141,141 @@ export class SlspMailsAPIService {
   }
 
   /**
-   * Authenticate the user and check if the user is allowed to use the cloud app
-   * 
+   * Authenticate the user and check if the user is allowed to use the cloud app.
+   * Populates session info (isAdmin, iz, jira config) from the response.
+   * Note: userName is sourced from the cloud-app SDK in init(), not from this response.
+   *
    * @return {*}  {Promise<boolean>}, true if user is allowed, false if not
   */
   async authenticateAndCheckIfUserAllowed(): Promise<boolean> {
     return new Promise(resolve => {
       this.http.get(this.baseUrl + '/authenticate', this.httpOptions).subscribe(
         (data: any) => {
-          resolve(true);
+          this.isAdmin = data?.isAdmin === true;
+          this.iz = data?.iz ?? '';
+          this.jira = data?.jira ?? null;
+          resolve(data?.allowed === true);
         },
-        error => {
+        _error => {
+          this.isAdmin = false;
+          this.iz = '';
+          this.jira = null;
           resolve(false);
         },
       );
     });
   }
-  
+
+  /**
+   * Get the mailboxes object as observable (read-only, scoped to user's IZ)
+   */
+  getMailboxesObject(): Observable<Array<Mailbox>> {
+    return this._mailboxesObject.asObservable();
+  }
+
+  /**
+   * Fetch mailboxes for the user's IZ. Requires admin role on the backend.
+   *
+   * @return {*} {Promise<boolean>} true on success, false on error
+   */
+  async getMailboxes(): Promise<boolean> {
+    return new Promise(resolve => {
+      this.http.get(this.baseUrl + '/mailboxes', this.httpOptions).subscribe(
+        (data: any) => {
+          const mailboxes = (data ?? []).map((m: any) => new Mailbox(m));
+          this._mailboxesObject.next(mailboxes);
+          resolve(true);
+        },
+        error => {
+          this.log.error('getMailboxes', error);
+          this.alert.error(this.translate.instant('Mailboxes.Errors.FetchFailed'), { autoClose: true, delay: 3000 });
+          resolve(false);
+        },
+      );
+    });
+  }
+
+  /**
+   * Trigger a test forwarding email for the given mailbox. Rate-limited server-side.
+   *
+   * @param {number} mailboxId
+   * @return {*} {Promise<{ success: boolean; forwardingEmail?: string; rateLimited?: boolean }>}
+   */
+  async sendTestForwarding(mailboxId: number): Promise<{ success: boolean; forwardingEmail?: string; rateLimited?: boolean }> {
+    return new Promise(resolve => {
+      this.http.post(this.baseUrl + `/mailboxes/${mailboxId}/test-forwarding`, {}, this.httpOptions).subscribe(
+        (data: any) => {
+          resolve({ success: true, forwardingEmail: data?.forwarding_email });
+        },
+        error => {
+          this.log.error('sendTestForwarding', error);
+          if (error?.status === 429) {
+            resolve({ success: false, rateLimited: true });
+          } else {
+            resolve({ success: false });
+          }
+        },
+      );
+    });
+  }
+
+  /**
+   * Build the SLSP Service Desk URL with the form prefilled for a mailbox-change request.
+   * Uses confirmed customfield option IDs (customfield_10553 = Institution Zone,
+   * customfield_10305 = Functional Area).
+   */
+  buildJiraSupportUrl(mailbox: Mailbox, freeText: string): string {
+    if (!this.jira) {
+      return '';
+    }
+
+    const params = new URLSearchParams({
+      summary: `SLSPmails: Mailbox adaptation (${mailbox.email})`,
+      description: this.buildJiraDescription(mailbox, freeText),
+    });
+    // Backend tells us which customfield params to prefill (and what to set them to).
+    const prefill = this.jira.prefillParams || {};
+    Object.keys(prefill).forEach(key => params.set(key, prefill[key]));
+    return `${this.jira.supportUrlBase}?${params.toString()}`;
+  }
+
+  /**
+   * Render the support-ticket description body. Used by buildJiraSupportUrl
+   * to compose the final URL parameter.
+   */
+  buildJiraDescription(mailbox: Mailbox, freeText: string): string {
+    const { pre, post } = this.buildJiraWrapper(mailbox);
+    return `${pre}\n${freeText}\n${post}`;
+  }
+
+  /**
+   * The static halves of the support-ticket description, around the user's
+   * free-text adaptation. Exposed so the request-change dialog can render the
+   * ticket layout once and place an inline textarea at the adaptation slot.
+   */
+  buildJiraWrapper(mailbox: Mailbox): { pre: string; post: string } {
+    const pre = [
+      `Dear SLSP Team,`,
+      ``,
+      `Our IZ uses the SLSPmails service. We would like to adapt the following mailbox:`,
+      ``,
+      `Institution Zone: ${this.iz}`,
+      `Mailbox: ${mailbox.email}`,
+      `Current forwarding: ${mailbox.forwarding_email}`,
+      ``,
+      `Requested adaptation:`,
+    ].join('\n');
+    const post = [
+      ``,
+      `Kind regards,`,
+      this.userName,
+      ``,
+      `---`,
+      `This ticket was generated via the SLSPmails cloud app.`,
+    ].join('\n');
+    return { pre, post };
+  }
+
   /**
    * Get the logs for the given email addresses
    * 

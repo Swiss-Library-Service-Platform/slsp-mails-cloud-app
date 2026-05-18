@@ -48,8 +48,8 @@
             "DimissedMulti": "{n} E-Mails als gelöst markiert."
         },
         "Title_User": "Benutzer",
-        "Title_Undeliverable": "Unzustellbare Emails",
-        "Title_Vendor": "Lieferanten",
+        "Title_Undeliverable": "Unzustellbar",
+        "Title_Vendor": "Lieferant",
         "Welcome1": "Keine Entitäten verfügbar.",
         "Welcome2": "Finden Sie eine Entität in Alma, um die E-Mail-Protokolle zu untersuchen.",
         "Welcome3": "Suchen Sie die Entität, den Sie untersuchen möchten:",
@@ -63,5 +63,39 @@
         "Pending": "Ausstehend",
         "Resolved": "Gelöst",
         "Unresolved": "Ungelöst"
+    },
+    "Mailboxes": {
+        "Title": "Mailboxen",
+        "Total": "{n, plural, =0 {Keine Mailboxen} =1 {1 Mailbox} other {# Mailboxen}}",
+        "StatusActive": "Aktiv",
+        "StatusPendingDeletion": "Zur Löschung vorgemerkt",
+        "RequestChange": "Änderung anfragen",
+        "TestForwarding": "Weiterleitung testen",
+        "RowActions": "Zeilenaktionen",
+        "SearchPlaceholder": "Mailbox oder Weiterleitung suchen",
+        "NoSearchResults": "Keine Mailboxen entsprechen '{q}'",
+        "TestSent": "Test-E-Mail gesendet. Bitte prüfen Sie das Postfach von {email}.",
+        "TestFailed": "Test-E-Mail konnte nicht gesendet werden. Bitte später erneut versuchen.",
+        "RateLimited": "Zu viele Test-E-Mails. Bitte warten Sie, bevor Sie es erneut versuchen.",
+        "NoMailboxes": "Für Ihre Institution sind keine Mailboxen konfiguriert.",
+        "Errors": {
+            "FetchFailed": "Mailboxen konnten nicht geladen werden.",
+            "JiraConfigMissing": "Support-Link nicht konfiguriert. Bitte SLSP kontaktieren."
+        },
+        "Dialog": {
+            "Title": "Änderung der Mailbox anfragen",
+            "Info": "Wir öffnen ein vorbefülltes Support-Ticket in einem neuen Tab.",
+            "Mailbox": "Mailbox",
+            "CurrentForwarding": "Aktuelle Weiterleitung",
+            "AdaptationLabel": "Gewünschte Anpassung",
+            "AdaptationPlaceholder": "z.B. Weiterleitung an neues-team@example.ch ändern",
+            "Cancel": "Abbrechen",
+            "OpenSupport": "Support-Ticket öffnen"
+        },
+        "TestConfirm": {
+            "Title": "Test-E-Mail senden?",
+            "Info": "Eine Test-E-Mail wird von dieser Mailbox an die Weiterleitungsadresse gesendet. So lässt sich prüfen, ob die Weiterleitung korrekt eingerichtet ist.",
+            "Send": "Test-E-Mail senden"
+        }
     }
 }

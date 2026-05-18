@@ -1,0 +1,97 @@
+<div class="mailboxes-wrapper">
+
+    <!-- Loading state -->
+    <div *ngIf="isLoading" class="mailboxes-loading">
+        <mat-spinner diameter="20"></mat-spinner>
+    </div>
+
+    <ng-container *ngIf="!isLoading">
+
+        <!-- Error state -->
+        <div class="mailboxes-error" *ngIf="loadError">
+            <mat-icon>error_outline</mat-icon>
+            <span>{{ 'Mailboxes.Errors.FetchFailed' | translate }}</span>
+        </div>
+
+        <!-- Empty IZ state (no mailboxes configured at all) -->
+        <div class="mailboxes-empty" *ngIf="!loadError && mailboxes.length === 0">
+            <mat-icon>info</mat-icon>
+            <span>{{ 'Mailboxes.NoMailboxes' | translate }}</span>
+        </div>
+
+        <ng-container *ngIf="!loadError && mailboxes.length > 0">
+
+            <!-- Header: count + search -->
+            <div class="mailboxes-filter-header">
+                <div class="mailboxes-filter-header-text">
+                    {{ 'Mailboxes.Total' | translate: { n: filteredMailboxes.length } }}
+                </div>
+                <div class="mailboxes-filter-header-search">
+                    <mat-icon class="search-icon" inline="true">search</mat-icon>
+                    <input type="text"
+                        [(ngModel)]="searchTerm"
+                        [placeholder]="'Mailboxes.SearchPlaceholder' | translate"
+                        [attr.aria-label]="'Mailboxes.SearchPlaceholder' | translate">
+                    <button *ngIf="searchTerm"
+                        class="search-clear"
+                        type="button"
+                        (click)="clearSearch()"
+                        [attr.aria-label]="'Mailboxes.Dialog.Cancel' | translate">
+                        <mat-icon inline="true">close</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mailbox list -->
+            <div class="mailboxes-container">
+
+                <div class="mailbox-row" *ngFor="let mailbox of filteredMailboxes">
+
+                    <div class="mailbox-info">
+                        <div class="mailbox-line-1">
+                            <span class="mailbox-email">{{ mailbox.email }}</span>
+                            <span class="mailbox-status mailbox-status-active" *ngIf="mailbox.isActive()">
+                                {{ 'Mailboxes.StatusActive' | translate }}
+                            </span>
+                            <span class="mailbox-status mailbox-status-pending" *ngIf="mailbox.isPendingDeletion()">
+                                {{ 'Mailboxes.StatusPendingDeletion' | translate }}
+                            </span>
+                        </div>
+                        <div class="mailbox-line-2">
+                            <mat-icon class="forward-icon" inline="true">arrow_forward</mat-icon>
+                            <span class="mailbox-forwarding">{{ mailbox.forwarding_email }}</span>
+                        </div>
+                    </div>
+
+                    <div class="mailbox-actions">
+                        <button mat-icon-button
+                            class="mailbox-actions-trigger"
+                            [matMenuTriggerFor]="rowMenu"
+                            [attr.aria-label]="'Mailboxes.RowActions' | translate">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #rowMenu="matMenu">
+                            <button mat-menu-item (click)="onRequestChange(mailbox)">
+                                <mat-icon>edit</mat-icon>
+                                <span>{{ 'Mailboxes.RequestChange' | translate }}</span>
+                            </button>
+                            <button mat-menu-item (click)="onTestForwarding(mailbox)">
+                                <mat-icon>send</mat-icon>
+                                <span>{{ 'Mailboxes.TestForwarding' | translate }}</span>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </div>
+
+                <!-- No search results -->
+                <div class="mailboxes-no-results" *ngIf="filteredMailboxes.length === 0">
+                    <mat-icon>search_off</mat-icon>
+                    <span>{{ 'Mailboxes.NoSearchResults' | translate: { q: searchTerm } }}</span>
+                </div>
+
+            </div>
+
+        </ng-container>
+
+    </ng-container>
+</div>
