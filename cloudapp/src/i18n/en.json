@@ -72,7 +72,7 @@
         "RequestChange": "Request change",
         "TestForwarding": "Test forwarding",
         "RowActions": "Row actions",
-        "SearchPlaceholder": "Search mailbox or forwarding address",
+        "SearchPlaceholder": "Search mailbox…",
         "NoSearchResults": "No mailboxes match '{q}'",
         "TestSent": "Test email sent. Check the inbox of {email}.",
         "TestFailed": "Failed to send test email. Please try again later.",

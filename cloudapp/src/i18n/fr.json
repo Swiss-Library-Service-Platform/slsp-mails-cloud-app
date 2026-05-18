@@ -72,7 +72,7 @@
         "RequestChange": "Demander une modification",
         "TestForwarding": "Tester le transfert",
         "RowActions": "Actions de ligne",
-        "SearchPlaceholder": "Rechercher une boîte mail ou un transfert",
+        "SearchPlaceholder": "Rechercher une boîte…",
         "NoSearchResults": "Aucune boîte mail ne correspond à '{q}'",
         "TestSent": "E-mail de test envoyé. Vérifiez la boîte de {email}.",
         "TestFailed": "Échec de l'envoi de l'e-mail de test. Veuillez réessayer plus tard.",

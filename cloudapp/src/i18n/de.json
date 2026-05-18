@@ -72,7 +72,7 @@
         "RequestChange": "Änderung anfragen",
         "TestForwarding": "Weiterleitung testen",
         "RowActions": "Zeilenaktionen",
-        "SearchPlaceholder": "Mailbox oder Weiterleitung suchen",
+        "SearchPlaceholder": "Mailbox suchen…",
         "NoSearchResults": "Keine Mailboxen entsprechen '{q}'",
         "TestSent": "Test-E-Mail gesendet. Bitte prüfen Sie das Postfach von {email}.",
         "TestFailed": "Test-E-Mail konnte nicht gesendet werden. Bitte später erneut versuchen.",

@@ -72,7 +72,7 @@
         "RequestChange": "Richiedi modifica",
         "TestForwarding": "Testa l'inoltro",
         "RowActions": "Azioni riga",
-        "SearchPlaceholder": "Cerca casella o inoltro",
+        "SearchPlaceholder": "Cerca casella…",
         "NoSearchResults": "Nessuna casella corrisponde a '{q}'",
         "TestSent": "E-mail di test inviata. Controllare la casella di {email}.",
         "TestFailed": "Invio dell'e-mail di test non riuscito. Riprovare più tardi.",
