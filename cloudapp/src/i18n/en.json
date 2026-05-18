@@ -47,9 +47,9 @@
             "Dismissed": "Email marked as resolved.",
             "DimissedMulti": "{n} emails marked as resolved."
         },
-        "Title_User": "User",
+        "Title_User": "Check User",
         "Title_Undeliverable": "Undeliverable",
-        "Title_Vendor": "Vendor",
+        "Title_Vendor": "Check Vendor",
         "Welcome1" : "No entities available.",
         "Welcome2" : "Please find an entity in Alma to investigate the email logs.",
         "Welcome3" : "Find the entity you want to investigate:",
