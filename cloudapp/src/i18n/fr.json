@@ -66,7 +66,7 @@
     },
     "Mailboxes": {
         "Title": "Boîtes mail",
-        "Total": "{n, plural, =0 {Aucune boîte mail} =1 {1 boîte mail} other {# boîtes mail}}",
+        "Total": "{n, plural, =0 {Aucune boîte mail} =1 {1 boîte mail} other {{n} boîtes mail}}",
         "StatusActive": "Active",
         "StatusPendingDeletion": "En attente de suppression",
         "RequestChange": "Demander une modification",
