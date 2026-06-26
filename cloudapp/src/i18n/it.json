@@ -94,7 +94,7 @@
         },
         "TestConfirm": {
             "Title": "Inviare un'e-mail di prova?",
-            "Info": "Un'e-mail di prova verrà inviata da questa casella all'indirizzo di inoltro. Serve a verificare che l'inoltro sia configurato correttamente.",
+            "Info": "Un'e-mail di prova verrà inviata da un indirizzo no-reply a questa casella, che dovrebbe poi inoltrarla all'indirizzo di inoltro. Serve a verificare che l'inoltro sia configurato correttamente.",
             "Send": "Invia e-mail di prova"
         }
     }

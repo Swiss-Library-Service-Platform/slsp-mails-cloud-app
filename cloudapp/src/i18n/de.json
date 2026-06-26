@@ -94,7 +94,7 @@
         },
         "TestConfirm": {
             "Title": "Test-E-Mail senden?",
-            "Info": "Eine Test-E-Mail wird von dieser Mailbox an die Weiterleitungsadresse gesendet. So lässt sich prüfen, ob die Weiterleitung korrekt eingerichtet ist.",
+            "Info": "Eine Test-E-Mail wird von einer No-Reply-Adresse an diese Mailbox gesendet und sollte dann an die Weiterleitungsadresse weitergeleitet werden. So lässt sich prüfen, ob die Weiterleitung korrekt eingerichtet ist.",
             "Send": "Test-E-Mail senden"
         }
     }

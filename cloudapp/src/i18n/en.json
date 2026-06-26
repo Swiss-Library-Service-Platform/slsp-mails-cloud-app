@@ -94,7 +94,7 @@
         },
         "TestConfirm": {
             "Title": "Send test email?",
-            "Info": "A test email will be sent from this mailbox to its forwarding address. Use this to verify that forwarding is configured correctly.",
+            "Info": "A test email will be sent from a no-reply address to this mailbox, which should then forward it to its forwarding address — mirroring real incoming mail. Use this to verify that forwarding is configured correctly.",
             "Send": "Send test email"
         }
     }

@@ -94,7 +94,7 @@
         },
         "TestConfirm": {
             "Title": "Envoyer un e-mail de test ?",
-            "Info": "Un e-mail de test sera envoyé depuis cette boîte mail vers son adresse de transfert. Cela permet de vérifier que le transfert est correctement configuré.",
+            "Info": "Un e-mail de test sera envoyé depuis une adresse no-reply vers cette boîte mail, qui devrait ensuite le transférer vers son adresse de transfert. Cela permet de vérifier que le transfert est correctement configuré.",
             "Send": "Envoyer l'e-mail de test"
         }
     }
