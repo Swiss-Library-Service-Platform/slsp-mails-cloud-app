@@ -34,6 +34,10 @@ export class SlspMailsAPIService {
   public userName: string = '';
   public jira: JiraConfig | null = null;
 
+  // True when the app runs in the Alma sandbox (Premium Sandbox / PSB).
+  // Detected from the Alma URL in the cloud-app init data.
+  public isSandbox: boolean = false;
+
   private mailLogs: Array<MailLog> = [];
   private readonly _mailLogsObject = new BehaviorSubject<Array<MailLog>>(new Array<MailLog>());
 
@@ -83,8 +87,11 @@ export class SlspMailsAPIService {
       const first = initData?.user?.firstName ?? '';
       const last = initData?.user?.lastName ?? '';
       this.userName = `${first} ${last}`.trim();
+      // The Alma sandbox (PSB) is the only environment whose Alma URL contains "psb".
+      this.isSandbox = /psb/.test(initData?.urls?.alma ?? '');
     } catch (e) {
       this.userName = '';
+      this.isSandbox = false;
     }
 
     this.isInitialized = true;

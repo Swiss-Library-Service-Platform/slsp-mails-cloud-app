@@ -31,7 +31,11 @@
     "Main": {
         "AccessDenied1": "Accès refusé",
         "AccessDenied2": "Vous n'êtes pas autorisé à accéder à cette application cloud.",
-        "AccessDenied3": "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter SLSP par e-mail à", 
+        "AccessDenied3": "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter SLSP par e-mail à",
+        "Sandbox": {
+            "Title": "Indisponible dans le sandbox",
+            "Info": "L'application cloud SLSPmails est désactivée dans le sandbox Alma. Elle utilise des données de production réelles et n'est donc disponible que dans l'environnement de production."
+        },
         "Errors": {
             "Dimissed": "Erreur lors du marquage de l'e-mail comme résolu.",
             "DimissedMulti": "Erreur lors du marquage de {n} e-mails comme résolus.",

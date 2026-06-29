@@ -32,6 +32,10 @@
         "AccessDenied1": "Zugriff verweigert",
         "AccessDenied2": "Sie sind nicht berechtigt, auf diese Cloud-App zuzugreifen.",
         "AccessDenied3": "Wenn Sie denken, dass dies ein Fehler ist, kontaktieren Sie bitte SLSP per E-Mail unter",
+        "Sandbox": {
+            "Title": "In der Sandbox nicht verfügbar",
+            "Info": "Die SLSPmails Cloud-App ist in der Alma-Sandbox deaktiviert. Sie arbeitet mit echten Produktivdaten und ist daher nur in der Produktivumgebung verfügbar."
+        },
         "Errors": {
             "Dimissed": "Fehler beim Markieren der E-Mail als gelöst.",
             "DimissedMulti": "Fehler beim Markieren von {n} E-Mails als gelöst.",

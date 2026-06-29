@@ -31,7 +31,11 @@
     "Main": {
         "AccessDenied1": "Access denied",
         "AccessDenied2": "You are not allowed to access this cloud app.",
-        "AccessDenied3": "If you think this is an error, please contact SLSP via email at", 
+        "AccessDenied3": "If you think this is an error, please contact SLSP via email at",
+        "Sandbox": {
+            "Title": "Not available in the sandbox",
+            "Info": "The SLSPmails cloud app is disabled in the Alma sandbox. It works with live production data, so it is only available in the production environment."
+        },
         "Errors": {
             "Dimissed": "Error marking email as resolved.",
             "DimissedMulti": "Error marking {n} emails as resolved.",

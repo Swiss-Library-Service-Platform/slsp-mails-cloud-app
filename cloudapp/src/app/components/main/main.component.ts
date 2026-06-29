@@ -16,6 +16,7 @@ export class MainComponent implements OnInit, OnDestroy {
   public isUserAllowed: boolean = false;
   public isUserCheckDone: boolean = false;
   public isAdmin: boolean = false;
+  public isSandbox: boolean = false;
   public currentEntityTitle: String = '';
 
   constructor(
@@ -39,6 +40,17 @@ export class MainComponent implements OnInit, OnDestroy {
     );
 
     await this.slspmailsService.init();
+
+    // The app works exclusively with live production data, so it is disabled in
+    // the Alma sandbox. Short-circuit before authenticating so sandbox sessions
+    // never hit the production backend / Alma role check.
+    this.isSandbox = this.slspmailsService.isSandbox;
+    if (this.isSandbox) {
+      this.isUserCheckDone = true;
+      this.loaderService.hide();
+      return;
+    }
+
     this.isUserAllowed = await this.slspmailsService.authenticateAndCheckIfUserAllowed();
     this.isAdmin = this.slspmailsService.isAdmin;
     this.isUserCheckDone = true;
