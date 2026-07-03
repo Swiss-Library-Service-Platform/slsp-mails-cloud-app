@@ -29,7 +29,6 @@ export class SlspMailsAPIService {
   public isInitialized: boolean = false;
 
   // Session info populated by authenticateAndCheckIfUserAllowed
-  public isAdmin: boolean = false;
   public iz: string = '';
   public userName: string = '';
   public jira: JiraConfig | null = null;
@@ -149,7 +148,7 @@ export class SlspMailsAPIService {
 
   /**
    * Authenticate the user and check if the user is allowed to use the cloud app.
-   * Populates session info (isAdmin, iz, jira config) from the response.
+   * Populates session info (iz, jira config) from the response.
    * Note: userName is sourced from the cloud-app SDK in init(), not from this response.
    *
    * @return {*}  {Promise<boolean>}, true if user is allowed, false if not
@@ -158,13 +157,11 @@ export class SlspMailsAPIService {
     return new Promise(resolve => {
       this.http.get(this.baseUrl + '/authenticate', this.httpOptions).subscribe(
         (data: any) => {
-          this.isAdmin = data?.isAdmin === true;
           this.iz = data?.iz ?? '';
           this.jira = data?.jira ?? null;
           resolve(data?.allowed === true);
         },
         _error => {
-          this.isAdmin = false;
           this.iz = '';
           this.jira = null;
           resolve(false);
@@ -181,7 +178,7 @@ export class SlspMailsAPIService {
   }
 
   /**
-   * Fetch mailboxes for the user's IZ. Requires admin role on the backend.
+   * Fetch mailboxes for the user's IZ.
    *
    * @return {*} {Promise<boolean>} true on success, false on error
    */

@@ -69,27 +69,27 @@
         "Unresolved": "Ungelöst"
     },
     "Mailboxes": {
-        "Title": "Mailboxen",
-        "Total": "{n, plural, =0 {Keine Mailboxen} =1 {1 Mailbox} other {{n} Mailboxen}}",
+        "Title": "Postfächer",
+        "Total": "{n, plural, =0 {Keine Postfächer} =1 {1 Postfach} other {{n} Postfächer}}",
         "StatusActive": "Aktiv",
         "StatusPendingDeletion": "Zur Löschung vorgemerkt",
         "RequestChange": "Änderung anfragen",
         "TestForwarding": "Weiterleitung testen",
         "RowActions": "Zeilenaktionen",
-        "SearchPlaceholder": "Mailbox suchen…",
-        "NoSearchResults": "Keine Mailboxen entsprechen '{q}'",
+        "SearchPlaceholder": "Postfach suchen…",
+        "NoSearchResults": "Keine Postfächer entsprechen '{q}'",
         "TestSent": "Test-E-Mail gesendet. Bitte prüfen Sie das Postfach von {email}.",
         "TestFailed": "Test-E-Mail konnte nicht gesendet werden. Bitte später erneut versuchen.",
         "RateLimited": "Zu viele Test-E-Mails. Bitte warten Sie, bevor Sie es erneut versuchen.",
-        "NoMailboxes": "Für Ihre Institution sind keine Mailboxen konfiguriert.",
+        "NoMailboxes": "Für Ihre Institution sind keine Postfächer konfiguriert.",
         "Errors": {
-            "FetchFailed": "Mailboxen konnten nicht geladen werden.",
+            "FetchFailed": "Postfächer konnten nicht geladen werden.",
             "JiraConfigMissing": "Support-Link nicht konfiguriert. Bitte SLSP kontaktieren."
         },
         "Dialog": {
-            "Title": "Änderung der Mailbox anfragen",
+            "Title": "Änderung des Postfachs anfragen",
             "Info": "Wir öffnen ein vorbefülltes Support-Ticket in einem neuen Tab.",
-            "Mailbox": "Mailbox",
+            "Mailbox": "Postfach",
             "CurrentForwarding": "Aktuelle Weiterleitung",
             "AdaptationLabel": "Gewünschte Anpassung",
             "AdaptationPlaceholder": "z.B. Weiterleitung an neues-team@example.ch ändern",
@@ -98,7 +98,7 @@
         },
         "TestConfirm": {
             "Title": "Test-E-Mail senden?",
-            "Info": "Eine Test-E-Mail wird von einer No-Reply-Adresse an diese Mailbox gesendet und sollte dann an die Weiterleitungsadresse weitergeleitet werden. So lässt sich prüfen, ob die Weiterleitung korrekt eingerichtet ist.",
+            "Info": "Eine Test-E-Mail wird von einer No-Reply-Adresse an dieses Postfach gesendet und sollte dann an die Weiterleitungsadresse weitergeleitet werden. So lässt sich prüfen, ob die Weiterleitung korrekt eingerichtet ist.",
             "Send": "Test-E-Mail senden"
         }
     }

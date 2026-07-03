@@ -69,27 +69,27 @@
         "Unresolved": "Non Résolu"
     },
     "Mailboxes": {
-        "Title": "Boîtes mail",
-        "Total": "{n, plural, =0 {Aucune boîte mail} =1 {1 boîte mail} other {{n} boîtes mail}}",
+        "Title": "Messageries",
+        "Total": "{n, plural, =0 {Aucune messagerie} =1 {1 messagerie} other {{n} messageries}}",
         "StatusActive": "Active",
         "StatusPendingDeletion": "En attente de suppression",
         "RequestChange": "Demander une modification",
         "TestForwarding": "Tester le transfert",
         "RowActions": "Actions de ligne",
-        "SearchPlaceholder": "Rechercher une boîte…",
-        "NoSearchResults": "Aucune boîte mail ne correspond à '{q}'",
-        "TestSent": "E-mail de test envoyé. Vérifiez la boîte de {email}.",
+        "SearchPlaceholder": "Rechercher une messagerie…",
+        "NoSearchResults": "Aucune messagerie ne correspond à '{q}'",
+        "TestSent": "E-mail de test envoyé. Vérifiez la messagerie de {email}.",
         "TestFailed": "Échec de l'envoi de l'e-mail de test. Veuillez réessayer plus tard.",
         "RateLimited": "Trop d'e-mails de test. Veuillez attendre avant de réessayer.",
-        "NoMailboxes": "Aucune boîte mail n'est configurée pour votre institution.",
+        "NoMailboxes": "Aucune messagerie n'est configurée pour votre institution.",
         "Errors": {
-            "FetchFailed": "Échec du chargement des boîtes mail.",
+            "FetchFailed": "Échec du chargement des messageries.",
             "JiraConfigMissing": "Lien support non configuré. Veuillez contacter SLSP."
         },
         "Dialog": {
-            "Title": "Demander une modification de la boîte mail",
+            "Title": "Demander une modification de la messagerie",
             "Info": "Nous ouvrirons un ticket support pré-rempli dans un nouvel onglet.",
-            "Mailbox": "Boîte mail",
+            "Mailbox": "Messagerie",
             "CurrentForwarding": "Transfert actuel",
             "AdaptationLabel": "Adaptation demandée",
             "AdaptationPlaceholder": "ex. Modifier le transfert vers nouvelle-equipe@example.ch",
@@ -98,7 +98,7 @@
         },
         "TestConfirm": {
             "Title": "Envoyer un e-mail de test ?",
-            "Info": "Un e-mail de test sera envoyé depuis une adresse no-reply vers cette boîte mail, qui devrait ensuite le transférer vers son adresse de transfert. Cela permet de vérifier que le transfert est correctement configuré.",
+            "Info": "Un e-mail de test sera envoyé depuis une adresse no-reply vers cette messagerie, qui devrait ensuite le transférer vers son adresse de transfert. Cela permet de vérifier que le transfert est correctement configuré.",
             "Send": "Envoyer l'e-mail de test"
         }
     }

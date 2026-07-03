@@ -15,7 +15,6 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public isUserAllowed: boolean = false;
   public isUserCheckDone: boolean = false;
-  public isAdmin: boolean = false;
   public isSandbox: boolean = false;
   public currentEntityTitle: String = '';
 
@@ -52,7 +51,6 @@ export class MainComponent implements OnInit, OnDestroy {
     }
 
     this.isUserAllowed = await this.slspmailsService.authenticateAndCheckIfUserAllowed();
-    this.isAdmin = this.slspmailsService.isAdmin;
     this.isUserCheckDone = true;
 
     this.currentEntityTitle = this.translateService.instant('Main.Title_User');
