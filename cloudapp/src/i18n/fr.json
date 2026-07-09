@@ -31,7 +31,11 @@
     "Main": {
         "AccessDenied1": "Accès refusé",
         "AccessDenied2": "Vous n'êtes pas autorisé à accéder à cette application cloud.",
-        "AccessDenied3": "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter SLSP par e-mail à", 
+        "AccessDenied3": "Si vous pensez qu'il s'agit d'une erreur, veuillez contacter SLSP par e-mail à",
+        "Sandbox": {
+            "Title": "Indisponible dans le sandbox",
+            "Info": "L'application cloud SLSPmails est désactivée dans le sandbox Alma. Elle utilise des données de production réelles et n'est donc disponible que dans l'environnement de production."
+        },
         "Errors": {
             "Dimissed": "Erreur lors du marquage de l'e-mail comme résolu.",
             "DimissedMulti": "Erreur lors du marquage de {n} e-mails comme résolus.",
@@ -48,7 +52,7 @@
             "DimissedMulti": "{n} e-mails marqués comme résolus."
         },
         "Title_User": "Utilisateur",
-        "Title_Undeliverable": "E-mails Non Distribuables",
+        "Title_Undeliverable": "Non distribuables",
         "Title_Vendor": "Fournisseur",
         "Welcome1": "Aucune entité disponible.",
         "Welcome2": "Veuillez trouver une entité dans Alma pour enquêter sur les journaux des e-mails.",
@@ -63,5 +67,39 @@
         "Pending": "En attente",
         "Resolved": "Résolu",
         "Unresolved": "Non Résolu"
+    },
+    "Mailboxes": {
+        "Title": "Messageries",
+        "Total": "{n, plural, =0 {Aucune messagerie} =1 {1 messagerie} other {{n} messageries}}",
+        "StatusActive": "Active",
+        "StatusPendingDeletion": "En attente de suppression",
+        "RequestChange": "Demander une modification",
+        "TestForwarding": "Tester le transfert",
+        "RowActions": "Actions de ligne",
+        "SearchPlaceholder": "Rechercher une messagerie…",
+        "NoSearchResults": "Aucune messagerie ne correspond à '{q}'",
+        "TestSent": "E-mail de test envoyé. Vérifiez la messagerie de {email}.",
+        "TestFailed": "Échec de l'envoi de l'e-mail de test. Veuillez réessayer plus tard.",
+        "RateLimited": "Trop d'e-mails de test. Veuillez attendre avant de réessayer.",
+        "NoMailboxes": "Aucune messagerie n'est configurée pour votre institution.",
+        "Errors": {
+            "FetchFailed": "Échec du chargement des messageries.",
+            "JiraConfigMissing": "Lien support non configuré. Veuillez contacter SLSP."
+        },
+        "Dialog": {
+            "Title": "Demander une modification de la messagerie",
+            "Info": "Nous ouvrirons un ticket support pré-rempli dans un nouvel onglet.",
+            "Mailbox": "Messagerie",
+            "CurrentForwarding": "Transfert actuel",
+            "AdaptationLabel": "Adaptation demandée",
+            "AdaptationPlaceholder": "ex. Modifier le transfert vers nouvelle-equipe@example.ch",
+            "Cancel": "Annuler",
+            "OpenSupport": "Ouvrir un ticket support"
+        },
+        "TestConfirm": {
+            "Title": "Envoyer un e-mail de test ?",
+            "Info": "Un e-mail de test sera envoyé depuis une adresse no-reply vers cette messagerie, qui devrait ensuite le transférer vers son adresse de transfert. Cela permet de vérifier que le transfert est correctement configuré.",
+            "Send": "Envoyer l'e-mail de test"
+        }
     }
 }

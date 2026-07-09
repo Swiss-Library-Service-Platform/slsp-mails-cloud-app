@@ -1,0 +1,76 @@
+.test-forwarding-confirm-dialog {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        margin: 0 0 12px 0;
+        font-size: 18px;
+    }
+
+    .dialog-info {
+        font-size: 13px;
+        color: #555;
+        margin: 0 0 16px 0;
+    }
+
+    .mailbox-summary {
+        background-color: var(--slsp-purple-light, #f5f1fa);
+        border-radius: 5px;
+        padding: 10px 12px;
+        margin-bottom: 8px;
+
+        .summary-row {
+            display: flex;
+            flex-direction: row;
+            gap: 6px;
+            font-size: 13px;
+            line-height: 1.5;
+
+            .summary-label {
+                color: #555;
+                flex-shrink: 0;
+            }
+
+            .summary-value {
+                font-weight: 500;
+                word-break: break-all;
+            }
+        }
+    }
+
+    .dialog-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 12px;
+        padding: 0;
+
+        .dialog-btn {
+            border: 1px solid gray;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 6px 14px;
+            font-size: 13px;
+        }
+
+        .dialog-btn-cancel {
+            background-color: white;
+            color: black;
+        }
+
+        .dialog-btn-cancel:hover {
+            background-color: var(--slsp-purple-light-2, #ece4f5);
+        }
+
+        .dialog-btn-submit {
+            background-color: var(--slsp-purple, #6b4ba1);
+            color: white;
+            border-color: var(--slsp-purple, #6b4ba1);
+        }
+
+        .dialog-btn-submit:hover {
+            background-color: var(--slsp-purple-dark, #4f3478);
+        }
+    }
+}

@@ -57,8 +57,22 @@ cloudapp-alert {
 }
 
 .mat-tab-group {
-    .mat-tab-header-icon {
+    .mat-tab-label {
+        min-width: 0 !important;
+        padding: 0 8px !important;
+        font-size: 13px;
+        letter-spacing: 0;
+    }
+
+    // Shrink tab-header icons (both inline SVGs and mat-icon) so longer
+    // localized labels (FR/IT) still fit alongside them in the panel.
+    .mat-tab-header-icon,
+    .mat-tab-label mat-icon {
         margin-right: 4px;
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
+        line-height: 16px;
     }
 }
 

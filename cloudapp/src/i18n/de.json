@@ -32,6 +32,10 @@
         "AccessDenied1": "Zugriff verweigert",
         "AccessDenied2": "Sie sind nicht berechtigt, auf diese Cloud-App zuzugreifen.",
         "AccessDenied3": "Wenn Sie denken, dass dies ein Fehler ist, kontaktieren Sie bitte SLSP per E-Mail unter",
+        "Sandbox": {
+            "Title": "In der Sandbox nicht verfügbar",
+            "Info": "Die SLSPmails Cloud-App ist in der Alma-Sandbox deaktiviert. Sie arbeitet mit echten Produktivdaten und ist daher nur in der Produktivumgebung verfügbar."
+        },
         "Errors": {
             "Dimissed": "Fehler beim Markieren der E-Mail als gelöst.",
             "DimissedMulti": "Fehler beim Markieren von {n} E-Mails als gelöst.",
@@ -48,8 +52,8 @@
             "DimissedMulti": "{n} E-Mails als gelöst markiert."
         },
         "Title_User": "Benutzer",
-        "Title_Undeliverable": "Unzustellbare Emails",
-        "Title_Vendor": "Lieferanten",
+        "Title_Undeliverable": "Unzustellbar",
+        "Title_Vendor": "Lieferant",
         "Welcome1": "Keine Entitäten verfügbar.",
         "Welcome2": "Finden Sie eine Entität in Alma, um die E-Mail-Protokolle zu untersuchen.",
         "Welcome3": "Suchen Sie die Entität, den Sie untersuchen möchten:",
@@ -63,5 +67,39 @@
         "Pending": "Ausstehend",
         "Resolved": "Gelöst",
         "Unresolved": "Ungelöst"
+    },
+    "Mailboxes": {
+        "Title": "Postfächer",
+        "Total": "{n, plural, =0 {Keine Postfächer} =1 {1 Postfach} other {{n} Postfächer}}",
+        "StatusActive": "Aktiv",
+        "StatusPendingDeletion": "Zur Löschung vorgemerkt",
+        "RequestChange": "Änderung anfragen",
+        "TestForwarding": "Weiterleitung testen",
+        "RowActions": "Zeilenaktionen",
+        "SearchPlaceholder": "Postfach suchen…",
+        "NoSearchResults": "Keine Postfächer entsprechen '{q}'",
+        "TestSent": "Test-E-Mail gesendet. Bitte prüfen Sie das Postfach von {email}.",
+        "TestFailed": "Test-E-Mail konnte nicht gesendet werden. Bitte später erneut versuchen.",
+        "RateLimited": "Zu viele Test-E-Mails. Bitte warten Sie, bevor Sie es erneut versuchen.",
+        "NoMailboxes": "Für Ihre Institution sind keine Postfächer konfiguriert.",
+        "Errors": {
+            "FetchFailed": "Postfächer konnten nicht geladen werden.",
+            "JiraConfigMissing": "Support-Link nicht konfiguriert. Bitte SLSP kontaktieren."
+        },
+        "Dialog": {
+            "Title": "Änderung des Postfachs anfragen",
+            "Info": "Wir öffnen ein vorbefülltes Support-Ticket in einem neuen Tab.",
+            "Mailbox": "Postfach",
+            "CurrentForwarding": "Aktuelle Weiterleitung",
+            "AdaptationLabel": "Gewünschte Anpassung",
+            "AdaptationPlaceholder": "z.B. Weiterleitung an neues-team@example.ch ändern",
+            "Cancel": "Abbrechen",
+            "OpenSupport": "Support-Ticket öffnen"
+        },
+        "TestConfirm": {
+            "Title": "Test-E-Mail senden?",
+            "Info": "Eine Test-E-Mail wird von einer No-Reply-Adresse an dieses Postfach gesendet und sollte dann an die Weiterleitungsadresse weitergeleitet werden. So lässt sich prüfen, ob die Weiterleitung korrekt eingerichtet ist.",
+            "Send": "Test-E-Mail senden"
+        }
     }
 }

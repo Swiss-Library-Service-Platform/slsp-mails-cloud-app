@@ -31,7 +31,11 @@
     "Main": {
         "AccessDenied1": "Accesso negato",
         "AccessDenied2": "Non sei autorizzato ad accedere a questa applicazione cloud.",
-        "AccessDenied3": "Se pensi che sia un errore, contatta SLSP via e-mail a", 
+        "AccessDenied3": "Se pensi che sia un errore, contatta SLSP via e-mail a",
+        "Sandbox": {
+            "Title": "Non disponibile nella sandbox",
+            "Info": "L'app cloud SLSPmails è disattivata nella sandbox di Alma. Utilizza dati di produzione reali, quindi è disponibile solo nell'ambiente di produzione."
+        },
         "Errors": {
             "Dimissed": "Errore nel segnare l'e-mail come risolta.",
             "DimissedMulti": "Errore nel segnare {n} e-mail come risolte.",
@@ -48,7 +52,7 @@
             "DimissedMulti": "{n} e-mail segnate come risolte."
         },
         "Title_User": "Utente",
-        "Title_Undeliverable": "E-mail Non Consegnabili",
+        "Title_Undeliverable": "Non consegnabili",
         "Title_Vendor": "Fornitore",
         "Welcome1": "Nessuna entità disponibile.",
         "Welcome2": "Trova un'entità in Alma per indagare sui log delle e-mail.",
@@ -63,5 +67,39 @@
         "Pending": "In attesa",
         "Resolved": "Risolto",
         "Unresolved": "Non Risolto"
+    },
+    "Mailboxes": {
+        "Title": "Caselle di posta",
+        "Total": "{n, plural, =0 {Nessuna casella} =1 {1 casella} other {{n} caselle}}",
+        "StatusActive": "Attiva",
+        "StatusPendingDeletion": "In attesa di eliminazione",
+        "RequestChange": "Richiedi modifica",
+        "TestForwarding": "Testa l'inoltro",
+        "RowActions": "Azioni riga",
+        "SearchPlaceholder": "Cerca casella…",
+        "NoSearchResults": "Nessuna casella corrisponde a '{q}'",
+        "TestSent": "E-mail di test inviata. Controllare la casella di {email}.",
+        "TestFailed": "Invio dell'e-mail di test non riuscito. Riprovare più tardi.",
+        "RateLimited": "Troppe e-mail di test. Attendere prima di riprovare.",
+        "NoMailboxes": "Nessuna casella di posta configurata per la sua istituzione.",
+        "Errors": {
+            "FetchFailed": "Impossibile caricare le caselle di posta.",
+            "JiraConfigMissing": "Link di supporto non configurato. Contattare SLSP."
+        },
+        "Dialog": {
+            "Title": "Richiedi modifica della casella di posta",
+            "Info": "Apriremo un ticket di assistenza precompilato in una nuova scheda.",
+            "Mailbox": "Casella di posta",
+            "CurrentForwarding": "Inoltro attuale",
+            "AdaptationLabel": "Adattamento richiesto",
+            "AdaptationPlaceholder": "es. Modificare l'inoltro a nuovo-team@example.ch",
+            "Cancel": "Annulla",
+            "OpenSupport": "Apri ticket di assistenza"
+        },
+        "TestConfirm": {
+            "Title": "Inviare un'e-mail di prova?",
+            "Info": "Un'e-mail di prova verrà inviata da un indirizzo no-reply a questa casella, che dovrebbe poi inoltrarla all'indirizzo di inoltro. Serve a verificare che l'inoltro sia configurato correttamente.",
+            "Send": "Invia e-mail di prova"
+        }
     }
 }
